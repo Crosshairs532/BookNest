@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "plainLight";
+  src: url("./fonts/plain-light-webfont.ttf");
+}
+@font-face {
+  font-family: "plainRegular";
+  src: url("./fonts/plain-regular-webfont.ttf");
+}
+@font-face {
+  font-family: "silkLight";
+  src: url("./fonts/silkserif-lightitalic-webfont.ttf");
+}
+@font-face {
+  font-family: "silkRegular";
+  src: url("./fonts/silkserif-regularitalic-webfont.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-logo {
+  /* width: 90%; */
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+  /* border: 1px solid black; */
+  margin: 0 auto;
+}
+.login-logo h1 {
+  font-size: 2.5vw;
+  color: #141414;
+}
+.login-logo h2 {
+  font-size: 2.2vw;
+  font-family: "plainRegular";
+  font-weight: 300;
+  color: #141414;
+}
+.login_container {
+  width: 55vw;
+  height: 25vw;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.login_form {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  /* border: 1px solid blue; */
+}
+#loginButton {
+  font-family: "plainRegular";
+}
