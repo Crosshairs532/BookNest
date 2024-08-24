@@ -29,7 +29,6 @@ const Login = () => {
             <h1>or</h1>
             <Divider type="vertical" />
           </div>
-
           <div className="social flex-grow flex flex-col justify-center items-center gap-4">
             <BNButtonLogin text="Continue with Google">
               <FcGoogle></FcGoogle>

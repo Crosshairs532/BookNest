@@ -1,10 +1,16 @@
 import { Form, Layout } from "antd";
-import { FormProvider, useForm } from "react-hook-form";
+import { ReactNode } from "react";
+import {
+  FieldValues,
+  FormProvider,
+  SubmitHandler,
+  useForm,
+} from "react-hook-form";
 
-const BNForm = ({ children }) => {
+const BNForm = ({ children }: { children: ReactNode }) => {
   const methods = useForm();
 
-  const onsubmit = (data) => {
+  const onsubmit: SubmitHandler<FieldValues> = (data) => {
     console.log(data);
   };
   return (

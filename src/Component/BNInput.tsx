@@ -12,7 +12,7 @@ const BNInput = ({ type, label, name }: TinputProp) => {
       <Controller
         rules={{ required: true }}
         name={name}
-        render={({ field, formState: { error } }) => (
+        render={({ field, fieldState: { error } }) => (
           <Form.Item htmlFor={name} label={label} layout="vertical">
             <Input
               {...field}
@@ -26,7 +26,7 @@ const BNInput = ({ type, label, name }: TinputProp) => {
                 borderBottom: "1px solid",
               }}
             />
-            {error && <span>{error.message}</span>}
+            {error && <span>{error?.message}</span>}
           </Form.Item>
         )}
       />
