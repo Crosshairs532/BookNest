@@ -10,10 +10,10 @@ const BNInput = ({ type, label, name }: TinputProp) => {
   return (
     <div style={{ marginBottom: "50px" }}>
       <Controller
-        rules={{ required: true }}
+        rules={{ required: "This field is required" }}
         name={name}
         render={({ field, fieldState: { error } }) => (
-          <Form.Item htmlFor={name} label={label} layout="vertical">
+          <Form.Item label={label} layout="vertical">
             <Input
               {...field}
               type={type}
@@ -26,7 +26,7 @@ const BNInput = ({ type, label, name }: TinputProp) => {
                 borderBottom: "1px solid",
               }}
             />
-            {error && <span>{error?.message}</span>}
+            {error && <span className="text-red-500">{error?.message}</span>}
           </Form.Item>
         )}
       />

@@ -54,6 +54,7 @@ body {
   font-family: "plainRegular";
   font-weight: 300;
   color: #141414;
+  line-height: none;
 }
 .login_container {
   width: 55vw;
@@ -63,6 +64,7 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  gap: 2vw;
 }
 .login_form {
   display: flex;

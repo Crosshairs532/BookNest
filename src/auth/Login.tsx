@@ -16,8 +16,8 @@ const Login = () => {
           </h1>
           <h2>BookNest</h2>
         </div>
-        <div className="login_form mt-4">
-          <div className=" flex-grow">
+        <div className="login_form  mt-4">
+          <div className=" flex-grow w-[45%] ">
             <BNForm>
               <BNInput type="email" label="Email Address" name="email" />
               <BNInput type="text" label="Password" name="password" />
@@ -25,11 +25,19 @@ const Login = () => {
             </BNForm>
           </div>
           <div className=" flex justify-center items-center w-[10%]  flex-col">
-            <Divider type="vertical" />
+            <Divider
+              variant="solid"
+              style={{ height: "100%", borderColor: "#E7E7E7" }}
+              type="vertical"
+            />
             <h1>or</h1>
-            <Divider type="vertical" />
+            <Divider
+              variant="solid"
+              style={{ height: "100%", borderColor: "#E7E7E7" }}
+              type="vertical"
+            />
           </div>
-          <div className="social flex-grow flex flex-col justify-center items-center gap-4">
+          <div className="social w-[45%]   flex-grow flex flex-col justify-center items-center gap-4">
             <BNButtonLogin text="Continue with Google">
               <FcGoogle></FcGoogle>
             </BNButtonLogin>
