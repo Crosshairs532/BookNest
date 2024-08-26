@@ -9,22 +9,24 @@ import { CiFacebook } from "react-icons/ci";
 const Login = () => {
   return (
     <div className="login  w-full h-screen bg-[#FFFFF]">
-      <div className=" login_container">
+      <div className=" w-[100vw] login_container  lg:w-[55vw] border-2 border-yellow-300 lg:h-[25vw] flex justify-center flex-col items-center gap-[2vw]">
         <div className="login-logo text-white">
-          <h1 className="">
+          <h1 className=" text-[10vw] lg:text-[2.5vw] text-[#141414]">
             <PiXLogoLight />
           </h1>
-          <h2>BookNest</h2>
+          <h2 className="  text-[6vw] lg:text-[2.2vw] lg:font-medium md:font-medium font-bold">
+            BookNest
+          </h2>
         </div>
-        <div className="login_form  mt-4">
-          <div className=" flex-grow w-[45%] ">
+        <div className="login_form w-[85%]  space-y-[3vw]  lg:flex justify-between lg:w-[90%] mt-4">
+          <div className="  lg:flex-grow border-2 border-red-500  lg:w-[45%] ">
             <BNForm>
               <BNInput type="email" label="Email Address" name="email" />
               <BNInput type="text" label="Password" name="password" />
               <Button htmlType="submit">LOG IN</Button>
             </BNForm>
           </div>
-          <div className=" flex justify-center items-center w-[10%]  flex-col">
+          <div className=" hidden  lg:flex justify-center items-center w-[10%] flex-col">
             <Divider
               variant="solid"
               style={{ height: "100%", borderColor: "#E7E7E7" }}
@@ -37,11 +39,11 @@ const Login = () => {
               type="vertical"
             />
           </div>
-          <div className="social w-[45%]   flex-grow flex flex-col justify-center items-center gap-4">
-            <BNButtonLogin text="Continue with Google">
+          <div className=" social border-2 border-green-500 lg:w-[45%] flex-grow flex  lg:flex-col justify-center items-center gap-4">
+            <BNButtonLogin textS="Google" text="Continue with Google">
               <FcGoogle></FcGoogle>
             </BNButtonLogin>
-            <BNButtonLogin text="Continue with Facebook">
+            <BNButtonLogin textS="Facebook" text="Continue with Facebook">
               <CiFacebook></CiFacebook>
             </BNButtonLogin>
           </div>

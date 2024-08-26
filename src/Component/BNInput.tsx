@@ -13,7 +13,10 @@ const BNInput = ({ type, label, name }: TinputProp) => {
         rules={{ required: "This field is required" }}
         name={name}
         render={({ field, fieldState: { error } }) => (
-          <Form.Item label={label} layout="vertical">
+          <Form.Item
+            label={<span className=" label font-medium">{label}</span>}
+            layout="vertical"
+          >
             <Input
               {...field}
               type={type}
