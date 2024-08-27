@@ -8,14 +8,16 @@ import { CiFacebook } from "react-icons/ci";
 import { toast } from "sonner";
 import { useLoginMutation } from "../redux/features/auth/auth.api";
 import { useAppSelector } from "../redux/hook";
-import { loginState, setUser } from "../redux/features/auth/authSlice";
+import { getUser, loginState, setUser } from "../redux/features/auth/authSlice";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import verifyToken from "../Component/verifyToken/verifyToken";
 
 const Login = () => {
   const [login] = useLoginMutation();
   const selector = useAppSelector(loginState);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -28,22 +30,29 @@ const Login = () => {
     try {
       const id = toast.loading("Loggin..");
       const res = await login(loginInfo).unwrap();
-      const userInfo = {
-        current_user: res.data,
-        token: res.token,
-      };
 
-      toast.success("Login Success", {
-        id,
-        duration: 2000,
-        cancel: {
-          label: "Cancel",
-          onClick: () => toast.dismiss(id),
-        },
-      });
+      const verify = verifyToken(res.token);
 
-      dispatch(setUser(userInfo));
-      navigate("/");
+      if (verify) {
+        const userInfo = {
+          current_user: res.data,
+          token: res.token,
+        };
+
+        toast.success("Login Success", {
+          id,
+          duration: 2000,
+          cancel: {
+            label: "Cancel",
+            onClick: () => toast.dismiss(id),
+          },
+        });
+
+        dispatch(setUser(userInfo));
+        navigate("/");
+      } else {
+        toast.error("Something went Wrong!", { id });
+      }
     } catch (err) {
       toast.error(`${err?.message}`);
     }
@@ -75,7 +84,7 @@ const Login = () => {
           </svg>
           <h1
             onClick={() => {
-              navigate(`${location.state}`);
+              navigate(`${location?.state ? location.state : "/"}`);
             }}
             className=" md:text-[2vw] lg:text-[1vw] text-[3.5vw] font-semibold"
           >

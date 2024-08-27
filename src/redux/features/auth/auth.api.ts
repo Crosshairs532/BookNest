@@ -1,4 +1,3 @@
-import { Application } from "express";
 import { baseAPi } from "../../api/baseApi";
 
 export const authApi = baseAPi.injectEndpoints({
@@ -8,11 +7,6 @@ export const authApi = baseAPi.injectEndpoints({
         url: "/auth/login",
         method: "POST",
         body: data,
-      }),
-    }),
-    logout: builder.mutation({
-      query: () => ({
-        url: "/auth/logout",
       }),
     }),
     register: builder.mutation({

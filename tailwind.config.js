@@ -8,6 +8,7 @@ export default {
         plainRegular: ["plain-regular", "sans-serif"],
         silkSerifLight: ["silkSerif-light", "serif"],
         silkSerifRegular: ["silkSerif-regular", "serif"],
+        proBook: ["NBInternationalProBoo", "sans-serif"],
       },
     },
   },

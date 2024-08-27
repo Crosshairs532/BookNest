@@ -7,6 +7,9 @@ import Home from "../pages/Home/Home";
 import MeetingRooms from "../pages/MeetingRooms/MeetingRooms";
 import About from "../pages/About/About";
 import Contact from "../pages/contact/Contact";
+import MYBookings from "../pages/MYBookings/MYBookings";
+import Protected from "../protected/Protected";
+import AdminDashboard from "../pages/AdminDashboard/AdminDashboard";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +42,22 @@ const router = createBrowserRouter([
   {
     path: "/registration",
     element: <Registration></Registration>,
+  },
+  {
+    path: "/:id/my-bookings",
+    element: (
+      <Protected>
+        <MYBookings />
+      </Protected>
+    ),
+  },
+  {
+    path: "/admin/dashboard",
+    element: (
+      <Protected>
+        <AdminDashboard />
+      </Protected>
+    ),
   },
 ]);
 

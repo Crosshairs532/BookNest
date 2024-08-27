@@ -5,8 +5,10 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { loginState } from "../../redux/features/auth/authSlice";
+import { loginState, logout } from "../../redux/features/auth/authSlice";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../redux/hook";
+import { Button, ConfigProvider } from "antd";
 gsap.registerPlugin(useGSAP);
 
 const Navbar = () => {
@@ -18,7 +20,8 @@ const Navbar = () => {
   const closeRef = useRef<HTMLDivElement>(null);
   const user = useSelector(loginState);
   const navigate = useNavigate();
-
+  const dispatch = useAppDispatch();
+  let item;
   useGSAP(() => {
     const nav = navRef?.current as HTMLDivElement;
     const menu = menuRef?.current as HTMLDivElement;
@@ -71,8 +74,6 @@ const Navbar = () => {
     };
   }, [menuRef, closeRef]);
 
-  console.log(location, open);
-
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 232) {
@@ -83,6 +84,29 @@ const Navbar = () => {
     });
   });
 
+  const handleLogout = () => {
+    dispatch(logout());
+    return navigate("/login", {
+      state: "/",
+      replace: true,
+    });
+  };
+  switch (user?.current_user?.role) {
+    case "admin":
+      item = (
+        <Link to="/admin/dashboard">
+          <h1 className=" font-plainLight">DASHBOARD</h1>
+        </Link>
+      );
+      break;
+    case "user":
+      item = (
+        <Link to={`/${user.current_user._id}/my-bookings`}>
+          <h1 className=" font-plainLight">My Bookings</h1>;
+        </Link>
+      );
+      break;
+  }
   return (
     <div
       ref={navRef}
@@ -94,11 +118,11 @@ const Navbar = () => {
     >
       <div className=" nav_bar px-[4vw] items-center py-[2vw] absolute w-full h-full  flex justify-between">
         <div className="nav_logo">
-          <h1>
-            <PiXLogoLight size={60} />
+          <h1 className=" text-[#FFFFFF] mix-blend-multiply">
+            <PiXLogoLight className=" text-[#FFFFFF]" size={60} />
           </h1>
         </div>
-        <div className=" menu cursor-pointer z-[200]">
+        <div className=" menu text-[#FFFFFF]  cursor-pointer z-[200]">
           <h1
             ref={menuRef}
             className={`${
@@ -135,8 +159,11 @@ const Navbar = () => {
             <h1 className=" first text-[4vw]">CONTACT US</h1>
             <h1 className=" second text-[4vw]">CONTACT US</h1>
           </div>
+
+          <hr className=" h-[0.8px] mt-[4vw] bg-[#141414]" />
+
           <div className=" mt-[2vw] border-r-emerald-400  profile_login-register_container">
-            {user?.current_user ? (
+            {!user?.current_user ? (
               <div className=" login-register flex justify-between">
                 <h1
                   onClick={() => {
@@ -157,7 +184,22 @@ const Navbar = () => {
                 </h1>
               </div>
             ) : (
-              <div></div>
+              <div className=" flex  items-center justify-between profile">
+                <h1 className=" font-plainLight">My Bookings</h1>
+                <ConfigProvider
+                  theme={{
+                    components: {
+                      Button: {
+                        colorPrimaryBorderHover: "#151515",
+                      },
+                    },
+                  }}
+                >
+                  <Button className=" font-plainLight" onClick={handleLogout}>
+                    LOGOUT
+                  </Button>
+                </ConfigProvider>
+              </div>
             )}
           </div>
         </div>

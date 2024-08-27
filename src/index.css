@@ -7,6 +7,10 @@
   src: url("./fonts/plain-light-webfont.ttf");
 }
 @font-face {
+  font-family: "proBoo";
+  src: url("./assets/NBInternationalProBoo.ttf");
+}
+@font-face {
   font-family: "plainRegular";
   src: url("./fonts/plain-regular-webfont.ttf");
 }
@@ -48,6 +52,7 @@ body {
 .nav_logo h1 {
   font-size: 2.5vw;
   color: #141414;
+  mix-blend-mode: difference;
 }
 .login-logo h2 {
   font-family: "plainRegular";
@@ -73,6 +78,9 @@ body {
 .nav_menu .second {
   position: absolute;
   opacity: 0 !important;
+}
+.menu h1 {
+  mix-blend-mode: difference;
 }
 .nav_menu {
   position: relative;
