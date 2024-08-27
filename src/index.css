@@ -72,24 +72,23 @@ body {
 }
 .nav_menu .second {
   position: absolute;
-  opacity: 0;
+  opacity: 0 !important;
 }
 .nav_menu {
   position: relative;
   overflow: hidden;
-  /* border: 1px solid black; */
   width: max-content;
   transition: all ease-in-out;
 }
 .nav_menu:hover .first {
   transform: translateY(-100%) !important;
   transition: all 0.3s ease-in-out 0.1s;
-  opacity: 0;
+  opacity: 0 !important;
 }
 .nav_menu:hover .second {
   transform: translateY(-100%) !important;
   transition: all 0.3s ease-in-out 0.2s;
-  opacity: 1;
+  opacity: 1 !important;
 }
 
 .nav_menu::after {

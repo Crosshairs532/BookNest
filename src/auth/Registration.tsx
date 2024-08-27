@@ -5,14 +5,14 @@ import { FieldValues, SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 import BNFromWatch from "../Component/BNFormWatch";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { TRegistration } from "../Types";
 
 const Registration = () => {
   const [check, setOnCheck] = useState(false);
   const [register] = useRegisterMutation();
   const navigate = useNavigate();
-
+  const location = useLocation();
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const id = toast.loading("wait a moment..");
     const RegisterInfo: TRegistration = {
@@ -45,7 +45,7 @@ const Registration = () => {
       toast.error(`${err?.message}`, { id });
     }
   };
-
+  console.log(location);
   console.log(check);
   return (
     <div className="login  w-full h-screen bg-[#FFFFFF]">
@@ -70,7 +70,12 @@ const Registration = () => {
               d="M15.75 4H13L6 11L13 18H15.75L8.75 11L15.75 4Z"
             ></path>
           </svg>
-          <h1 className=" md:text-[2vw] lg:text-[1vw] text-[3.5vw] font-semibold">
+          <h1
+            onClick={() => {
+              navigate(`${location.state}`);
+            }}
+            className=" md:text-[2vw] lg:text-[1vw] text-[3.5vw] font-semibold"
+          >
             BACK
           </h1>
         </div>

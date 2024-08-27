@@ -11,13 +11,14 @@ import { useAppSelector } from "../redux/hook";
 import { loginState, setUser } from "../redux/features/auth/authSlice";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [login] = useLoginMutation();
   const selector = useAppSelector(loginState);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const loginInfo = {
@@ -47,6 +48,8 @@ const Login = () => {
       toast.error(`${err?.message}`);
     }
   };
+
+  console.log(location);
   return (
     <div className="login  w-full h-screen bg-[#FFFFFF]">
       <div className=" w-full absolute lg:top-[5vw] top-[8vw] px-[8vw] flex justify-between items-center">
@@ -70,7 +73,12 @@ const Login = () => {
               d="M15.75 4H13L6 11L13 18H15.75L8.75 11L15.75 4Z"
             ></path>
           </svg>
-          <h1 className=" md:text-[2vw] lg:text-[1vw] text-[3.5vw] font-semibold">
+          <h1
+            onClick={() => {
+              navigate(`${location.state}`);
+            }}
+            className=" md:text-[2vw] lg:text-[1vw] text-[3.5vw] font-semibold"
+          >
             BACK
           </h1>
         </div>
