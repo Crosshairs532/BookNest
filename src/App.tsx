@@ -65,6 +65,7 @@ const App = () => {
           opacity: 0,
           duration: 1,
           delay: 1,
+          display: "none",
         });
     },
     {
@@ -74,7 +75,7 @@ const App = () => {
 
   return (
     <div ref={mainRef} className="">
-      <div className=" preloading fixed flex justify-center items-center z-[400] h-full w-full bg-[#0e0e0e]">
+      <div className=" preloading fixed flex justify-center items-center z-[600] h-full w-full bg-[#0e0e0e]">
         <div className=" loadingText  overflow-hidden w-max space-x-2  text-[#FFFCF1] text-[4vw]">
           <h1 className=" whitespace-nowrap inline-block">The</h1>
           <h1 className=" whitespace-nowrap inline-block">Venture</h1>
