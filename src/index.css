@@ -63,7 +63,7 @@ body {
 }
 
 .nav_menu h1 {
-  position: relative;
+  /* position: relative; */
   margin: 0;
   padding: 0;
   font-family: "plainLight";
@@ -76,17 +76,18 @@ body {
 }
 .nav_menu {
   position: relative;
-  /* border: 1px solid green; */
   overflow: hidden;
+  /* border: 1px solid black; */
+  width: max-content;
   transition: all ease-in-out;
 }
 .nav_menu:hover .first {
-  transform: translateY(-100%);
+  transform: translateY(-100%) !important;
   transition: all 0.3s ease-in-out 0.1s;
   opacity: 0;
 }
 .nav_menu:hover .second {
-  transform: translateY(-100%);
+  transform: translateY(-100%) !important;
   transition: all 0.3s ease-in-out 0.2s;
   opacity: 1;
 }
@@ -106,7 +107,6 @@ body {
 
 .nav_menu:hover::after {
   opacity: 1;
-  width: 60%;
+  width: 100%;
   transition: 0.4s ease-in-out cubic-bezier(0.19, 1, 0.22, 1);
-  /* transform: scaleX(1); */
 }

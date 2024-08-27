@@ -42,7 +42,7 @@ const Login = () => {
       });
 
       dispatch(setUser(userInfo));
-      navigate("/home");
+      navigate("/");
     } catch (err) {
       toast.error(`${err?.message}`);
     }
