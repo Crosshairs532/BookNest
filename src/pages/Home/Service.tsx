@@ -31,8 +31,11 @@ const Service = () => {
 
   return (
     <div className="bg-gray-100 mt-[1vw] rounded-xl py-16">
-      <div className="container mx-auto text-center">
-        <h2 className="text-[4vw] font-bold mb-8 text-[#151515]  ">
+      <div className="container mx-auto ">
+        <h2 className="text-[8vw] font-semibold relative left-[15vw] font-plainLight mb-8 text-[#151515] ">
+          <small className=" text-[3vw] absolute top-0 -left-[5vw] italic font-silkSerifRegular ">
+            01
+          </small>
           Our Services
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">

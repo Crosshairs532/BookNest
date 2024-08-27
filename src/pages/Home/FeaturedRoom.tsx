@@ -41,19 +41,22 @@ const rooms = [
   },
 ];
 
-const FeaturedRoom = ({ room }) => {
+const FeaturedRoom = () => {
   return (
     <>
       <div className=" my-[7vw]">
         <div className=" container mx-auto space-y-2 mb-[60px]">
-          <h1 className=" font-semibold text-6xl font-plainLight text-[#1a1a1a]">
-            Best Featured Rooms
+          <h1 className=" text-[8vw] font-semibold relative left-[15vw] font-plainLight whitespace-nowrap text-[#1a1a1a]">
+            <small className=" text-[3vw] absolute top-0 -left-[5vw] italic font-silkSerifRegular ">
+              02
+            </small>
+            Featured Rooms
           </h1>
           <p className=" font-plainRegular text-[#5e5e5e]">
             Our Most Popular choices
           </p>
         </div>
-        <div className=" border-2 place-items-center grid mg:grid-cols-3 grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className=" place-items-center grid mg:grid-cols-3 grid-cols-2 lg:grid-cols-4 gap-8">
           {rooms.map((room, idx) => (
             <ProductCard key={idx} room={room}></ProductCard>
           ))}

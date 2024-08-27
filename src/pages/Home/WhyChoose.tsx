@@ -2,10 +2,15 @@ import vid from "../../assets/heroSection.mp4";
 
 const WhyChoose = () => {
   return (
-    <div className=" bg-[#e5e5e5] cursor-pointer relative min-h-screen my-4 p-[3vw] rounded-2xl container mx-auto">
-      <h1 className=" py-4 text-[5vw]">Why Choose Us?</h1>
-      <div className=" lg:h-[600px] mt-[2vw] overflow-hidden flex lg:flex-row flex-col gap-3">
-        <div className=" md:h-[200px] group relative w-full lg:h-[600px] cursor-pointer rounded-2xl bg-black overflow-hidden">
+    <div className="  cursor-pointer relative min-h-screen my-4 p-[2vw] rounded-2xl container mx-auto">
+      <h1 className=" font-plainLight font-semibold py-4 text-[8vw] relative left-[15vw] ">
+        <small className=" text-[3vw] absolute top-0 -left-[5vw] italic font-silkSerifRegular ">
+          03
+        </small>
+        Why Choose Us?
+      </h1>
+      <div className=" overflow-hidden lg:h-[600px] mt-[2vw] overflow-hidden flex lg:flex-row flex-col gap-3">
+        <div className="  md:h-[200px] group relative w-full lg:h-[600px] cursor-pointer rounded-2xl bg-black overflow-hidden">
           <video
             src={vid}
             loop

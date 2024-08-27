@@ -3,6 +3,7 @@ import Hero from "../../Component/Hero/Hero";
 import Service from "./Service";
 import FeaturedRoom from "./FeaturedRoom";
 import WhyChoose from "./WhyChoose";
+import HowItWorks from "./HowItWorks";
 
 const Home = () => {
   const heroRef = useRef(null);
@@ -12,9 +13,10 @@ const Home = () => {
         <Hero heroRef={heroRef}></Hero>
       </div>
       <div className=" min-h-[100vh] px-[4vw]">
-        <Service></Service>
+        <Service />
         <FeaturedRoom />
         <WhyChoose />
+        <HowItWorks />
       </div>
     </div>
   );

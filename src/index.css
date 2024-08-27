@@ -169,3 +169,17 @@ body {
   width: 100px;
   height: 20px;
 }
+.work > h1 {
+  white-space: nowrap;
+}
+.work {
+  width: 50%;
+  height: 4vw;
+  position: relative;
+  transition: all 1s ease-in-out cubic-bezier(0.19, 1, 0.22, 1);
+  border-bottom: 0.6px solid #141414;
+}
+.work:hover {
+  font-family: "silkLight";
+  transition: all 1s ease-in-out cubic-bezier(0.19, 1, 0.22, 1);
+}
