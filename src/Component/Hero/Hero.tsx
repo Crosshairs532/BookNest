@@ -46,7 +46,7 @@ const Hero = () => {
         <h6 className=" font-silkSerifRegular subHeadline">
           Efficient, hassle-free room booking for all your meeting needs
         </h6>
-        <Link to="/meeting-room">
+        <Link to="/meeting-rooms">
           <button className=" bg-[#151515] hover:scale-x-90 transition-all rounded-full px-[1.5vw] py-[1vw] font-plainLight">
             Book Now
           </button>

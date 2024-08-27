@@ -33,6 +33,7 @@ html,
 body {
   height: 100%;
   width: 100%;
+  background-color: #faf8f3;
 }
 
 .login {
@@ -130,3 +131,41 @@ body {
 /* .BannerText h1 {
   backdrop-filter: blur(10px);
 } */
+.card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease-in-out;
+  border-radius: 10px;
+}
+
+.card:hover {
+  box-shadow: 10px 10px 10px grey;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+.bottom-img {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+.card:hover .bottom-img {
+  opacity: 1;
+}
+
+.card:hover .card-detail {
+  opacity: 1;
+  transform: translateX(11vw);
+}
+.card-detail {
+  transition: opacity 0.2s ease-in-out, transform 0.3s ease-in-out;
+  transform: translateX(20vw);
+  bottom: 0;
+  opacity: 1;
+  background-color: #1a1a1a;
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  justify-items: space-between;
+  place-items: center;
+  border-radius: 50px 50px 50px 50px;
+  padding: 20px 5px;
+  width: 100px;
+  height: 20px;
+}
