@@ -1,3 +1,4 @@
+import { Application } from "express";
 import { baseAPi } from "../../api/baseApi";
 
 export const authApi = baseAPi.injectEndpoints({
@@ -14,7 +15,17 @@ export const authApi = baseAPi.injectEndpoints({
         url: "/auth/logout",
       }),
     }),
+    register: builder.mutation({
+      query: (data) => {
+        console.log(data);
+        return {
+          url: "/auth/signup",
+          method: "POST",
+          body: data,
+        };
+      },
+    }),
   }),
 });
 
-export const { useLoginMutation } = authApi;
+export const { useLoginMutation, useRegisterMutation } = authApi;

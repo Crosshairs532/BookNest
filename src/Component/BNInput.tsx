@@ -1,12 +1,32 @@
 import { Form, Input } from "antd";
-import { Controller } from "react-hook-form";
+import { useEffect, useRef, useState } from "react";
+import { Controller, useFormContext, useWatch } from "react-hook-form";
 type TinputProp = {
   name: string;
   label: string;
   type: string;
+  setOnCheck?: () => boolean;
 };
 
-const BNInput = ({ type, label, name }: TinputProp) => {
+const BNInput = ({ type, label, name, setOnCheck }: TinputProp) => {
+  const { control } = useFormContext();
+  const watch = useWatch({ control });
+
+  useEffect(() => {
+    if (
+      watch.name &&
+      watch.password &&
+      watch.address &&
+      watch.phone &&
+      watch.email
+    ) {
+      setOnCheck(true);
+      console.log("all fields are filled");
+    }
+
+    return () => {};
+  }, [watch]);
+
   return (
     <div style={{ marginBottom: "50px" }}>
       <Controller
@@ -23,12 +43,21 @@ const BNInput = ({ type, label, name }: TinputProp) => {
               placeholder="Email-address"
               style={{
                 width: "90%",
-                border: "none",
+                borderRadius: 0,
+                borderTop: "none",
+                borderLeft: "none",
+                borderRight: "none",
                 outline: "none",
-                borderRadius: "0px",
-                borderBottom: "1px solid",
+                borderBottom: "1px solid #E7E7E7",
+              }}
+              onFocus={(e) => {
+                e.target.style.borderBottom = "1px solid #151515";
+              }}
+              onBlur={(e) => {
+                e.target.style.borderBottom = "1px solid #E7E7E7";
               }}
             />
+
             {error && <span className="text-red-500">{error?.message}</span>}
           </Form.Item>
         )}

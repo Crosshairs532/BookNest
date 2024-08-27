@@ -7,7 +7,7 @@ import {
   useForm,
 } from "react-hook-form";
 
-const BNForm = ({
+const BNFromWatch = ({
   children,
   onSubmit,
 }: {
@@ -16,10 +16,10 @@ const BNForm = ({
 }) => {
   const methods = useForm();
 
-  const onsubmit: SubmitHandler<FieldValues> = async (data) => {
+  const onsubmit: SubmitHandler<FieldValues> = (data) => {
     onSubmit(data);
-    methods.reset();
   };
+
   return (
     <FormProvider {...methods}>
       <Form
@@ -33,4 +33,4 @@ const BNForm = ({
   );
 };
 
-export default BNForm;
+export default BNFromWatch;
