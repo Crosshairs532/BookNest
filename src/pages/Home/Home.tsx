@@ -4,6 +4,7 @@ import Service from "./Service";
 import FeaturedRoom from "./FeaturedRoom";
 import WhyChoose from "./WhyChoose";
 import HowItWorks from "./HowItWorks";
+import Review from "./Review";
 
 const Home = () => {
   const heroRef = useRef(null);
@@ -17,6 +18,7 @@ const Home = () => {
         <FeaturedRoom />
         <WhyChoose />
         <HowItWorks />
+        <Review />
       </div>
     </div>
   );

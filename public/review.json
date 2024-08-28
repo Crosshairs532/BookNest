@@ -3,30 +3,30 @@
     "customerName": "Customer 1",
     "number": 1,
     "review": "Excellent product, highly recommended! The quality is outstanding and it exceeded my expectations.",
-    "img": "https://uploads.out.sh/uploads/g8946/1e64342c-d291-4755-9b24-62511f6770ed/image.jpg"
+    "img": "https://i.ibb.co/dbZd5N9/review5.jpg"
   },
   {
     "customerName": "Customer 2",
     "number": 2,
     "review": "Very satisfied with my purchase. The customer service was top-notch and the delivery was quick.",
-    "img": "https://uploads.out.sh/uploads/g8946/54ccb679-98e4-4d8a-9a2f-7195280e3278/image.jpg"
+    "img": "https://i.ibb.co/Js1rTLt/review4.jpg"
   },
   {
     "customerName": "Customer 3",
     "number": 3,
     "review": "Good value for money. The product performs well and I haven't had any issues so far.",
-    "img": "https://uploads.out.sh/uploads/g8946/ac4391c2-07b3-4a69-a028-bc378c97788b/image.jpg"
+    "img": "https://i.ibb.co/0fqwYfH/review3.jpg"
   },
   {
     "customerName": "Customer 4",
     "number": 4,
     "review": "Decent product but it took a while to arrive. Overall, happy with the quality and functionality.",
-    "img": "https://uploads.out.sh/uploads/g8946/a23d3fb9-5cdc-4229-94f7-ff0d2ece4ed9/image.jpg"
+    "img": "https://i.ibb.co/4RV7gFG/review2.jpg"
   },
   {
     "customerName": "Customer 5",
     "number": 5,
     "review": "Amazing experience! The product works as described and the packaging was great.",
-    "img": "https://uploads.out.sh/uploads/g8946/7888d74d-9a0e-429c-944f-3ff0521a85e8/image.jpg"
+    "img": "https://i.ibb.co/CBdSBG7/review1.jpg"
   }
 ]
