@@ -127,7 +127,7 @@ const Navbar = () => {
             ref={menuRef}
             className={`${
               open ? "hidden" : "block"
-            } transition-all text-[1.5vw] z-[20]`}
+            } transition-all text-[1.5vw] z-[201]`}
           >
             Menu
           </h1>
@@ -135,14 +135,14 @@ const Navbar = () => {
             ref={closeRef}
             className={`${
               !open ? "hidden" : "block"
-            }  transition-all text-[1.5vw] z-[20]`}
+            }  transition-all text-[#0E0E0E] text-[1.5vw] z-[201]`}
           >
             close
           </h1>
         </div>
       </div>
-      <div className=" menu_overlay bg-[#FFFFFF] z-[199] overflow-hidden absolute w-full h-[65vh] top-[0%] right-0">
-        <div className=" sub_menu flex flex-col relative  h-[calc(100%-20vh)] left-[calc(100%-50%)]  w-[50%] pt-[5vw]">
+      <div className="  menu_overlay bg-[#FFFFFF] z-[199] overflow-hidden absolute w-full h-[65vh] top-[0%] right-0">
+        <div className="  sub_menu flex flex-col relative  h-[calc(100%-10vh)] left-[calc(100%-50%)]  w-[50%] pt-[4vw]">
           <div className=" nav_menu">
             <h1 className=" first text-[4vw]">HOME</h1>
             <h1 className=" second text-[4vw]">HOME</h1>

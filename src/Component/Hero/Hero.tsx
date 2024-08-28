@@ -16,7 +16,7 @@ const Hero = () => {
         loop
         src={hero2}
       ></video>
-      <div className=" BannerText  text-[#FFFCF1] bottom-0 m-0 p-0 z-[700] absolute mx-[2%] ">
+      <div className=" BannerText  text-[#FFFCF1] bottom-0 m-0 p-0 z-[400] absolute mx-[2%] ">
         <h1 className=" text-[15vw] font-extrabold text-center font-proBook whitespace-nowrap inline-block leading-none">
           B
         </h1>
@@ -42,7 +42,7 @@ const Hero = () => {
           T
         </h1>
       </div>
-      <div className=" space-y-[1.2vw] text-center Head absolute left-[50%] z-[450] -translate-y-[50%]  -translate-x-[50%] top-[50%] text-[#FFFCF1]">
+      <div className=" space-y-[1.2vw] text-center Head absolute left-[50%] z-[400] -translate-y-[50%]  -translate-x-[50%] top-[50%] text-[#FFFCF1]">
         <h1 ref={heRef} className=" text-[2vw] font-plainLight headline">
           Book Your Ideal Meeting Room with Ease.
         </h1>

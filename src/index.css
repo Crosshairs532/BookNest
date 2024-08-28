@@ -70,15 +70,13 @@ body {
 
 .nav_menu h1 {
   /* position: relative; */
-  margin: 0;
-  padding: 0;
+  line-height: 1;
   font-family: "plainLight";
-  line-height: normal;
   transition: all ease-in-out;
 }
 .nav_menu .second {
   position: absolute;
-  opacity: 0 !important;
+  opacity: 1 !important;
 }
 .menu h1 {
   mix-blend-mode: difference;
@@ -86,17 +84,19 @@ body {
 .nav_menu {
   position: relative;
   overflow: hidden;
+  /* border: 1px solid red; */
   width: max-content;
+  height: 4vw;
   transition: all ease-in-out;
 }
 .nav_menu:hover .first {
   transform: translateY(-100%) !important;
-  transition: all 0.3s ease-in-out 0.1s;
+  transition: all 0.3s ease-out 0.1s;
   opacity: 0 !important;
 }
 .nav_menu:hover .second {
   transform: translateY(-100%) !important;
-  transition: all 0.3s ease-in-out 0.2s;
+  transition: all 0.3s ease-in 0.2s;
   opacity: 1 !important;
 }
 
@@ -104,7 +104,6 @@ body {
   content: "";
   position: absolute;
   width: 50%;
-  /* transform: scale(0); */
   height: 2px;
   bottom: 0;
   left: 0;
@@ -125,7 +124,6 @@ body {
   position: absolute;
   background-image: -webkit-linear-gradient(to top, #151515, transparent);
   background-image: linear-gradient(to top, #151515, transparent);
-  /* background-color: ; */
   z-index: 400;
 }
 /* .BannerText h1 {
