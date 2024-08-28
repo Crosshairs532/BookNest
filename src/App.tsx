@@ -82,15 +82,27 @@ const App = () => {
           trigger: footer,
           scroller: main,
           markers: true,
-          start: "top 10%",
-          end: "top 60%",
+          start: "top 70%",
+          end: "top 0%",
           scrub: 1,
         },
       });
-
-      TL.to(footer, {
-        backgroundColor: "#0e0e0e",
-      });
+      TL.from(
+        " .footer",
+        {
+          y: -120,
+          opacity: 0,
+        },
+        "a"
+      );
+      TL.from(
+        ".divider",
+        {
+          width: 0,
+          duration: 1,
+        },
+        "a+=1"
+      );
     },
     {
       scope: mainRef,
