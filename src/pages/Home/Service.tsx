@@ -1,11 +1,14 @@
+import { useContext } from "react";
 import {
   FaClock,
   FaCheckCircle,
   FaCalendarAlt,
   FaHeadset,
 } from "react-icons/fa";
+import { mainContext } from "../../App";
 
 const Service = () => {
+  const { serviceRef } = useContext(mainContext);
   const services = [
     {
       icon: <FaClock size={50} />,
@@ -32,7 +35,10 @@ const Service = () => {
   return (
     <div className="bg-gray-100 mt-[1vw] rounded-xl py-16">
       <div className="container mx-auto ">
-        <h2 className="text-[8vw] font-semibold relative left-[15vw] font-plainLight mb-8 text-[#151515] ">
+        <h2
+          ref={serviceRef}
+          className="text-[8vw] font-semibold relative left-[15vw] font-plainLight mb-8 text-[#151515] "
+        >
           <small className=" text-[3vw] absolute top-0 -left-[5vw] italic font-silkSerifRegular ">
             01
           </small>

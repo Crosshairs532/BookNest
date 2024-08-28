@@ -31,7 +31,7 @@ const Review = () => {
             ></path>
           </svg>
         </span>
-        <div className=" ">
+        <div className=" px-[4vw] ">
           <h2 className=" w-max text-[8vw] 2 font-semibold relative left-[23vw] font-plainLight mb-8 text-[#151515] ">
             <small className=" text-[3vw] absolute top-0 -left-[5vw] italic font-silkSerifRegular ">
               05

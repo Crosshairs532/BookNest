@@ -1,17 +1,26 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./pages/navbar/Navbar";
 import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
+import { createContext, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(useGSAP, ScrollTrigger);
+export const mainContext = createContext(null);
 const App = () => {
   const mainRef = useRef(null);
   const heroRef = useRef(null);
+  const footerRef = useRef(null);
+  const heRef = useRef(null);
+  const serviceRef = useRef(null);
+  const main = document.querySelector(".main");
+
   useGSAP(
     () => {
       const hero = heroRef?.current;
+      const footer = footerRef?.current;
+      const service = serviceRef?.current;
       const loadingTL = gsap.timeline({});
-
       loadingTL.from(
         ".loadingText",
         {
@@ -67,14 +76,31 @@ const App = () => {
           delay: 1,
           display: "none",
         });
+
+      const TL = gsap.timeline({
+        scrollTrigger: {
+          trigger: footer,
+          scroller: main,
+          markers: true,
+          start: "top 10%",
+          end: "top 60%",
+          scrub: 1,
+        },
+      });
+
+      TL.to(footer, {
+        backgroundColor: "#0e0e0e",
+      });
     },
     {
       scope: mainRef,
     }
   );
 
+  const value = { footerRef, heRef, serviceRef };
+
   return (
-    <div ref={mainRef} className="">
+    <div ref={mainRef} className="main">
       <div className=" preloading fixed flex justify-center items-center z-[600] h-full w-full bg-[#0e0e0e]">
         <div className=" loadingText  overflow-hidden w-max space-x-2  text-[#FFFCF1] text-[4vw]">
           <h1 className=" whitespace-nowrap inline-block">The</h1>
@@ -83,8 +109,10 @@ const App = () => {
         </div>
       </div>
       <div className="">
-        <Navbar></Navbar>
-        <Outlet context={[heroRef]} />
+        <mainContext.Provider value={value}>
+          <Navbar></Navbar>
+          <Outlet context={[heroRef]} />
+        </mainContext.Provider>
       </div>
     </div>
   );

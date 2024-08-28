@@ -1,8 +1,11 @@
 // import hero from "../../assets/heroSection.mp4";
 import { Link, useOutletContext } from "react-router-dom";
 import hero2 from "../../assets/heroSection2.mp4";
+import { useContext } from "react";
+import { mainContext } from "../../App";
 const Hero = () => {
   const [heroRef] = useOutletContext();
+  const { heRef } = useContext(mainContext);
   return (
     <div ref={heroRef} className=" relative w-full h-full">
       <div className=" over"></div>
@@ -40,7 +43,7 @@ const Hero = () => {
         </h1>
       </div>
       <div className=" space-y-[1.2vw] text-center Head absolute left-[50%] z-[450] -translate-y-[50%]  -translate-x-[50%] top-[50%] text-[#FFFCF1]">
-        <h1 className=" text-[2vw] font-plainLight headline">
+        <h1 ref={heRef} className=" text-[2vw] font-plainLight headline">
           Book Your Ideal Meeting Room with Ease.
         </h1>
         <h6 className=" font-silkSerifRegular subHeadline">
