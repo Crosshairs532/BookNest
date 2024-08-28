@@ -1,31 +1,31 @@
 [
   {
-    "customerName": "Customer 1",
-    "number": 1,
+    "customerName": "John Abraham",
+    "role": "user",
     "review": "Excellent product, highly recommended! The quality is outstanding and it exceeded my expectations.",
     "img": "https://i.ibb.co/dbZd5N9/review5.jpg"
   },
   {
-    "customerName": "Customer 2",
-    "number": 2,
+    "customerName": "Rita Margaratte",
+    "role": "user",
     "review": "Very satisfied with my purchase. The customer service was top-notch and the delivery was quick.",
     "img": "https://i.ibb.co/Js1rTLt/review4.jpg"
   },
   {
-    "customerName": "Customer 3",
-    "number": 3,
+    "customerName": "Richard",
+    "role": "user",
     "review": "Good value for money. The product performs well and I haven't had any issues so far.",
     "img": "https://i.ibb.co/0fqwYfH/review3.jpg"
   },
   {
-    "customerName": "Customer 4",
-    "number": 4,
+    "customerName": "Dr. Yunus",
+    "role": "user",
     "review": "Decent product but it took a while to arrive. Overall, happy with the quality and functionality.",
     "img": "https://i.ibb.co/4RV7gFG/review2.jpg"
   },
   {
-    "customerName": "Customer 5",
-    "number": 5,
+    "customerName": "Lisa",
+    "role": "user",
     "review": "Amazing experience! The product works as described and the packaging was great.",
     "img": "https://i.ibb.co/CBdSBG7/review1.jpg"
   }

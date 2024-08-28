@@ -31,7 +31,7 @@ const Review = () => {
             ></path>
           </svg>
         </span>
-        <div className=" space-y-4 mb-[70px] lg:mb-[100px]">
+        <div className=" ">
           <h2 className=" w-max text-[8vw] 2 font-semibold relative left-[23vw] font-plainLight mb-8 text-[#151515] ">
             <small className=" text-[3vw] absolute top-0 -left-[5vw] italic font-silkSerifRegular ">
               05
@@ -52,7 +52,22 @@ const Review = () => {
         >
           {reviews?.map((review, idx) => (
             <SwiperSlide key={idx}>
-              <div className=" relative w-full bg-[#1c2d5f]">
+              <div className=" relative w-full border-[10px] ">
+                <div className=" transition-all z-[10] bg-gradient-to-t from-[#141414] to-transparent absolute w-full h-full slide_overlay">
+                  <span className="text-[#FFFCF1] flex flex-col justify-between relative w-full h-full z-[11] opacity-0">
+                    <h1 className=" leading-none m-0 p-0 text-[2vw] font-plainRegular">
+                      {review.customerName}
+                    </h1>
+                    <h5>
+                      <p className=" text-[1.5vw] font-plainRegular">
+                        {review.role}
+                      </p>
+                      <p className=" font-proBook text-[1vw] p-[1vw] text-center text-wrap ">
+                        {review.review}
+                      </p>
+                    </h5>
+                  </span>
+                </div>
                 <img
                   className=" object-cover w-[100%] relative bottom-0"
                   src={review.img}
