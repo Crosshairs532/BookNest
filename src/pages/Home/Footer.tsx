@@ -3,7 +3,6 @@ import { mainContext } from "../../App";
 
 const Footer = () => {
   const { footerRef } = useContext(mainContext);
-  console.log(footerRef);
   return (
     <div
       ref={footerRef}

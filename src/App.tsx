@@ -4,6 +4,7 @@ import { useGSAP } from "@gsap/react";
 import { createContext, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Footer from "./pages/Home/Footer";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 export const mainContext = createContext(null);
@@ -81,7 +82,7 @@ const App = () => {
         scrollTrigger: {
           trigger: footer,
           scroller: main,
-          markers: true,
+          // markers: true,
           start: "top 70%",
           end: "top 0%",
           scrub: 1,
@@ -124,6 +125,7 @@ const App = () => {
         <mainContext.Provider value={value}>
           <Navbar></Navbar>
           <Outlet context={[heroRef]} />
+          <Footer />
         </mainContext.Provider>
       </div>
     </div>
