@@ -27,7 +27,7 @@ const Registration = () => {
     try {
       console.log(RegisterInfo, "Register user ");
       const res = await register(RegisterInfo);
-      console.log(res);
+
       if (res.data) {
         toast.success("Registration Success", {
           id,
@@ -41,12 +41,13 @@ const Registration = () => {
         });
         navigate("/login");
       }
+      if (res?.error?.data?.message) {
+        toast.error(res.error.data.message, { id });
+      }
     } catch (err) {
-      toast.error(`${err?.message}`, { id });
+      toast.error(err?.message, { id });
     }
   };
-  console.log(location);
-  console.log(check);
   return (
     <div className="login  w-full h-screen bg-[#FFFFFF]">
       <div className=" w-full absolute lg:top-[5vw] top-[8vw] px-[8vw] flex justify-between items-center">
@@ -146,5 +147,4 @@ const Registration = () => {
     </div>
   );
 };
-
 export default Registration;

@@ -92,7 +92,10 @@ const Login = () => {
           </h1>
         </div>
         <div className=" createAccount">
-          <h1 className=" md:text-[2vw] lg:text-[1vw] text-[3vw] font-semibold tracking-normal font-plainRegular">
+          <h1
+            onClick={() => navigate("/registration")}
+            className=" md:text-[2vw] lg:text-[1vw] text-[3vw] font-semibold tracking-normal font-plainRegular"
+          >
             CREATE ACCOUNT
           </h1>
         </div>

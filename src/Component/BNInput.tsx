@@ -30,7 +30,9 @@ const BNInput = ({ type, label, name, setOnCheck }: TinputProp) => {
   return (
     <div style={{ marginBottom: "50px" }}>
       <Controller
-        rules={{ required: "This field is required" }}
+        rules={{
+          required: "This field is required",
+        }}
         name={name}
         render={({ field, fieldState: { error } }) => (
           <Form.Item
@@ -40,7 +42,7 @@ const BNInput = ({ type, label, name, setOnCheck }: TinputProp) => {
             <Input
               {...field}
               type={type}
-              placeholder="Email-address"
+              placeholder={name}
               style={{
                 width: "90%",
                 borderRadius: 0,
