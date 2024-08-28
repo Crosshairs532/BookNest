@@ -1,21 +1,27 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRef } from "react";
+import home1 from "../../../public/room.svg";
+import confirm from "../../../public/confirm.svg";
 
 gsap.registerPlugin(useGSAP);
 
 const HowItWorks = () => {
   const HowItWorksRef = useRef(null);
   const date = new Date().toUTCString();
-  useGSAP(() => {}, {
-    scope: HowItWorksRef,
-  });
+  useGSAP(
+    () => {},
+
+    {
+      scope: HowItWorksRef,
+    }
+  );
 
   return (
-    <div ref={HowItWorksRef}>
-      <span className=" how_cursor inline-block border-[2px] border-[#141414] m-0 w-max  h-max p-[4vw] rounded-full">
+    <div className="" ref={HowItWorksRef}>
+      <span className="  how_cursor inline-block border-2 border-[#141414] m-0 w-max  h-max p-[4vw] rounded-full">
         <svg
-          className="button__arrow -rotate-[45deg] w-[10vw] h-[10vw] "
+          className="button__arrow -rotate-[45deg] w-[8vw] h-[8vw] "
           viewBox="0 0 91 118"
           fill="none"
         >
@@ -26,7 +32,7 @@ const HowItWorks = () => {
         </svg>
       </span>
 
-      <h2 className="  w-max mt-[7vw] text-[8vw] font-semibold relative left-[15vw] font-plainLight mb-8 text-[#151515] ">
+      <h2 className="  w-max mt-[5vw] text-[8vw] 2 font-semibold relative left-[23vw] font-plainLight mb-8 text-[#151515] ">
         <small className=" text-[3vw] absolute top-0 -left-[5vw] italic font-silkSerifRegular ">
           04
         </small>
@@ -35,25 +41,33 @@ const HowItWorks = () => {
 
       <div className="  relative space-y-2 left-[40vw]">
         <div className=" work room">
+          <div className=" hoverlay transition-all flex justify-center items-center top-0  left-0 absolute bg-[#FFFFFF] w-[6vw] h-[6vw] rounded-full">
+            <img className=" w-[3vw] h-[3v2]" src={home1} alt="" />
+          </div>
           <h1 className=" text-[1.7vw]">
+            <span>1.</span>
             Select
             <span className=" w-[10vw] rounded-full bg-black h-[6vw]"></span>
             Rooms that suits your preference
           </h1>
         </div>
         <div className=" work data">
-          <div className=" flex justify-center items-center top-0 left-0 absolute w-[8vw] h-[8vw] bg-[black] rounded-full">
-            <h3 className=" text-[#FFFCF1] text-[.7vw] w-[50%]">{date}</h3>
+          <div className=" hoverlay transition-all flex justify-center items-center top-0 left-0 absolute w-[6vw] h-[6vw] bg-[black] rounded-full">
+            <span className=" text-[#FFFCF1] text-[.7vw] w-[50%]">{date}</span>
           </div>
           <h1 className=" text-[1.7vw]">
+            <span>2.</span>
             Choose Date <span className="  italic font-silkSerifLight">&</span>
             Time
           </h1>
         </div>
         <div className=" work confirm">
+          <div className=" hoverlay transition-all flex justify-center items-center top-0  left-0 absolute bg-[#FFFFFF] w-[6vw] h-[6vw] rounded-full">
+            <img className=" w-[3vw] h-[3v2]" src={confirm} alt="" />
+          </div>
           <h1 className=" text-[1.7vw]">
             <span>3.</span>
-            Select Rooms that suits your preference
+            Confirm Booking
           </h1>
         </div>
       </div>

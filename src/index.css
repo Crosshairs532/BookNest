@@ -176,10 +176,18 @@ body {
   width: 50%;
   height: 4vw;
   position: relative;
-  transition: all 1s ease-in-out cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all ease-in-out cubic-bezier(0.19, 1, 0.22, 1);
   border-bottom: 0.6px solid #141414;
 }
+.hoverlay {
+  scale: 0;
+  z-index: 300;
+}
+
 .work:hover {
   font-family: "silkLight";
   transition: all 1s ease-in-out cubic-bezier(0.19, 1, 0.22, 1);
+}
+.work:hover .hoverlay {
+  scale: 1;
 }
