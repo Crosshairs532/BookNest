@@ -118,9 +118,11 @@ const Navbar = () => {
     >
       <div className=" nav_bar px-[4vw] items-center py-[2vw] absolute w-full h-full  flex justify-between">
         <div className="nav_logo">
-          <h1 className=" text-[#FFFFFF] mix-blend-multiply">
-            <PiXLogoLight className=" text-[#FFFFFF]" size={60} />
-          </h1>
+          <Link to="/">
+            <h1 className=" text-[#FFFFFF] mix-blend-multiply">
+              <PiXLogoLight className=" text-[#FFFFFF]" size={60} />
+            </h1>
+          </Link>
         </div>
         <div className=" menu text-[#FFFFFF]  cursor-pointer z-[200]">
           <h1
@@ -159,7 +161,9 @@ const Navbar = () => {
           </div>
           <div className=" nav_menu">
             <h1 className=" first text-[4vw]">CONTACT US</h1>
-            <h1 className=" second text-[4vw]">CONTACT US</h1>
+            <Link to="/contact">
+              <h1 className=" second text-[4vw]">CONTACT US</h1>
+            </Link>
           </div>
 
           <hr className=" h-[0.8px] mt-[4vw] bg-[#141414]" />
