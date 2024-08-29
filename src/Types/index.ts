@@ -10,5 +10,5 @@ export type bookingData = {
   date: string;
   slots: string[];
   room: string;
-  user: string;
+  user: Record<string, unknown>;
 };

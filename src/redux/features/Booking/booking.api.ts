@@ -28,6 +28,15 @@ export const bookingApI = baseAPi.injectEndpoints({
       }),
       invalidatesTags: ["booking"],
     }),
+    createPayment: builder.mutation({
+      query: (data) => {
+        return {
+          url: "/create-payment",
+          method: "POST",
+          body: data,
+        };
+      },
+    }),
   }),
 });
 

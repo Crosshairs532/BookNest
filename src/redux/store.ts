@@ -14,7 +14,7 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import roomReducer from "../redux/features/room/room.slice";
-
+import bookingReducer from "../redux/features/Booking/booking.slice";
 const persistConfig = {
   key: "auth",
   storage,
@@ -27,6 +27,7 @@ export const store = configureStore({
     [baseAPi.reducerPath]: baseAPi.reducer,
     auth: persistedReducer,
     room: roomReducer,
+    booking: bookingReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -1,14 +1,14 @@
 import { Form, Select } from "antd";
 import { Controller } from "react-hook-form";
 
-const BNSelect = ({ name, label, options }) => {
+const BNSelect = ({ name, label, options, mode }) => {
   return (
     <Controller
       name={name}
       render={({ field }) => (
-        <Form.Item layout="vertical" htmlFor={name} label={label}>
+        <Form.Item htmlFor={name} label={label}>
           <Select
-            mode="multiple"
+            mode={mode}
             allowClear
             style={{ width: "100%" }}
             placeholder="Please select"

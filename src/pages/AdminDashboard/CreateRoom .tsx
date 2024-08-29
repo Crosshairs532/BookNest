@@ -1,0 +1,74 @@
+import React from "react";
+import { Form, Input, InputNumber, Button, Select, Typography } from "antd";
+import BNInput from "../../Component/BNInput";
+import BNForm from "../../Component/BNForm";
+import BNSelect from "../../Component/BNSelect";
+import BNNumber from "../../Component/verifyToken/BNNumber";
+const { Title } = Typography;
+const { Option } = Select;
+
+const CreateRoom = () => {
+  const onSubmit = ({ img1, img2, ...values }) => {
+    const roomData = {
+      ...values,
+      images: [img1, img2],
+    };
+    console.log(roomData);
+  };
+
+  return (
+    <div style={{ maxWidth: 600, margin: "0 auto", padding: "2rem" }}>
+      <Title level={3} style={{ textAlign: "center", marginBottom: "2rem" }}>
+        Room Details Form
+      </Title>
+      <BNForm onSubmit={onSubmit}>
+        <BNInput type="text" label="Room Name" name="name" />
+
+        <BNNumber label="Price Per Slot" name="pricePerSlot" type="number" />
+        <BNNumber label="Room Capacity" name="capacity" type="number" />
+
+        <BNNumber type="number" name="roomNo" label="Room Number" />
+        <BNNumber label="Floor Number" name="floorNo" type="number" />
+
+        <BNSelect
+          options={[
+            {
+              value: "whiteboard",
+              label: "whiteboard",
+            },
+            {
+              value: "projector",
+              label: "projector",
+            },
+            {
+              value: "ac",
+              label: "ac",
+            },
+            {
+              value: "wifi",
+              label: "wifi",
+            },
+
+            {
+              label: "Add More",
+              disabled: true,
+            },
+          ]}
+          label="Amenities"
+          name="amenities"
+          mode="tags"
+        />
+        <BNInput type="text" label="Image-1" name="img1" />
+        <BNInput type="text" label="Image-2" name="img2" />
+
+        <Form.Item>
+          <Button type="primary" htmlType="submit" block>
+            Submit
+          </Button>
+        </Form.Item>
+      </BNForm>
+    </div>
+  );
+};
+
+export default CreateRoom;

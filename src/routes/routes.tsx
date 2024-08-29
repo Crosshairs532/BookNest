@@ -12,6 +12,8 @@ import Protected from "../protected/Protected";
 import AdminDashboard from "../pages/AdminDashboard/AdminDashboard";
 import RoomDetails from "../pages/RoomDetails/RoomDetails";
 import BookingForm from "../pages/Booking/BookingForm";
+import Payment from "../pages/Payment/Payment";
+import CreateRoom from "../pages/AdminDashboard/CreateRoom ";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +45,10 @@ const router = createBrowserRouter([
         path: "/booking/:roomId",
         element: <BookingForm />,
       },
+      {
+        path: "/booking/payment",
+        element: <Payment />,
+      },
     ],
   },
   {
@@ -56,7 +62,7 @@ const router = createBrowserRouter([
   {
     path: "/:id/my-bookings",
     element: (
-      <Protected>
+      <Protected role="user">
         <MYBookings />
       </Protected>
     ),
@@ -64,10 +70,16 @@ const router = createBrowserRouter([
   {
     path: "/admin/dashboard",
     element: (
-      <Protected>
+      <Protected role="user">
         <AdminDashboard />
       </Protected>
     ),
+    children: [
+      {
+        path: "create-room",
+        element: <CreateRoom />,
+      },
+    ],
   },
 ]);
 
