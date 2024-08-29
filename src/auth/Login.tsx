@@ -27,12 +27,11 @@ const Login = () => {
       email: data.email,
       password: data.password,
     };
+    const id = toast.loading("Logging in..");
     try {
-      const id = toast.loading("Loggin..");
       const res = await login(loginInfo).unwrap();
-
+      console.log(res);
       const verify = verifyToken(res.token);
-
       if (verify) {
         const userInfo = {
           current_user: res.data,
@@ -50,11 +49,10 @@ const Login = () => {
 
         dispatch(setUser(userInfo));
         navigate("/");
-      } else {
-        toast.error("Something went Wrong!", { id });
       }
     } catch (err) {
-      toast.error(`${err?.message}`);
+      console.log();
+      toast.error(` $ ${err?.data?.message} !`, { id });
     }
   };
 
