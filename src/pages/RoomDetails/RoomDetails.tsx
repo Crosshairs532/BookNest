@@ -1,33 +1,26 @@
-import React from "react";
 import { Button, Carousel } from "antd";
-import { useNavigate, useParams } from "react-router-dom";
-import {
-  useGetSingleRoomMutation,
-  useGetSingleRoomQuery,
-} from "../../redux/features/room/room.api";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useGetSingleRoomQuery } from "../../redux/features/room/room.api";
+import { useAppSelector } from "../../redux/hook";
 
-interface RoomInfoProps {
-  images: string[];
-  roomName: string;
-  roomNo: string;
-  floorNo: string;
-  capacity: number;
-  pricePerSlot: number;
-  amenities: string[];
-}
-
-const RoomDetails: React.FC<RoomInfoProps> = () => {
+const RoomDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  console.log(id);
+  const cUser = useAppSelector((state) => state.auth.current_user);
+
   const { data: singleRoom, isLoading } = useGetSingleRoomQuery(id);
 
   if (isLoading || !singleRoom?.data) {
     return <h1>Fetching Data</h1>;
   }
 
-  const handleBookNow = () => {
-    navigate("/booking");
+  const handleBookNow = (id) => {
+    console.log(id, cUser);
+    if (!cUser) {
+      console.log("yes");
+      // return navigate(`/login`);
+    }
+    navigate(`/booking/${id}`);
   };
 
   return (
@@ -128,7 +121,11 @@ const RoomDetails: React.FC<RoomInfoProps> = () => {
         </div>
       </div>
 
-      <Button type="primary" className="mt-6 w-full" onClick={handleBookNow}>
+      <Button
+        type="primary"
+        className="mt-6 w-full"
+        onClick={() => handleBookNow(id)}
+      >
         Book Now
       </Button>
     </div>

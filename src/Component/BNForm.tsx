@@ -18,14 +18,15 @@ const BNForm = ({
   onSubmit: SubmitHandler<FieldValues>;
   defaultValue?: FieldValues;
 }) => {
-  let defaultValues = {};
+  const formConfig: Record<string, unknown> = {};
+
   if (defaultValue) {
-    defaultValues = { ...defaultValues, ...defaultValue };
+    formConfig["defaultValues"] = defaultValue;
   }
 
-  const methods = useForm(defaultValues);
+  const methods = useForm(formConfig);
   const location = useLocation();
-  console.log(defaultValue);
+
   const onsubmit: SubmitHandler<FieldValues> = async (data) => {
     onSubmit(data);
     if (!(location.pathname === "/meeting-rooms")) {

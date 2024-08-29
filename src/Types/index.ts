@@ -6,3 +6,9 @@ export type TRegistration = {
   phone: string;
   role?: string;
 };
+export type bookingData = {
+  date: string;
+  slots: string[];
+  room: string;
+  user: string;
+};

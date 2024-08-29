@@ -17,7 +17,7 @@ const BNInput = ({ type, label, name, setOnCheck, bg }: TinputProp) => {
   const { control } = useFormContext();
   const watch = useWatch({ control });
   const selector = useAppSelector(roomSelector);
-  console.log(control);
+
   useEffect(() => {
     if (
       watch.name &&
