@@ -151,7 +151,9 @@ const Navbar = () => {
           </div>
           <div className=" nav_menu">
             <h1 className="first text-[4vw]">MEETING ROOM</h1>
-            <h1 className="second text-[4vw]">MEETING ROOM</h1>
+            <Link to="/meeting-rooms">
+              <h1 className="second text-[4vw]">MEETING ROOM</h1>
+            </Link>
           </div>
           <div className=" nav_menu">
             <h1 className="first text-[4vw]">ABOUT US</h1>

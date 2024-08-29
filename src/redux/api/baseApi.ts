@@ -8,7 +8,6 @@ const customBaseQuery = fetchBaseQuery({
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
-    console.log(token);
     if (token) {
       headers.set("authorization", `Bearer ${token}`);
     }
@@ -19,5 +18,6 @@ const customBaseQuery = fetchBaseQuery({
 export const baseAPi = createApi({
   reducerPath: "baseApi",
   baseQuery: customBaseQuery,
+  tagTypes: ["user", "room"],
   endpoints: () => ({}),
 });

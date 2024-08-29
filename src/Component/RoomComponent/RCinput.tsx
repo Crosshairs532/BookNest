@@ -2,43 +2,25 @@
 import { Form, Input } from "antd";
 import { useEffect } from "react";
 import { Controller, useFormContext, useWatch } from "react-hook-form";
-import { useAppSelector } from "../redux/hook";
-import { roomSelector } from "../redux/features/room/room.slice";
+import { roomSelector } from "../../redux/features/room/room.slice";
+import { useAppSelector } from "../../redux/hook";
+
 type TinputProp = {
   name: string;
   label: string | undefined;
   type: string;
-  setOnCheck?: () => boolean;
-  onChangeValue?: () => unknown;
   bg?: string;
 };
 
-const BNInput = ({ type, label, name, setOnCheck, bg }: TinputProp) => {
-  const { control } = useFormContext();
-  const watch = useWatch({ control });
+const RCinput = ({ type, label, name, bg }: TinputProp) => {
+  const methods = useFormContext();
+
   const selector = useAppSelector(roomSelector);
-  console.log(control);
-  useEffect(() => {
-    if (
-      watch.name &&
-      watch.password &&
-      watch.address &&
-      watch.phone &&
-      watch.email
-    ) {
-      setOnCheck(true);
-      console.log("all fields are filled");
-    }
-
-    return () => {};
-  }, [watch]);
-
+  console.log(methods);
   return (
     <div style={{ marginBottom: "50px" }}>
       <Controller
-        rules={{
-          required: "This field is required",
-        }}
+        control={methods.control}
         name={name}
         render={({ field, fieldState: { error } }) => (
           <Form.Item
@@ -46,6 +28,8 @@ const BNInput = ({ type, label, name, setOnCheck, bg }: TinputProp) => {
             layout="vertical"
           >
             <Input
+              min={0}
+              max={10000}
               {...field}
               type={type}
               placeholder={name}
@@ -78,4 +62,4 @@ const BNInput = ({ type, label, name, setOnCheck, bg }: TinputProp) => {
   );
 };
 
-export default BNInput;
+export default RCinput;

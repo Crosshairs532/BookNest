@@ -13,6 +13,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import roomReducer from "../redux/features/room/room.slice";
 
 const persistConfig = {
   key: "auth",
@@ -25,6 +26,7 @@ export const store = configureStore({
   reducer: {
     [baseAPi.reducerPath]: baseAPi.reducer,
     auth: persistedReducer,
+    room: roomReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

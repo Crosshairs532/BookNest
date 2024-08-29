@@ -8,7 +8,7 @@ import { CiFacebook } from "react-icons/ci";
 import { toast } from "sonner";
 import { useLoginMutation } from "../redux/features/auth/auth.api";
 import { useAppSelector } from "../redux/hook";
-import { getUser, loginState, setUser } from "../redux/features/auth/authSlice";
+import { loginState, setUser } from "../redux/features/auth/authSlice";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -27,6 +27,8 @@ const Login = () => {
       email: data.email,
       password: data.password,
     };
+
+    console.log(loginInfo);
     const id = toast.loading("Logging in..");
     try {
       const res = await login(loginInfo).unwrap();
