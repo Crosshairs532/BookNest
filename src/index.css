@@ -230,3 +230,11 @@ body {
   filter: grayscale(1) blur(10px);
   transition: filter 0.3s ease-in-out;
 }
+
+.detail {
+  font-size: 1.5vw;
+  border-top: 1px solid #ffffff;
+}
+.detail:nth-last-child(1) {
+  border-bottom: 1px solid #ffffff;
+}

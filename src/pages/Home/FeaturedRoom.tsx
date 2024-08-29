@@ -1,47 +1,99 @@
 import { Link } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { useGetAllMeetingRoomsQuery } from "../../redux/features/room/room.api";
+import { useAppSelector } from "../../redux/hook";
+import { roomSelector } from "../../redux/features/room/room.slice";
 
-const rooms = [
-  {
-    image: "https://i.ibb.co/jw0KfCj/room1.jpg",
-    name: "Executive Suite",
-    capacity: "4 People",
-    price: "$200/slot",
-  },
-  {
-    image: "https://i.ibb.co/r71fkmL/room2.jpg",
-    name: "Deluxe Room",
-    capacity: "3 People",
-    price: "$150/slot",
-  },
-  {
-    image: "https://i.ibb.co/rfjk6x6/room3.jpg",
-    name: "Standard Room",
-    capacity: "2 People",
-    price: "$100/slot",
-  },
-  {
-    image: "https://i.ibb.co/86nJc2r/room4.jpg",
-    name: "Conference Room",
-    capacity: "20 People",
-    price: "$500/slot",
-  },
-  {
-    image: "https://i.ibb.co/M2B05Yt/room5.jpg",
-    name: "Meeting Room",
-    capacity: "10 People",
-    price: "$300/slot",
-  },
-  {
-    image: "https://i.ibb.co/54nYBc9/room6.jpg",
-    name: "Private Office",
-    capacity: "1 Person",
-    price: "$75/slot",
-  },
-];
+// const rooms = [
+//   {
+//     _id: "1",
+//     images: [
+//       "https://i.ibb.co/jw0KfCj/room1.jpg",
+//       "https://i.ibb.co/jw0KfCj/room1.jpg",
+//     ],
+//     name: "Executive Suite",
+//     capacity: 12,
+//     pricePerSlot: 300,
+//     roomNo: 200,
+//     floorNo: 2,
+//     amenities: [],
+//   },
+//   {
+//     _id: "2",
+//     images: [
+//       "https://i.ibb.co/r71fkmL/room2.jpg",
+//       "https://i.ibb.co/jw0KfCj/room1.jpg",
+//     ],
+//     name: "Deluxe Room",
+//     capacity: 12,
+//     pricePerSlot: 300,
+//     roomNo: 201,
+//     floorNo: 2,
+//     amenities: [],
+//   },
+//   {
+//     _id: "3",
+//     images: [
+//       "https://i.ibb.co/rfjk6x6/room3.jpg",
+//       "https://i.ibb.co/jw0KfCj/room1.jpg",
+//     ],
+//     name: "Standard Room",
+//     capacity: 12,
+//     pricePerSlot: 300,
+//     roomNo: 202,
+//     floorNo: 2,
+//     amenities: [],
+//   },
+//   {
+//     _id: "4",
+//     images: [
+//       "https://i.ibb.co/86nJc2r/room4.jpg",
+//       "https://i.ibb.co/jw0KfCj/room1.jpg",
+//     ],
+//     name: "Conference Room",
+//     capacity: 12,
+//     pricePerSlot: 300,
+//     roomNo: 203,
+//     floorNo: 2,
+//     amenities: [],
+//   },
+//   {
+//     _id: "5",
+//     images: [
+//       "https://i.ibb.co/M2B05Yt/room5.jpg",
+//       "https://i.ibb.co/jw0KfCj/room1.jpg",
+//     ],
+//     name: "Meeting Room",
+//     capacity: 12,
+//     pricePerSlot: 300,
+//     roomNo: 204,
+//     floorNo: 2,
+//     amenities: [],
+//   },
+//   {
+//     _id: "6",
+//     images: [
+//       "https://i.ibb.co/54nYBc9/room6.jpg",
+//       "https://i.ibb.co/jw0KfCj/room1.jpg",
+//     ],
+//     name: "Private Office",
+//     capacity: 12,
+//     pricePerSlot: 300,
+//     roomNo: 205,
+//     floorNo: 2,
+//     amenities: [],
+//   },
+// ];
 
 const FeaturedRoom = () => {
+  const selector = useAppSelector(roomSelector);
+  const { data: rooms, isLoading } = useGetAllMeetingRoomsQuery(undefined);
+
+  if (isLoading || !rooms) {
+    return <h1>Loading....</h1>;
+  }
+
   return (
     <>
       <div className=" my-[7vw]">
@@ -57,7 +109,7 @@ const FeaturedRoom = () => {
           </p>
         </div>
         <div className=" place-items-center grid mg:grid-cols-3 grid-cols-2 lg:grid-cols-4 gap-8">
-          {rooms.map((room, idx) => (
+          {rooms?.data?.map((room, idx) => (
             <ProductCard key={idx} room={room}></ProductCard>
           ))}
         </div>

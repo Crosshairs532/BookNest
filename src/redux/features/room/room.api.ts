@@ -19,17 +19,16 @@ export const authApi = baseAPi.injectEndpoints({
       },
       providesTags: ["room"],
     }),
-    getSingleRoom: builder.mutation({
-      query: (data) => {
-        console.log(data);
+    getSingleRoom: builder.query({
+      query: (id) => {
+        console.log(id);
         return {
-          url: `/rooms/${1}`,
+          url: `/rooms/${id}`,
           method: "GET",
-          body: data,
         };
       },
     }),
   }),
 });
 
-export const { useGetAllMeetingRoomsQuery } = authApi;
+export const { useGetAllMeetingRoomsQuery, useGetSingleRoomQuery } = authApi;

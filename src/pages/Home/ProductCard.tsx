@@ -10,7 +10,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const ProductCard = ({ room }) => {
   const location = useLocation();
-
+  console.log(room);
   return (
     <div>
       <Card
@@ -26,18 +26,18 @@ const ProductCard = ({ room }) => {
         >
           <img
             className=" h-full w-full absolute top-0 left-0 object-center object-cover"
-            src={room.image}
+            src={room?.images[0]}
             alt="card-image"
           />
           <img
             className="bottom-img w-full h-full object-center object-cover absolute top-0 left-0"
-            src={room.image}
+            src={room?.images[1]}
             alt=""
           />
 
           <Link
             className=" flex items-center gap-1 justify-between"
-            to={`/all-products/details/${1}`}
+            to={`/meeting-rooms/details/${room._id}`}
           >
             <button className="card-detail mx-auto flex justify-between items-center">
               <TiArrowForward></TiArrowForward>
@@ -54,14 +54,14 @@ const ProductCard = ({ room }) => {
               color="blue-gray"
               className="mb-1 text-[2.8vw] md:text-[2vw] lg:text-[1.1vw] leading-none font-semibold text-[#1a1a1a]"
             >
-              {room.name}
+              {room?.name}
             </Typography>
           </div>
           <div className=" flex gap-4 items-center justify-between w-max ">
             <Typography className=" leading-none tracking-normal text-[#5e5e5e]">
               {room?.capacity}
             </Typography>
-            <h4 className=" text-[#000000]">{room?.price}</h4>
+            <h4 className=" text-[#000000]">{room?.pricePerSlot}</h4>
           </div>
         </CardBody>
       </Card>

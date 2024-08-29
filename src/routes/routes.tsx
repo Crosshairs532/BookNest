@@ -10,6 +10,7 @@ import Contact from "../pages/contact/Contact";
 import MYBookings from "../pages/MYBookings/MYBookings";
 import Protected from "../protected/Protected";
 import AdminDashboard from "../pages/AdminDashboard/AdminDashboard";
+import RoomDetails from "../pages/RoomDetails/RoomDetails";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/meeting-rooms/details/:id",
+        element: <RoomDetails />,
       },
     ],
   },

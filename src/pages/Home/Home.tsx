@@ -5,7 +5,6 @@ import FeaturedRoom from "./FeaturedRoom";
 import WhyChoose from "./WhyChoose";
 import HowItWorks from "./HowItWorks";
 import Review from "./Review";
-import Footer from "./Footer";
 
 const Home = () => {
   const heroRef = useRef(null);
@@ -22,9 +21,6 @@ const Home = () => {
       </div>
       <div>
         <Review />
-      </div>
-      <div>
-        <Footer />
       </div>
     </div>
   );
