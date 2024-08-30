@@ -45,6 +45,18 @@ export const Siderbar = () => {
         },
       ],
     },
+    {
+      key: "Booking Management",
+      label: "Booking M.",
+      children: [
+        {
+          key: "all-booking",
+          label: (
+            <NavLink to="/admin/dashboard/all-booking">All Booking</NavLink>
+          ),
+        },
+      ],
+    },
   ];
   return (
     <Sider

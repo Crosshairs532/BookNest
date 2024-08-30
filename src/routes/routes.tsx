@@ -17,6 +17,7 @@ import CreateRoom from "../pages/AdminDashboard/CreateRoom ";
 import AllRooms from "../pages/AdminDashboard/AllRooms";
 import CreateSlot from "../pages/AdminDashboard/CreateSlot";
 import AllSlots from "../pages/AdminDashboard/AllSlots";
+import AllBooking from "../pages/AdminDashboard/AllBooking";
 
 const router = createBrowserRouter([
   {
@@ -93,6 +94,13 @@ const router = createBrowserRouter([
       {
         path: "all-slots",
         element: <AllSlots />,
+      },
+      {
+        path: "all-booking",
+        element: <AllBooking />,
+      },
+      {
+        path: "",
       },
     ],
   },
