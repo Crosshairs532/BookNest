@@ -28,6 +28,23 @@ export const Siderbar = () => {
         },
       ],
     },
+
+    {
+      key: "slot-management",
+      label: "Slot M.",
+      children: [
+        {
+          key: "create-slots",
+          label: (
+            <NavLink to="/admin/dashboard/create-slots">Create Slot</NavLink>
+          ),
+        },
+        {
+          key: "All Slots",
+          label: <NavLink to="/admin/dashboard/all-slots">All Slots</NavLink>,
+        },
+      ],
+    },
   ];
   return (
     <Sider

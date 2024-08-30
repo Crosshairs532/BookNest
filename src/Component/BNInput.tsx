@@ -4,7 +4,9 @@ import { useEffect } from "react";
 import { Controller, useFormContext, useWatch } from "react-hook-form";
 import { useAppSelector } from "../redux/hook";
 import { roomSelector } from "../redux/features/room/room.slice";
+import { FormItemLayout, FormLayout } from "antd/es/form/Form";
 type TinputProp = {
+  layout?: FormItemLayout | undefined;
   name: string;
   label: string | undefined;
   type: string;
@@ -13,7 +15,7 @@ type TinputProp = {
   bg?: string;
 };
 
-const BNInput = ({ type, label, name, setOnCheck, bg }: TinputProp) => {
+const BNInput = ({ layout, type, label, name, setOnCheck, bg }: TinputProp) => {
   const { control } = useFormContext();
   const watch = useWatch({ control });
   const selector = useAppSelector(roomSelector);
@@ -35,10 +37,11 @@ const BNInput = ({ type, label, name, setOnCheck, bg }: TinputProp) => {
   return (
     <div style={{ marginBottom: "50px" }}>
       <Controller
-        rules={{ required: true }}
+        // rules={{ required: true }}
         name={name}
         render={({ field, fieldState: { error } }) => (
           <Form.Item
+            layout={layout}
             label={<span className=" label font-medium">{label}</span>}
           >
             <Input
@@ -46,8 +49,8 @@ const BNInput = ({ type, label, name, setOnCheck, bg }: TinputProp) => {
               type={type}
               placeholder={name}
               style={{
+                width: "100%",
                 backgroundColor: `${bg}`,
-                width: "90%",
                 borderRadius: 0,
                 borderTop: "none",
                 borderLeft: "none",

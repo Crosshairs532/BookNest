@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Form, InputNumber } from "antd";
+import { FormItemLayout } from "antd/es/form/Form";
 import { Controller, useFormContext } from "react-hook-form";
 
 type TinputProp = {
+  layout?: FormItemLayout | undefined;
   name: string;
   label: string;
   type: string;
@@ -11,7 +13,7 @@ type TinputProp = {
   bg?: string;
 };
 
-const BNNumber = ({ type, label, name }: TinputProp) => {
+const BNNumber = ({ layout, type, label, name }: TinputProp) => {
   const { control } = useFormContext();
 
   return (
@@ -22,6 +24,7 @@ const BNNumber = ({ type, label, name }: TinputProp) => {
         control={control}
         render={({ field, fieldState: { error } }) => (
           <Form.Item
+            layout={layout}
             label={<span className="label font-medium">{label}</span>}
             validateStatus={error ? "error" : ""}
             help={error?.message}
@@ -29,8 +32,9 @@ const BNNumber = ({ type, label, name }: TinputProp) => {
             <InputNumber
               {...field}
               placeholder={name}
+              size="middle"
               style={{
-                width: "90%",
+                width: "100%",
                 borderRadius: 0,
                 borderTop: "none",
                 borderLeft: "none",

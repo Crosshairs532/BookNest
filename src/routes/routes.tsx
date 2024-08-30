@@ -15,6 +15,8 @@ import BookingForm from "../pages/Booking/BookingForm";
 import Payment from "../pages/Payment/Payment";
 import CreateRoom from "../pages/AdminDashboard/CreateRoom ";
 import AllRooms from "../pages/AdminDashboard/AllRooms";
+import CreateSlot from "../pages/AdminDashboard/CreateSlot";
+import AllSlots from "../pages/AdminDashboard/AllSlots";
 
 const router = createBrowserRouter([
   {
@@ -83,6 +85,14 @@ const router = createBrowserRouter([
       {
         path: "all-rooms",
         element: <AllRooms />,
+      },
+      {
+        path: "create-slots",
+        element: <CreateSlot />,
+      },
+      {
+        path: "all-slots",
+        element: <AllSlots />,
       },
     ],
   },
