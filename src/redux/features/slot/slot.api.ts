@@ -20,16 +20,34 @@ export const slotAPI = baseAPi.injectEndpoints({
       },
       providesTags: ["slots"],
     }),
-    // getSingleRoom: builder.query({
-    //   query: (id) => {
-    //     console.log(id);
-    //     return {
-    //       url: `/rooms/${id}`,
-    //       method: "GET",
-    //     };
-    //   },
-    // }),
+    updateSlot: builder.mutation({
+      query: (data) => {
+        let newData;
+        if (data.id) {
+          newData = { ...data.data };
+        }
+        return {
+          url: `/slots/${data.id}`,
+          method: "PUT",
+          body: newData,
+        };
+      },
+      invalidatesTags: ["slots"],
+    }),
+    deleteSlot: builder.mutation({
+      query: (data) => {
+        return {
+          url: `/slots/${data.id}`,
+          method: "DELETE",
+        };
+      },
+      invalidatesTags: ["slots"],
+    }),
   }),
 });
 
-export const { useGetAllAvailableSlotsQuery } = slotAPI;
+export const {
+  useGetAllAvailableSlotsQuery,
+  useUpdateSlotMutation,
+  useDeleteSlotMutation,
+} = slotAPI;

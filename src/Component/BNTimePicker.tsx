@@ -11,35 +11,21 @@ type TPHDatePicker = {
   minuteStep?: 60 | undefined;
 };
 
-const format = "HH:mm";
-const allowedIntervals = [
-  { start: "09:00", end: "10:00" },
-  { start: "10:00", end: "11:00" },
-  { start: "11:00", end: "12:00" },
-  { start: "12:00", end: "13:00" },
-  { start: "13:00", end: "14:00" },
-];
+// const allowedIntervals = [
+//   { start: "09:00", end: "10:00" },
+//   { start: "10:00", end: "11:00" },
+//   { start: "11:00", end: "12:00" },
+//   { start: "12:00", end: "13:00" },
+//   { start: "13:00", end: "14:00" },
+// ];
 
 const BNTimePicker = ({ layout, name, label }: TPHDatePicker) => {
   const { control } = useFormContext();
-  const isValidTime = (current) => {
-    return allowedIntervals.some(
-      (interval) =>
-        current.isSame(moment(interval.start, "HH:mm"), "minute") ||
-        current.isSame(moment(interval.end, "HH:mm"), "minute")
-    );
-  };
 
   return (
     <div style={{ marginBottom: "10px" }}>
       <Controller
         name={name}
-        rules={{
-          validate: (value) =>
-            isValidTime(value)
-              ? true
-              : "Selected time must be within the allowed intervals",
-        }}
         control={control}
         render={({ field, fieldState: { error } }) => (
           <>
@@ -49,8 +35,6 @@ const BNTimePicker = ({ layout, name, label }: TPHDatePicker) => {
                 {...field}
                 size="middle"
                 style={{ width: "100%" }}
-                format={format}
-                format="HH:mm"
                 hideDisabledOptions={true}
                 disabledTime={() => {
                   return {
