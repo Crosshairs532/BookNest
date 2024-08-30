@@ -1,6 +1,16 @@
 import React, { useState } from "react";
-import { Pagination, Space, Table } from "antd";
-import { useGetAllMeetingRoomsQuery } from "../../redux/features/room/room.api";
+import { Button, Modal, Pagination, Space, Table } from "antd";
+import {
+  useDeleteRoomMutation,
+  useGetAllMeetingRoomsQuery,
+  useUpdateMutation,
+} from "../../redux/features/room/room.api";
+import BNInput from "../../Component/BNInput";
+import { Form } from "react-router-dom";
+import BNForm from "../../Component/BNForm";
+import BNNumber from "../../Component/verifyToken/BNNumber";
+import BNSelect from "../../Component/BNSelect";
+import { toast } from "sonner";
 
 const { Column } = Table;
 // [
@@ -12,19 +22,25 @@ const { Column } = Table;
 const AllRooms: React.FC = () => {
   const [value, setValue] = useState(1);
   const { data, isLoading, isFetching } = useGetAllMeetingRoomsQuery(undefined);
+  const [Delete] = useDeleteRoomMutation();
   if (isLoading) {
     return <h1>loading...</h1>;
   }
-  const datas = data?.data?.map((item, idx) => {
-    return {
+  const datas = data?.data
+    ?.filter((item) => !item.isDeleted)
+    ?.map((item, idx) => ({
+      _id: item._id,
       key: idx,
       RoomN0: item.roomNo,
       RoomName: item.name,
       Capacity: item.capacity,
-      PricePerSlot: item.PricePerSlot,
-      FloorNo: item.FloorNo,
-    };
-  });
+      PricePerSlot: item.pricePerSlot,
+      FloorNo: item.floorNo,
+      images: item.images,
+      amenities: item.amenities,
+    }));
+
+  //   console.log(datas);
 
   return (
     <>
@@ -41,15 +57,105 @@ const AllRooms: React.FC = () => {
         <Column
           title="Action Buttons"
           key="action"
-          render={() => (
+          render={(item) => (
             <Space size="middle">
-              <h1 className="">Update</h1>
-              <h1 className="">Delete</h1>
+              <Update item={item}></Update>
+              <h1
+                onClick={async () => {
+                  console.log(item._id);
+                  try {
+                    const res = await Delete({
+                      id: item?._id,
+                      isDeleted: true,
+                    });
+                    console.log(res);
+                  } catch (err) {
+                    toast.error(err?.message);
+                  }
+                }}
+                className=""
+              >
+                Delete
+              </h1>
             </Space>
           )}
         />
       </Table>
-      {/* <Pagination></Pagination> */}
+    </>
+  );
+};
+
+const Update = ({ item }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [update] = useUpdateMutation();
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+  //   console.log(item);
+
+  const newItem1 = {
+    roomNo: item?.RoomN0,
+    name: item?.RoomName,
+    capacity: item?.Capacity,
+    pricePerSlot: item?.PricePerSlot,
+    floorNo: item?.FloorNo,
+    images: item?.images,
+    amenities: item?.amenities,
+  };
+  console.log(item);
+  let optionsData = newItem1?.amenities?.map((am) => {
+    return {
+      label: am,
+      value: am,
+    };
+  });
+
+  console.log(optionsData);
+  const onSubmit = (udata) => {
+    update({ id: item._id, data: udata });
+  };
+
+  return (
+    <>
+      <Button type="primary" onClick={showModal}>
+        Update
+      </Button>
+      <Modal title="Basic Modal" open={isModalOpen} onCancel={handleCancel}>
+        <BNForm defaultValue={newItem1} onSubmit={onSubmit}>
+          <div className=" grid grid-cols-2">
+            <BNInput type="text" label="Room Name" name="name" />
+            <BNNumber
+              label="Price Per Slot"
+              name="pricePerSlot"
+              type="number"
+            />
+          </div>
+          <div className=" grid grid-cols-2">
+            <BNNumber label="Room Capacity" name="capacity" type="number" />
+            <BNNumber type="number" name="roomNo" label="Room Number" />
+          </div>
+          <div className=" grid grid-cols-2">
+            <BNNumber label="Floor Number" name="floorNo" type="number" />
+            <BNSelect
+              options={optionsData}
+              label="Amenities"
+              name="amenities"
+              mode="tags"
+            />
+          </div>
+          <div className=" grid grid-cols-2">
+            <BNInput type="text" label="Image-1" name="img1" />
+            <BNInput type="text" label="Image-2" name="img2" />
+          </div>
+          <Button type="primary" htmlType="submit" block>
+            Submit
+          </Button>
+        </BNForm>
+      </Modal>
     </>
   );
 };
