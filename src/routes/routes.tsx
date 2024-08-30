@@ -14,6 +14,7 @@ import RoomDetails from "../pages/RoomDetails/RoomDetails";
 import BookingForm from "../pages/Booking/BookingForm";
 import Payment from "../pages/Payment/Payment";
 import CreateRoom from "../pages/AdminDashboard/CreateRoom ";
+import AllRooms from "../pages/AdminDashboard/AllRooms";
 
 const router = createBrowserRouter([
   {
@@ -78,6 +79,10 @@ const router = createBrowserRouter([
       {
         path: "create-room",
         element: <CreateRoom />,
+      },
+      {
+        path: "all-rooms",
+        element: <AllRooms />,
       },
     ],
   },

@@ -22,6 +22,10 @@ export const Siderbar = () => {
             <NavLink to="/admin/dashboard/create-room">Create Room</NavLink>
           ),
         },
+        {
+          key: "All  Rooms",
+          label: <NavLink to="/admin/dashboard/all-rooms">All Rooms</NavLink>,
+        },
       ],
     },
   ];
