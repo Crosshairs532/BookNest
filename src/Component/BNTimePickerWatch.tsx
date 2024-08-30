@@ -1,10 +1,17 @@
 import { Controller, useFormContext, useWatch } from "react-hook-form";
 import { Form, TimePicker } from "antd";
 import moment from "moment";
+import { useEffect } from "react";
 
-const BNTimePicker = ({ disable, name, label, endArr }) => {
+const BNTimePickerWatch = ({ name, label, setStartTime }) => {
   const { control } = useFormContext();
-  console.log(disable);
+  const startTimeWatch = useWatch({ control, name: "startTime" });
+  console.log(startTimeWatch);
+
+  useEffect(() => {
+    setStartTime(startTimeWatch);
+  }, [startTimeWatch]);
+
   return (
     <div style={{ marginBottom: "10px" }}>
       <Controller
@@ -17,7 +24,6 @@ const BNTimePicker = ({ disable, name, label, endArr }) => {
               <TimePicker
                 {...field}
                 format="HH:mm"
-                disabled={disable}
                 style={{ width: "100%" }}
                 minuteStep={60}
                 hideDisabledOptions={true}
@@ -26,12 +32,10 @@ const BNTimePicker = ({ disable, name, label, endArr }) => {
                   field.onChange(time ? time.format("HH:mm") : null);
                 }}
                 disabledHours={() => {
-                  return (
-                    endArr || [
-                      0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18,
-                      19, 20, 21, 22, 23,
-                    ]
-                  );
+                  return [
+                    0, 1, 2, 3, 4, 5, 6, 7, 8, 14, 15, 16, 17, 18, 19, 20, 21,
+                    22, 23,
+                  ];
                 }}
               />
               {error && <small style={{ color: "red" }}>{error.message}</small>}
@@ -43,4 +47,4 @@ const BNTimePicker = ({ disable, name, label, endArr }) => {
   );
 };
 
-export default BNTimePicker;
+export default BNTimePickerWatch;

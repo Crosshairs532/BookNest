@@ -5,7 +5,8 @@ const BNSelect = ({ name, label, options, mode }) => {
   return (
     <Controller
       name={name}
-      render={({ field }) => (
+      rules={{ required: "This field is required" }}
+      render={({ field, fieldState: { error } }) => (
         <Form.Item htmlFor={name} label={label}>
           <Select
             mode={mode}
@@ -15,6 +16,7 @@ const BNSelect = ({ name, label, options, mode }) => {
             onChange={field.onChange}
             options={options}
           />
+          {error && <small style={{ color: "red" }}>{error.message}</small>}
         </Form.Item>
       )}
     />
