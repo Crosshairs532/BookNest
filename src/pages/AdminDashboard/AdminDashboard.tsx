@@ -24,7 +24,8 @@ const AdminDashboard = () => {
             </div>
           </Content>
           <Footer style={{ textAlign: "center" }}>
-            Ant Design ©{new Date().getFullYear()} Created by Ant UED
+            BookNest ©{new Date().getFullYear()}- website Created by Md. Samsul
+            Arefin
           </Footer>
         </Layout>
       </Layout>

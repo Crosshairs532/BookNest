@@ -33,12 +33,13 @@ html,
 body {
   height: 100%;
   width: 100%;
-  /* overflow-x: hidden; */
   background-color: #faf8f3;
 }
+
 .navBar {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   width: 100vw;
+  mix-blend-mode: difference !important;
 }
 
 .login {
@@ -242,4 +243,52 @@ body {
 }
 .detail:nth-last-child(1) {
   border-bottom: 1px solid #ffffff;
+}
+
+/* -----------
+scroll to top
+*/
+
+.arrow {
+  position: fixed;
+  z-index: 600;
+  bottom: 20%;
+  left: 5vw;
+  transform: translate(-50%, -50%) rotate(180deg);
+  cursor: pointer;
+  mix-blend-mode: difference !important;
+}
+
+.arrow span {
+  display: block;
+  width: 1.5vw;
+  height: 1.5vw;
+  padding-right: 20px;
+  background-color: white;
+  mix-blend-mode: difference !important;
+  transform: rotate(45deg);
+  margin: -10px;
+  animation: animate 2s infinite;
+}
+
+.arrow span:nth-child(2) {
+  animation-delay: -0.2s;
+}
+
+.arrow span:nth-child(3) {
+  animation-delay: -0.4s;
+}
+
+@keyframes animate {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-20px, -20px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) translate(20px, 20px);
+  }
 }

@@ -5,6 +5,7 @@ import { createContext, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Footer from "./pages/Home/Footer";
+import ScrollToTop from "./utils/ScrollToTop/ScrollToTop";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 export const mainContext = createContext(null);
@@ -123,6 +124,7 @@ const App = () => {
       </div>
       <div className="">
         <mainContext.Provider value={value}>
+          <ScrollToTop />
           <Navbar></Navbar>
           <Outlet context={[heroRef]} />
           <Footer />

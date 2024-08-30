@@ -79,7 +79,9 @@ export const Siderbar = () => {
           height: "4rem",
         }}
       >
-        <h1>Book Nest</h1>
+        <NavLink to={"/"}>
+          <h1>Book Nest</h1>
+        </NavLink>
       </div>
       <Menu
         theme="dark"

@@ -28,17 +28,19 @@ const AllBooking: React.FC = () => {
   const [Update] = useUpdateBookingMutation();
 
   console.log(bookings);
-  const datas = bookings?.data.map((booking) => {
-    console.log(booking.isConfirmed);
+  const datas = bookings?.data
+    ?.filter((book) => !book.isDeleted)
+    ?.map((booking) => {
+      console.log(booking.isConfirmed);
 
-    return {
-      _id: booking._id,
-      RoomName: booking?.room.name,
-      userName: booking?.user.name,
-      date: booking?.date,
-      status: booking?.isConfirmed,
-    };
-  });
+      return {
+        _id: booking._id,
+        RoomName: booking?.room.name,
+        userName: booking?.user.name,
+        date: booking?.date,
+        status: booking?.isConfirmed,
+      };
+    });
 
   console.log(datas);
 
