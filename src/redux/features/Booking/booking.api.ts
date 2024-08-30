@@ -13,11 +13,12 @@ export const bookingApI = baseAPi.injectEndpoints({
     }),
     UpdateBooking: builder.mutation({
       query: (booking) => {
-        const { id, data } = booking;
+        const { id, isConfirmed } = booking;
+        console.log(id, { isConfirmed });
         return {
           url: `/bookings/${id}`,
           method: "PUT",
-          body: data,
+          body: { isConfirmed },
         };
       },
       invalidatesTags: ["booking"],

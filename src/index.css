@@ -33,7 +33,12 @@ html,
 body {
   height: 100%;
   width: 100%;
+  /* overflow-x: hidden; */
   background-color: #faf8f3;
+}
+.navBar {
+  border: 2px solid red;
+  width: 100vw;
 }
 
 .login {

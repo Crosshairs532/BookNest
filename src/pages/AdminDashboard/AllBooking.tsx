@@ -29,22 +29,28 @@ const AllBooking: React.FC = () => {
 
   console.log(bookings);
   const datas = bookings?.data.map((booking) => {
+    console.log(booking.isConfirmed);
+
     return {
+      _id: booking._id,
       RoomName: booking?.room.name,
       userName: booking?.user.name,
       date: booking?.date,
-      status: booking?.status,
+      status: booking?.isConfirmed,
     };
   });
+
+  console.log(datas);
 
   const handleDelete = async (item) => {
     console.log(item._id);
     try {
       const res = await Delete({
         id: item?._id,
+        data: { isDeleted: true },
       });
       if (res.data) {
-        toast.success("Deleted successfully");
+        toast.warning("Deleted successfully");
       }
       if (res.error) {
         toast.error(res.error?.data?.message);
@@ -53,10 +59,47 @@ const AllBooking: React.FC = () => {
       toast.error(err?.message);
     }
   };
+  const handleAprrove = async (item) => {
+    console.log(item);
+    const confirm = { id: item._id, isConfirmed: "confirmed" };
+
+    try {
+      const res = await Update(confirm);
+      console.log(res);
+      if (res.data) {
+        toast.success("Booking Confirmed");
+      }
+
+      if (res.error) {
+        toast.error(res.error?.data?.message);
+      }
+    } catch (err) {
+      toast.error(err.message);
+    }
+  };
+  const handleReject = async (item) => {
+    const confirm = { id: item._id, isConfirmed: "unconfirmed" };
+    try {
+      const res = await Update(confirm);
+      if (res.data) {
+        toast.info("Booking rejected");
+      }
+      if (res.error) {
+        toast.error(res.error?.data?.message);
+      }
+    } catch (err) {
+      toast.error(err.message);
+    }
+  };
 
   return (
     <>
-      <Table loading={isFetching} pagination={false} dataSource={datas}>
+      <Table
+        className=" font-plainLight"
+        loading={isFetching}
+        pagination={false}
+        dataSource={datas}
+      >
         <Column title="Room Name" dataIndex="RoomName" key="RoomName" />
         <Column title="User Name" dataIndex="userName" key="userName" />
         <Column title="Date" dataIndex="date" key="date" />
@@ -64,15 +107,18 @@ const AllBooking: React.FC = () => {
           title="Status"
           dataIndex="status"
           key="status"
-          render={(item) => (
-            <h1
-              className={`${
-                item?.isConfirmed ? " text-[green]" : " text-blue-500"
-              }`}
-            >
-              {item?.isConfirmed ? "Confirmed" : "Pending"}
-            </h1>
-          )}
+          render={(item) => {
+            console.log(item);
+            return (
+              <h1
+                className={`${
+                  item == "confirmed" ? " text-[green]" : " text-blue-500"
+                }`}
+              >
+                {`${item}`}
+              </h1>
+            );
+          }}
         />
 
         <Column
@@ -80,9 +126,24 @@ const AllBooking: React.FC = () => {
           key="action"
           render={(item) => (
             <Space size="middle">
-              <h1>Approve</h1>
-              <h1>Reject</h1>
-              <h1 onClick={() => handleDelete(item)}>Delete</h1>
+              <h1
+                onClick={() => handleAprrove(item)}
+                className=" border-[1px] font-plainLight duration-200 hover:font-plainRegular border-[#141414] hover:bg-[green] hover:text-[#faf8fc]  px-[1vw] py-[.2vw]"
+              >
+                Approve
+              </h1>
+              <h1
+                onClick={() => handleReject(item)}
+                className=" border-[1px] font-plainLight duration-200 hover:font-plainRegular border-[#141414] hover:bg-blue-400 hover:text-[#faf8fc] px-[1vw] py-[.2vw]"
+              >
+                Reject
+              </h1>
+              <h1
+                className=" border-[1px] font-plainLight duration-200 hover:font-plainRegular border-[#141414] hover:bg-[red] hover:text-[#faf8fc]  px-[1vw] py-[.2vw]"
+                onClick={() => handleDelete(item)}
+              >
+                Delete
+              </h1>
             </Space>
           )}
         />

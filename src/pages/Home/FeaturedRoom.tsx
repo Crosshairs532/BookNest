@@ -98,7 +98,7 @@ const FeaturedRoom = () => {
     <>
       <div className=" my-[7vw]">
         <div className=" container mx-auto space-y-2 mb-[60px]">
-          <h1 className=" text-[8vw] font-semibold relative left-[15vw] font-plainLight whitespace-nowrap text-[#1a1a1a]">
+          <h1 className=" text-[8vw] w-max font-semibold relative left-[15vw] font-plainLight whitespace-nowrap text-[#1a1a1a]">
             <small className=" text-[3vw] absolute top-0 -left-[5vw] italic font-silkSerifRegular ">
               02
             </small>

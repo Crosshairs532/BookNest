@@ -114,7 +114,7 @@ const Navbar = () => {
         nav
           ? " backdrop-blur-md  shadow-inner shadow-slate-950 bg-[#FFFFFF]/10"
           : " bg-[transparent] "
-      }  w-[100%] transition-all z-[450] justify-between duration-700 fixed top-0 left-0 h-[15vh] `}
+      } navBar w-[100%] transition-all z-[450] justify-between duration-700 fixed top-0 left-0 h-[15vh] `}
     >
       <div className=" nav_bar px-[4vw] items-center py-[2vw] absolute w-full h-full  flex justify-between">
         <div className="nav_logo">
