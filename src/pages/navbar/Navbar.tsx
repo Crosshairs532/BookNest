@@ -192,22 +192,26 @@ const Navbar = () => {
                 </h1>
               </div>
             ) : (
-              <div className=" flex  items-center justify-between profile">
-                <h1 className=" font-plainLight">My Bookings</h1>
-                <ConfigProvider
-                  theme={{
-                    components: {
-                      Button: {
-                        colorPrimaryBorderHover: "#151515",
+              <>
+                <div className=" flex  items-center justify-between profile">
+                  <Link to={`/my-bookings`}>
+                    <h1 className=" font-plainLight">My Bookings</h1>
+                  </Link>
+                  <ConfigProvider
+                    theme={{
+                      components: {
+                        Button: {
+                          colorPrimaryBorderHover: "#151515",
+                        },
                       },
-                    },
-                  }}
-                >
-                  <Button className=" font-plainLight" onClick={handleLogout}>
-                    LOGOUT
-                  </Button>
-                </ConfigProvider>
-              </div>
+                    }}
+                  >
+                    <Button className=" font-plainLight" onClick={handleLogout}>
+                      LOGOUT
+                    </Button>
+                  </ConfigProvider>
+                </div>
+              </>
             )}
           </div>
         </div>
@@ -217,3 +221,22 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+//   <div className="flex items-center justify-between profile">
+//   <Link to={`${user.current_user._id}`}>
+//     <h1 className="font-plainLight">My Bookings</h1>
+//   </Link>
+//   <ConfigProvider
+//     theme={{
+//       components: {
+//         Button: {
+//           colorPrimaryBorderHover: "#151515",
+//         },
+//       },
+//     }}
+//   >
+//     <Button className="font-plainLight" onClick={handleLogout}>
+//       LOGOUT
+//     </Button>
+//   </ConfigProvider>
+// </div>

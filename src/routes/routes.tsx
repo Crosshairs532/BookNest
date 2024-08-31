@@ -19,6 +19,8 @@ import CreateSlot from "../pages/AdminDashboard/CreateSlot";
 import AllSlots from "../pages/AdminDashboard/AllSlots";
 import AllBooking from "../pages/AdminDashboard/AllBooking";
 import Payment1 from "../pages/Payment/payment1";
+import MyBooking from "../pages/MyBooking/MyBooking";
+import UserBooking from "../pages/MyBooking/UserBooking";
 
 const router = createBrowserRouter([
   {
@@ -65,12 +67,18 @@ const router = createBrowserRouter([
     element: <Registration></Registration>,
   },
   {
-    path: "/:id/my-bookings",
+    path: "/my-bookings",
     element: (
       <Protected role="user">
-        <MYBookings />
+        <MyBooking />
       </Protected>
     ),
+    children: [
+      {
+        index: true,
+        element: <UserBooking />,
+      },
+    ],
   },
   {
     path: "/admin/dashboard",
@@ -99,9 +107,6 @@ const router = createBrowserRouter([
       {
         path: "all-booking",
         element: <AllBooking />,
-      },
-      {
-        path: "",
       },
     ],
   },
