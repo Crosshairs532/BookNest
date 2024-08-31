@@ -4,14 +4,22 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useCreatePaymentMutation } from "../../redux/features/payment/payment.api";
 import { loginState } from "../../redux/features/auth/authSlice";
 import { toast } from "sonner";
+import { useCreateBookingMutation } from "../../redux/features/Booking/booking.api";
+import { getBookingData } from "../../redux/features/Booking/booking.slice";
+import Swal from "sweetalert2";
+import moment from "moment";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = ({ totalAmount }) => {
+  const navigate = useNavigate();
+  const bookData = useAppSelector(getBookingData);
   const stripe = useStripe();
   const elements = useElements();
   const [error, setError] = useState("");
   const [createPayment] = useCreatePaymentMutation(undefined);
   const [transactionId, setTransactionId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
+  const [createBooking] = useCreateBookingMutation();
   const price = { price: totalAmount };
   const user = useAppSelector(loginState);
   console.log(user.current_user.name, "user");
@@ -31,7 +39,7 @@ const CheckoutForm = ({ totalAmount }) => {
     fetchPayment();
   }, []);
   console.log(clientSecret);
-
+  console.log();
   //   const handleSubmit = async (event) => {
   //     event.preventDefault();
 
@@ -122,12 +130,53 @@ const CheckoutForm = ({ totalAmount }) => {
       toast.error(<div className="w-full h-full ">{confirmError.message}</div>);
       setError(confirmError.message as string);
     } else if (paymentIntent?.status === "succeeded") {
+      console.log(bookData);
+      console.log(
+        {
+          user: bookData?.booking?.user._id,
+          room: bookData?.booking?.room,
+          slots: bookData?.booking?.slots,
+          date: moment(bookData?.booking?.date).utc().format("YYYY-MM-DD"),
+        },
+        "-------->"
+      );
+
+      const bookingRes = await createBooking({
+        user: bookData?.booking?.user._id,
+        room: bookData?.booking?.room,
+        slots: bookData?.booking?.slots,
+        date: moment(bookData?.booking?.date).utc().format("YYYY-MM-DD"),
+      });
+      console.log(bookingRes);
+      if (bookingRes.data.data) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "confirmed Booking Detail",
+          html: `
+  <div>
+    <h1>Date: ${bookingRes.data.data.date}</h1>
+    <h1>Slots:</h1>
+    <ul>
+      ${bookingRes.data.data.slots
+        .map((slot) => `<li>${slot.startTime} - ${slot.endTime}</li>`)
+        .join("")}
+    </ul>
+    <h1>Room Name: ${bookingRes.data.data.room.name}</h1>
+    <h1>User Name: ${bookingRes.data.data.user.name}</h1>
+    <h1>Total Amount: ${bookingRes.data.data.totalAmount}</h1>
+  </div>
+`,
+          showConfirmButton: false,
+        });
+      }
+
       console.log("Payment Intent:", paymentIntent);
       toast.success(
         <div className=" flex flex-col w-full h-full">{paymentIntent.id}</div>
       );
       setTransactionId(paymentIntent.id);
-
+      navigate("/");
       setError("");
     }
   };

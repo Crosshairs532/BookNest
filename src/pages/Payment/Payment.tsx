@@ -30,8 +30,7 @@ const Payment = () => {
 
   const handleOrder = async (event: any) => {
     event.preventDefault();
-    const res = await createPayment({ amount: 1000, name: "me" });
-    console.log(res);
+    // const res = await createPayment({ amount: 1000, name: "me" });
   };
 
   return (
@@ -106,7 +105,7 @@ const Payment = () => {
               <div className="">
                 {selectedPaymentMethod === "card" && (
                   <div className=" ]">
-                    <Payment1></Payment1>
+                    <Payment1 totalAmount={totalAmount}></Payment1>
                   </div>
                 )}
               </div>

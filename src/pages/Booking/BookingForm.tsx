@@ -44,12 +44,12 @@ const BookingForm = () => {
     { skip: !disable }
   );
 
-  console.log({
-    disable: !disable,
-    slots,
-    roomId,
-    date: moment(new Date(disable)).format("YYYY-MM-D"),
-  });
+  // console.log({
+  //   disable: !disable,
+  //   slots,
+  //   roomId,
+  //   date: moment(new Date(disable)).format("YYYY-MM-D"),
+  // });
   // * get logged user details
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const slots = data?.slots
@@ -57,7 +57,7 @@ const BookingForm = () => {
       .map((sl) => sl._id);
 
     const bookingData: bookingData = {
-      date: moment(new Date(data.date)).format("YYYY-MM-D"),
+      date: dateFormated,
       slots: slots,
       room: roomId as string,
       user: cUser,
