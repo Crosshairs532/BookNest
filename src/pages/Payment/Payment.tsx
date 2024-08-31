@@ -6,8 +6,9 @@ import { useCreatePaymentMutation } from "../../redux/features/payment/payment.a
 import Payment1 from "./payment1";
 import { useAppSelector } from "../../redux/hook";
 import { getBookingData } from "../../redux/features/Booking/booking.slice";
-import { useGetAmountMutation } from "../../redux/features/Booking/booking.api";
 import { useGetSingleRoomQuery } from "../../redux/features/room/room.api";
+// import { useGetAmountMutation } from "../../redux/features/Booking/booking.api";
+// import { useGetSingleRoomQuery } from "../../redux/features/room/room.api";
 
 const Payment = () => {
   const { id } = useParams();
@@ -16,13 +17,11 @@ const Payment = () => {
   const [createPayment] = useCreatePaymentMutation();
   const bookingData = useAppSelector(getBookingData);
 
-  console.log({ id, bookingData });
+  const singleRoom = useGetSingleRoomQuery(id);
+  const totalAmount =
+    bookingData?.booking?.slots?.length * singleRoom?.data?.data?.pricePerSlot;
 
-  // const amountData = useGetAmountMutation({id, });
-
-  // const singleRoom = useGetSingleRoomQuery(id);
-
-  // console.log({ singleRoom });
+  console.log(bookingData, totalAmount);
 
   // const amount  = bookingData?.slots?.length * singleRoom.data.pricePerslot
   const handlePaymentMethodChange = (data: any) => {
@@ -140,7 +139,9 @@ const Payment = () => {
             <div className="mt-8 divide-y bg-[#f0f0f0]">
               <div className="p-4 mt-2">
                 <div className="flex justify-between items-center">
-                  <span className="font-semibold text-gray-700">Total:</span>
+                  <span className="font-semibold text-gray-700">
+                    Total:{totalAmount ? totalAmount : ""}
+                  </span>
                   <span className="font-semibold text-gray-700"></span>
                 </div>
               </div>

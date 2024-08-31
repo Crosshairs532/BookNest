@@ -5,14 +5,14 @@ import { useCreatePaymentMutation } from "../../redux/features/payment/payment.a
 import { loginState } from "../../redux/features/auth/authSlice";
 import { toast } from "sonner";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ totalAmount }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [error, setError] = useState("");
   const [createPayment] = useCreatePaymentMutation(undefined);
   const [transactionId, setTransactionId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
-  const price = { price: 100 };
+  const price = { price: totalAmount };
   const user = useAppSelector(loginState);
   console.log(user.current_user.name, "user");
   console.log(clientSecret);

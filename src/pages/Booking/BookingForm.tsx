@@ -31,9 +31,13 @@ const BookingForm = () => {
   // * slots -> roomid, date
   // date.$d
 
+  // const dateFormated = moment
+  //   .utc(moment(new Date(disable)).format("YYYY-MM-D") + " 18:00")
+  //   .utc()
+  //   .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
+
   const dateFormated = moment
-    .utc(moment(new Date(disable)).format("YYYY-MM-D") + " 18:00")
-    .utc()
+    .utc(moment(new Date(disable)).format("YYYY-MM-D") + " 00:00") // Set time to 00:00
     .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
   const { data: slots } = useGetAllAvailableSlotsQuery(
     { roomId: roomId, date: dateFormated },
@@ -48,12 +52,17 @@ const BookingForm = () => {
   });
   // * get logged user details
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    const slots = data?.slots
+      .map((slot) => JSON.parse(slot))
+      .map((sl) => sl._id);
+
     const bookingData: bookingData = {
       date: moment(new Date(data.date)).format("YYYY-MM-D"),
-      slots: data.slots,
+      slots: slots,
       room: roomId as string,
       user: cUser,
     };
+
     Swal.fire({
       title: "Proceed To Payment?",
       text: "Did You check all the booking Information ?",
@@ -67,7 +76,7 @@ const BookingForm = () => {
         dispatch(setBooking(bookingData));
 
         console.log({ roomId });
-        navigate(`/booking/payment`);
+        navigate(`/booking-payment/${roomId}`);
       }
     });
 
@@ -93,9 +102,10 @@ const BookingForm = () => {
   const slotOptions = slots?.data?.map((slot) => {
     return {
       label: `${slot.startTime} - ${slot.endTime}`,
-      value: `${slot}`,
+      value: JSON.stringify(slot),
     };
   });
+  console.log({ slots, slotOptions });
 
   return (
     <div className=" px-[2.4vw] pt-[25vh] min-h-screen bg-[#0e0e0e] w-full">
@@ -118,6 +128,7 @@ const BookingForm = () => {
                   label="Select Date"
                 />
                 <BNSelect
+                  mode="multiple"
                   name="slots"
                   label="Select Slot"
                   options={slotOptions}
