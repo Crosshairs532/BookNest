@@ -6,7 +6,7 @@ export const paymentAPI = baseAPi.injectEndpoints({
       query: (data) => {
         console.log(data);
         return {
-          url: "/create-payment",
+          url: "/payment/create-payment-intent",
           method: "POST",
           body: data,
         };

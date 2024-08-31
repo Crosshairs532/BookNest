@@ -18,6 +18,7 @@ import AllRooms from "../pages/AdminDashboard/AllRooms";
 import CreateSlot from "../pages/AdminDashboard/CreateSlot";
 import AllSlots from "../pages/AdminDashboard/AllSlots";
 import AllBooking from "../pages/AdminDashboard/AllBooking";
+import Payment1 from "../pages/Payment/payment1";
 
 const router = createBrowserRouter([
   {
