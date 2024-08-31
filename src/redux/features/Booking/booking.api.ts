@@ -42,6 +42,14 @@ export const bookingApI = baseAPi.injectEndpoints({
       }),
       invalidatesTags: ["booking"],
     }),
+    getAmount: builder.mutation({
+      query: (slotData) => ({
+        url: "/bookings",
+        method: "GET",
+        body: slotData,
+      }),
+      invalidatesTags: ["booking"],
+    }),
   }),
 });
 
@@ -50,4 +58,5 @@ export const {
   useGetAllBookingQuery,
   useDeleteBookingMutation,
   useUpdateBookingMutation,
+  useGetAmountMutation,
 } = bookingApI;

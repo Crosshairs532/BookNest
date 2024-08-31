@@ -127,7 +127,7 @@ const CheckoutForm = () => {
         <div className=" flex flex-col w-full h-full">{paymentIntent.id}</div>
       );
       setTransactionId(paymentIntent.id);
-      //   toast.success(`${paymentIntent.id}`);
+
       setError("");
     }
   };

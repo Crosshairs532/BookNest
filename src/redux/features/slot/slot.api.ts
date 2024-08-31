@@ -4,6 +4,7 @@ export const slotAPI = baseAPi.injectEndpoints({
   endpoints: (builder) => ({
     getAllAvailableSlots: builder.query({
       query: (data) => {
+        console.log({ data });
         const param = new URLSearchParams();
         if (data) {
           console.log(data);
@@ -11,6 +12,8 @@ export const slotAPI = baseAPi.injectEndpoints({
             param.append(i, data[i]);
           }
         }
+        console.log({ param });
+
         return {
           url: "/slots/availability",
           method: "GET",

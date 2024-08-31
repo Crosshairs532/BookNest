@@ -29,11 +29,23 @@ const BookingForm = () => {
   const navigate = useNavigate();
 
   // * slots -> roomid, date
+  // date.$d
 
+  const dateFormated = moment
+    .utc(moment(new Date(disable)).format("YYYY-MM-D") + " 18:00")
+    .utc()
+    .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
   const { data: slots } = useGetAllAvailableSlotsQuery(
-    { roomId: roomId, date: moment(new Date(disable)).format("YYYY-MM-D") },
+    { roomId: roomId, date: dateFormated },
     { skip: !disable }
   );
+
+  console.log({
+    disable: !disable,
+    slots,
+    roomId,
+    date: moment(new Date(disable)).format("YYYY-MM-D"),
+  });
   // * get logged user details
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const bookingData: bookingData = {
@@ -52,8 +64,10 @@ const BookingForm = () => {
       confirmButtonText: "Yes, Proceed",
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(setBooking({ booking: bookingData }));
-        navigate("/booking/payment");
+        dispatch(setBooking(bookingData));
+
+        console.log({ roomId });
+        navigate(`/booking/payment`);
       }
     });
 

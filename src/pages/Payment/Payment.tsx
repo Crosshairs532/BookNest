@@ -1,15 +1,30 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { MdDeliveryDining } from "react-icons/md";
 import { useState } from "react";
 
 import { useCreatePaymentMutation } from "../../redux/features/payment/payment.api";
 import Payment1 from "./payment1";
+import { useAppSelector } from "../../redux/hook";
+import { getBookingData } from "../../redux/features/Booking/booking.slice";
+import { useGetAmountMutation } from "../../redux/features/Booking/booking.api";
+import { useGetSingleRoomQuery } from "../../redux/features/room/room.api";
 
 const Payment = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("card");
   const [createPayment] = useCreatePaymentMutation();
+  const bookingData = useAppSelector(getBookingData);
 
+  console.log({ id, bookingData });
+
+  // const amountData = useGetAmountMutation({id, });
+
+  // const singleRoom = useGetSingleRoomQuery(id);
+
+  // console.log({ singleRoom });
+
+  // const amount  = bookingData?.slots?.length * singleRoom.data.pricePerslot
   const handlePaymentMethodChange = (data: any) => {
     setSelectedPaymentMethod(data);
   };
