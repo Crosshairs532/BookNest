@@ -10,7 +10,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const ProductCard = ({ room }) => {
   const location = useLocation();
-  console.log(room);
+  // console.log(room);
   return (
     <div>
       <Card

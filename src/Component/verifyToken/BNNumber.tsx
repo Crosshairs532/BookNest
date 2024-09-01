@@ -19,7 +19,7 @@ const BNNumber = ({ layout, type, label, name }: TinputProp) => {
   return (
     <div style={{ marginBottom: "50px" }}>
       <Controller
-        rules={{ required: true }}
+        rules={{ required: "This field is required" }}
         name={name}
         control={control}
         render={({ field, fieldState: { error } }) => (

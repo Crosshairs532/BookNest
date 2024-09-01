@@ -18,8 +18,8 @@ const HowItWorks = () => {
   );
 
   return (
-    <div className="" ref={HowItWorksRef}>
-      <span className="  how_cursor inline-block border-2 border-[#141414] m-0 w-max  h-max p-[4vw] rounded-full">
+    <div className=" relative" ref={HowItWorksRef}>
+      <span className=" how_cursor border-2 border-[#141414] m-0 w-max lg:inline-block hidden h-max p-[4vw] rounded-full">
         <svg
           className="button__arrow -rotate-[45deg] w-[8vw] h-[8vw] "
           viewBox="0 0 91 118"
@@ -39,7 +39,7 @@ const HowItWorks = () => {
         How It Works.
       </h2>
 
-      <div className="  relative space-y-2 left-[40vw]">
+      <div className=" relative  space-y-2 w-max left-[40vw]">
         <div className=" work room">
           <div className=" hoverlay transition-all flex justify-center items-center top-0  left-0 absolute bg-[#FFFFFF] w-[6vw] h-[6vw] rounded-full">
             <img className=" w-[3vw] h-[3v2]" src={home1} alt="" />

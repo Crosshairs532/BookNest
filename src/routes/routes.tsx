@@ -46,7 +46,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/meeting-rooms/details/:id",
-        element: <RoomDetails />,
+        element: (
+          <Protected role="user">
+            <RoomDetails />
+          </Protected>
+        ),
       },
       {
         path: "/booking/:roomId",
@@ -83,13 +87,13 @@ const router = createBrowserRouter([
   {
     path: "/admin/dashboard",
     element: (
-      <Protected role="user">
+      <Protected role="admin">
         <AdminDashboard />
       </Protected>
     ),
     children: [
       {
-        path: "create-room",
+        index: true,
         element: <CreateRoom />,
       },
       {

@@ -8,12 +8,13 @@ import Sort from "./Sort";
 
 const MeetingRooms = () => {
   const selector = useAppSelector(roomSelector);
-  console.log(selector);
-  const { data, isLoading, isError } = useGetAllMeetingRoomsQuery(selector);
+  const { data, isLoading, isError, isFetching } =
+    useGetAllMeetingRoomsQuery(selector);
 
   if (isLoading || !data) {
     return <h1>Loading....</h1>;
   }
+
   if (isError) {
     return <h1>Something went wrong</h1>;
   }
@@ -33,8 +34,10 @@ const MeetingRooms = () => {
       <div className=" lg:flex mx-auto">
         <MRSide flex="flex-grow"></MRSide>
 
-        <div className=" flex-grow mb-10 mt-[50px] border-2 border-red-500 lg:w-[60%] grid md:grid-cols-2 grid-cols-1 place-items-baseline gap-[4vw] lg:grid-cols-3 ">
-          {data?.data?.length > 0 ? (
+        <div className=" flex-grow mb-10 mt-[50px] lg:w-[60%] grid md:grid-cols-2 grid-cols-1 place-items-baseline gap-[4vw] lg:grid-cols-3 ">
+          {isFetching ? (
+            <>fetching</>
+          ) : data?.data?.length > 0 ? (
             data.data.map((room, idx) => <ProductCard key={idx} room={room} />)
           ) : (
             <h1 className="mx-auto text-center text-[4vw] whitespace-nowrap text-black">

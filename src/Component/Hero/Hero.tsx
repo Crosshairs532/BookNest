@@ -5,9 +5,9 @@ import { useContext } from "react";
 import { mainContext } from "../../App";
 const Hero = () => {
   const [heroRef] = useOutletContext();
-  const { heRef } = useContext(mainContext);
+  // const { heRef } = useContext(mainContext);
   return (
-    <div ref={heroRef} className=" relative w-full h-full">
+    <div ref={heroRef} className=" relative border-2 w-full h-full">
       <div className=" over"></div>
       <video
         className=" w-full h-full object-cover"
@@ -43,7 +43,10 @@ const Hero = () => {
         </h1>
       </div>
       <div className=" space-y-[1.2vw] text-center Head absolute left-[50%] z-[400] -translate-y-[50%]  -translate-x-[50%] top-[50%] text-[#FFFCF1]">
-        <h1 ref={heRef} className=" text-[2vw] font-plainLight headline">
+        <h1
+          //  ref={heRef}
+          className=" text-[2vw] font-plainLight headline"
+        >
           Book Your Ideal Meeting Room with Ease.
         </h1>
         <h6 className=" font-silkSerifRegular subHeadline">

@@ -10,7 +10,7 @@ const Home = () => {
   const heroRef = useRef(null);
   return (
     <div>
-      <div className=" h-[100vh]">
+      <div className=" h-[50vh] border-2 lg:h-[100vh]">
         <Hero heroRef={heroRef}></Hero>
       </div>
       <div className=" min-h-[100vh] px-[4vw]">
@@ -19,7 +19,7 @@ const Home = () => {
         <WhyChoose />
         <HowItWorks />
       </div>
-      <div>
+      <div className=" mx-[4vw]">
         <Review />
       </div>
     </div>

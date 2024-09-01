@@ -18,9 +18,7 @@ export const Siderbar = () => {
       children: [
         {
           key: "create-room",
-          label: (
-            <NavLink to="/admin/dashboard/create-room">Create Room</NavLink>
-          ),
+          label: <NavLink to="/admin/dashboard">Create Room</NavLink>,
         },
         {
           key: "All  Rooms",

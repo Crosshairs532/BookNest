@@ -25,7 +25,7 @@ const RoomDetails = () => {
 
   return (
     <div className=" px-[2.4vw] room-info-container min-h-screen pt-[25vh] p-6 bg-[#0e0e0e] shadow-lg">
-      <h2 className="text-[8vw]  w-max font-semibold relative left-[20vw] font-plainLight mb-8 text-[#FAF8FC] ">
+      <h2 className="text-[5vw] border-2 w-max font-semibold relative left-[20vw] font-plainLight mb-8 text-[#FAF8FC] ">
         <small className=" text-[3vw] absolute top-0 -left-[5vw] italic font-silkSerifRegular ">
           01
         </small>

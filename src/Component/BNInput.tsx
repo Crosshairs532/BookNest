@@ -37,7 +37,7 @@ const BNInput = ({ layout, type, label, name, setOnCheck, bg }: TinputProp) => {
   return (
     <div style={{ marginBottom: "50px" }}>
       <Controller
-        // rules={{ required: true }}
+        rules={{ required: "This Field is Required" }}
         name={name}
         render={({ field, fieldState: { error } }) => (
           <Form.Item

@@ -8,6 +8,8 @@ import {
 import BNForm from "../../Component/BNForm";
 import { Button } from "antd";
 import RCinput from "../../Component/RoomComponent/RCinput";
+import { useEffect } from "react";
+import { useFormContext } from "react-hook-form";
 
 const MRSide = ({ flex }) => {
   const defaultValue = {
@@ -19,10 +21,16 @@ const MRSide = ({ flex }) => {
   const selector = useAppSelector(roomSelector);
   const dispatch = useAppDispatch();
 
+  console.log(selector);
+  useEffect(() => {
+    console.log("againt");
+    return () => {};
+  }, [selector]);
+
   const onSubmit = (data) => {
     console.log(data);
     const filter = {
-      name: data.roomName,
+      name: data.name,
       maxPrice: Number(data.maxPrice),
       minPrice: Number(data.minPrice),
       capacity: Number(data.capacity),
@@ -43,7 +51,7 @@ const MRSide = ({ flex }) => {
         id="filterOverlay"
         className="overlay hidden transition-all z-[150] fixed backdrop-blur-md duration-1000 w-full h-full bg-black/20 top-0 left-0"
       ></div>
-      <BNForm defaultValue={defaultValue} onSubmit={onSubmit}>
+      <BNForm defaultValue={selector} onSubmit={onSubmit}>
         <div
           id="filterSide"
           className=" hidden lg:block transition-all ease-in-out lg:px-0 lg:py-0 px-8 py-4 lg:bg-transparent z-[160] bg-[#f0f0f0] lg:z-0  lg:rounded-none rounded-xl  lg:bottom-0 left-[50%] lg:left-[0%] lg:translate-x-0 translate-x-[-50%] fixed bottom-[-50%]
@@ -53,7 +61,7 @@ const MRSide = ({ flex }) => {
           <div className="mt-2">
             <RCinput
               bg="transparent"
-              name="roomName"
+              name="name"
               label="Search By Name"
               type="text"
             />
@@ -61,18 +69,18 @@ const MRSide = ({ flex }) => {
           <div className="divider"></div>
           <div className="price_range space-y-3">
             <h1 className="text-xl">Price</h1>
-            <div className="w-[100%]">
-              <label className="input input-bordered flex items-center gap-2">
+            <div className="w-[100%] flex items-center justify-between">
+              <label className=" border-2 flex items-center gap-2">
                 <BiDollar />
                 <RCinput
                   name="maxPrice"
-                  label={undefined}
+                  label={"maxPrice"}
                   bg="transparent"
                   type="number"
                 />
               </label>
-              <div className="divider divider-horizontal">to</div>
-              <label className="input input-bordered flex items-center gap-2">
+              <div className=" flex-shrink divider divider-horizontal">to</div>
+              <label className=" border-2 flex items-center gap-2">
                 <BiDollar />
                 <RCinput
                   name="minPrice"
@@ -80,14 +88,14 @@ const MRSide = ({ flex }) => {
                   bg="transparent"
                   type="number"
                 />
-                <RCinput
-                  name="capacity"
-                  label={undefined}
-                  bg="transparent"
-                  type="number"
-                />
               </label>
             </div>
+            <RCinput
+              name="capacity"
+              label={"capacity"}
+              bg="transparent"
+              type="number"
+            />
           </div>
 
           <div className=" flex items-center justify-around">

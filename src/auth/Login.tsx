@@ -31,6 +31,7 @@ const Login = () => {
     console.log(loginInfo);
     const id = toast.loading("Logging in..");
     try {
+      console.log("before login");
       const res = await login(loginInfo).unwrap();
       console.log(res);
       const verify = verifyToken(res.token);
@@ -53,7 +54,7 @@ const Login = () => {
         navigate("/");
       }
     } catch (err) {
-      console.log();
+      console.log(err);
       toast.error(` $ ${err?.data?.message} !`, { id });
     }
   };

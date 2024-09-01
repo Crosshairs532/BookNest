@@ -35,11 +35,14 @@ body {
   width: 100%;
   background-color: #faf8f3;
 }
-
+/* .main {
+  width: 100vw;
+  height: 100vh;
+} */
 .navBar {
   /* border: 2px solid red; */
   width: 100vw;
-  mix-blend-mode: difference !important;
+  /* mix-blend-mode: difference !important; */
 }
 
 .login {
@@ -59,7 +62,7 @@ body {
 .nav_logo h1 {
   font-size: 2.5vw;
   color: #141414;
-  mix-blend-mode: difference;
+  /* mix-blend-mode: difference; */
 }
 .login-logo h2 {
   font-family: "plainRegular";
@@ -85,7 +88,7 @@ body {
   opacity: 1 !important;
 }
 .menu h1 {
-  mix-blend-mode: difference;
+  /* mix-blend-mode: difference; */
 }
 .nav_menu {
   position: relative;
@@ -177,7 +180,7 @@ body {
   white-space: nowrap;
 }
 .work {
-  width: 50%;
+  width: 100%;
   height: 4vw;
   position: relative;
   transition: all ease-in-out cubic-bezier(0.19, 1, 0.22, 1);
@@ -253,19 +256,11 @@ scroll to top
   position: fixed;
   z-index: 600;
   bottom: 20%;
-  left: 5vw;
-  transform: translate(-50%, -50%) rotate(180deg);
+  transform: rotate(180deg);
   cursor: pointer;
-  mix-blend-mode: difference !important;
 }
-
 .arrow span {
   display: block;
-  width: 1.5vw;
-  height: 1.5vw;
-  padding-right: 20px;
-  background-color: white;
-  mix-blend-mode: difference !important;
   transform: rotate(45deg);
   margin: -10px;
   animation: animate 2s infinite;

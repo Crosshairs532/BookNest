@@ -15,7 +15,7 @@ export const roomSlice = createSlice({
   initialState: initialValue,
   reducers: {
     setFilter: (state, { payload }) => {
-      console.log({ ...state, ...payload });
+      console.log({ ...state });
       //  state.name = payload?.name:""
       //  state.maxPrice = payload?.maxPrice:10000
       //  state.minPrice = payload?.minPrice:0
@@ -24,7 +24,11 @@ export const roomSlice = createSlice({
 
       return {
         ...state,
-        ...payload,
+        name: payload?.name !== undefined ? payload.name : state.name,
+        maxPrice: !isNaN(payload?.maxPrice) ? payload.maxPrice : state.maxPrice,
+        minPrice: !isNaN(payload?.minPrice) ? payload.minPrice : state.minPrice,
+        capacity: !isNaN(payload?.capacity) ? payload.capacity : state.capacity,
+        sort: payload?.sort !== undefined ? payload.sort : state.sort,
       };
     },
     reset: (state) => {

@@ -85,8 +85,7 @@ const AllSlots: React.FC = () => {
     };
   });
 
-  const handleDelete = async () => {
-    console.log(item._id);
+  const handleDelete = async (item) => {
     try {
       const res = await Delete({
         id: item?._id,
@@ -130,7 +129,7 @@ const AllSlots: React.FC = () => {
           render={(item) => (
             <Space size="middle">
               <Update item={item} roomNames={roomNames}></Update>
-              <h1 onClick={handleDelete}>Delete</h1>
+              <h1 onClick={() => handleDelete(item)}>Delete</h1>
             </Space>
           )}
         />

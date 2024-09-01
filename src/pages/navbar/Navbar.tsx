@@ -29,6 +29,9 @@ const Navbar = () => {
     const overlay = document.querySelector(".menu_overlay") as HTMLDivElement;
 
     const tl = gsap.timeline();
+    tl.to(overlay, {
+      display: "block",
+    });
     tl.from(
       overlay,
       {
@@ -56,6 +59,7 @@ const Navbar = () => {
       },
       "menu+=.3"
     );
+
     tl.pause();
 
     const handleOpen = () => {
@@ -83,6 +87,8 @@ const Navbar = () => {
       }
     });
   });
+
+  console.log(user?.current_user?.role);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -112,19 +118,19 @@ const Navbar = () => {
       ref={navRef}
       className={` ${
         nav
-          ? " backdrop-blur-md  shadow-inner shadow-slate-950 bg-[#FFFFFF]/10"
+          ? " shadow-inner shadow-slate-950 bg-[#FFFFFF]"
           : " bg-[transparent] "
-      } navBar w-[100%] transition-all z-[450] justify-between duration-700 fixed top-0 left-0 h-[15vh] `}
+      } navBar w-[100%]  transition-all z-[450] justify-between duration-700 fixed top-0 left-0 h-[15vh] `}
     >
       <div className=" nav_bar px-[4vw] items-center py-[2vw] absolute w-full h-full  flex justify-between">
         <div className="nav_logo">
           <Link to="/">
-            <h1 className=" text-[#FFFFFF] mix-blend-multiply">
+            <h1 className=" text-[#FFFFFF] mix-blend-difference">
               <PiXLogoLight className=" text-[#FFFFFF]" size={60} />
             </h1>
           </Link>
         </div>
-        <div className=" menu text-[#FFFFFF]  cursor-pointer z-[200]">
+        <div className=" menu text-[#FFFFFF] mix-blend-difference  cursor-pointer z-[200]">
           <h1
             ref={menuRef}
             className={`${
@@ -137,14 +143,14 @@ const Navbar = () => {
             ref={closeRef}
             className={`${
               !open ? "hidden" : "block"
-            }  transition-all text-[#0E0E0E] text-[1.5vw] z-[201]`}
+            }  transition-all  text-[1.5vw] z-[201]`}
           >
             close
           </h1>
         </div>
       </div>
-      <div className="  menu_overlay bg-[#FFFFFF] z-[199] overflow-hidden absolute w-full h-[65vh] top-[0%] right-0">
-        <div className="  sub_menu flex flex-col relative  h-[calc(100%-10vh)] left-[calc(100%-50%)]  w-[50%] pt-[4vw]">
+      <div className=" hidden menu_overlay bg-[#FFFFFF] z-[199] absolute w-full h-[65vh] top-0 right-0">
+        <div className="  sub_menu flex flex-col relative h-[calc(100%-10vh)] left-[calc(100%-55%)] w-[50%]  pt-[4vw]">
           <div className=" nav_menu">
             <h1 className=" first text-[4vw]">HOME</h1>
             <h1 className=" second text-[4vw]">HOME</h1>
@@ -193,10 +199,8 @@ const Navbar = () => {
               </div>
             ) : (
               <>
-                <div className=" flex  items-center justify-between profile">
-                  <Link to={`/my-bookings`}>
-                    <h1 className=" font-plainLight">My Bookings</h1>
-                  </Link>
+                <div className=" flex items-center justify-between profile">
+                  {item}
                   <ConfigProvider
                     theme={{
                       components: {
@@ -206,7 +210,10 @@ const Navbar = () => {
                       },
                     }}
                   >
-                    <Button className=" font-plainLight" onClick={handleLogout}>
+                    <Button
+                      className=" logout font-plainLight"
+                      onClick={handleLogout}
+                    >
                       LOGOUT
                     </Button>
                   </ConfigProvider>
@@ -221,22 +228,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-//   <div className="flex items-center justify-between profile">
-//   <Link to={`${user.current_user._id}`}>
-//     <h1 className="font-plainLight">My Bookings</h1>
-//   </Link>
-//   <ConfigProvider
-//     theme={{
-//       components: {
-//         Button: {
-//           colorPrimaryBorderHover: "#151515",
-//         },
-//       },
-//     }}
-//   >
-//     <Button className="font-plainLight" onClick={handleLogout}>
-//       LOGOUT
-//     </Button>
-//   </ConfigProvider>
-// </div>

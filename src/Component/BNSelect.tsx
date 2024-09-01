@@ -16,7 +16,7 @@ const BNSelect = ({ name, label, options, mode }) => {
             onChange={field.onChange}
             options={options}
           />
-          {error && <small style={{ color: "red" }}>{error.message}</small>}
+          {error && <span style={{ color: "red" }}>{error.message}</span>}
         </Form.Item>
       )}
     />

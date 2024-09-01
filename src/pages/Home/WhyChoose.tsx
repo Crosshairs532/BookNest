@@ -2,7 +2,7 @@ import vid from "../../assets/heroSection.mp4";
 
 const WhyChoose = () => {
   return (
-    <div className="  cursor-pointer relative min-h-screen my-4  rounded-2xl ">
+    <div className=" cursor-pointer relative lg:min-h-screen  lg:my-[2vw] mb-[15vw] rounded-2xl ">
       <h1 className=" w-max font-plainLight font-semibold py-4 text-[8vw] relative left-[15vw] ">
         <small className=" text-[3vw] absolute top-0 -left-[5vw] italic font-silkSerifRegular ">
           03

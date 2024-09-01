@@ -11,6 +11,7 @@ import BNForm from "../../Component/BNForm";
 import BNNumber from "../../Component/verifyToken/BNNumber";
 import BNSelect from "../../Component/BNSelect";
 import { toast } from "sonner";
+import BNInputIMG from "../../Component/BNInputIMG";
 
 const { Column } = Table;
 // [
@@ -148,8 +149,18 @@ const Update = ({ item }) => {
             />
           </div>
           <div className=" grid grid-cols-2">
-            <BNInput type="text" label="Image-1" name="img1" />
-            <BNInput type="text" label="Image-2" name="img2" />
+            <BNInputIMG
+              defaultVal={item?.images[0]}
+              type="text"
+              label="Image-1"
+              name="img1"
+            />
+            <BNInputIMG
+              defaultVal={item?.images[1]}
+              type="text"
+              label="Image-2"
+              name="img2"
+            />
           </div>
           <Button type="primary" htmlType="submit" block>
             Submit

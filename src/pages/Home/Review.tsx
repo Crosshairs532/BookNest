@@ -18,8 +18,8 @@ const Review = () => {
 
   return (
     <>
-      <div className="  min-h-[100vh] my-[50px] lg:my-[100px]">
-        <span className=" left-[calc(100%-20%)] relative right-0 how_cursor inline-block border-2 border-[#141414] m-0 w-max  h-max p-[4vw] rounded-full">
+      <div className=" border-2 border-red-500 overflow-x-hidden lg:min-h-[100vh] my-[50px] lg:my-[100px]">
+        <span className=" left-[calc(100%-20%)] relative right-0 how_cursor hidden lg:inline-block border-2 border-[#141414] m-0 w-max  h-max p-[4vw] rounded-full">
           <svg
             className="button__arrow rotate-[30deg] w-[8vw] h-[8vw] "
             viewBox="0 0 91 118"
@@ -32,7 +32,7 @@ const Review = () => {
           </svg>
         </span>
         <div className=" px-[4vw] ">
-          <h2 className=" w-max text-[8vw] 2 font-semibold relative left-[23vw] font-plainLight mb-8 text-[#151515] ">
+          <h2 className=" w-max text-[8vw] 2 font-semibold relative left-[23vw] font-plainLight pb-[7vw] text-[#151515] ">
             <small className=" text-[3vw] absolute top-0 -left-[5vw] italic font-silkSerifRegular ">
               05
             </small>
