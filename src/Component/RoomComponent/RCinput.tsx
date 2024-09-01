@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Form, Input } from "antd";
-import { useEffect } from "react";
 import { Controller, useFormContext, useWatch } from "react-hook-form";
 import { roomSelector } from "../../redux/features/room/room.slice";
 import { useAppSelector } from "../../redux/hook";
@@ -14,9 +13,8 @@ type TinputProp = {
 
 const RCinput = ({ type, label, name, bg }: TinputProp) => {
   const methods = useFormContext();
-
   const selector = useAppSelector(roomSelector);
-  console.log(methods);
+  // console.log(methods);
   return (
     <div style={{ marginBottom: "50px" }}>
       <Controller

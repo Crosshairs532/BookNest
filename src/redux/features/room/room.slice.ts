@@ -15,11 +15,17 @@ export const roomSlice = createSlice({
   initialState: initialValue,
   reducers: {
     setFilter: (state, { payload }) => {
-      state.name = payload ? payload?.name : "";
-      state.maxPrice = payload ? payload?.maxPrice : 10000;
-      state.minPrice = payload ? payload?.minPrice : 0;
-      state.capacity = payload ? payload?.capacity : 0;
-      state.sort = payload?.sort;
+      console.log({ ...state, ...payload });
+      //  state.name = payload?.name:""
+      //  state.maxPrice = payload?.maxPrice:10000
+      //  state.minPrice = payload?.minPrice:0
+      //  state.capacity = payload?.capacity:0
+      //  state.sort = payload?.sort:1;
+
+      return {
+        ...state,
+        ...payload,
+      };
     },
     reset: (state) => {
       state.name = initialValue.name;
