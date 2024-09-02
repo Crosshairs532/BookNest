@@ -66,18 +66,16 @@ const Footer = () => {
             </div>
             <div>
               <ul>
-                <li className=" pb-[2vw] font-semibold font-plainRegular text-[3vw] lg:text-[.9vw]">
-                  <Link to="/privacy&policy"></Link>
-                </li>
-                <li className=" tracking-tighter font-plainRegular text-[4vw] md:text-[1.9vw]  lg:text-[1.9vw] leading-none">
-                  Facebook
-                </li>
-                <li className=" tracking-tighter font-plainRegular text-[4vw] md:text-[1.9vw]  lg:text-[1.9vw] leading-none">
-                  Github
-                </li>
-                <li className=" tracking-tighter font-plainRegular text-[4vw] md:text-[1.9vw]  lg:text-[1.9vw] leading-none">
-                  Linkedin
-                </li>
+                <Link to="/privacy&policy">
+                  <li className=" tracking-tighter font-plainRegular text-[4vw] md:text-[1.9vw]  lg:text-[1.9vw] leading-none">
+                    PRIVACY & POLICY
+                  </li>
+                </Link>
+                <Link to="/terms&condition">
+                  <li className=" tracking-tighter font-plainRegular text-[4vw] md:text-[1.9vw]  lg:text-[1.9vw] leading-none">
+                    Terms & Condition
+                  </li>
+                </Link>
               </ul>
             </div>
           </div>

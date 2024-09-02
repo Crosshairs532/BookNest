@@ -18,10 +18,11 @@ import AllRooms from "../pages/AdminDashboard/AllRooms";
 import CreateSlot from "../pages/AdminDashboard/CreateSlot";
 import AllSlots from "../pages/AdminDashboard/AllSlots";
 import AllBooking from "../pages/AdminDashboard/AllBooking";
-import Payment1 from "../pages/Payment/payment1";
+
 import MyBooking from "../pages/MyBooking/MyBooking";
 import UserBooking from "../pages/MyBooking/UserBooking";
 import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
+import Terms from "../pages/Terms/Terms";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,14 @@ const router = createBrowserRouter([
       {
         path: "/booking-payment/:id",
         element: <Payment />,
+      },
+      {
+        path: "/privacy&policy",
+        element: <PrivacyPolicy />,
+      },
+      {
+        path: "/terms&condition",
+        element: <Terms />,
       },
     ],
   },
@@ -114,10 +123,6 @@ const router = createBrowserRouter([
         element: <AllBooking />,
       },
     ],
-  },
-  {
-    path: "/privacy&policy",
-    element: <PrivacyPolicy />,
   },
 ]);
 

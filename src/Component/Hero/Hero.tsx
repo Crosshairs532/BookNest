@@ -7,7 +7,7 @@ const Hero = () => {
   const [heroRef] = useOutletContext();
   const { heRef } = useContext(mainContext);
   return (
-    <div ref={heroRef} className=" relative  w-full h-full">
+    <div ref={heroRef && heroRef} className=" relative  w-full h-full">
       <div className=" over"></div>
       <video
         className=" w-full h-full object-cover"
@@ -44,7 +44,7 @@ const Hero = () => {
       </div>
       <div className=" space-y-[3.5vw] text-center Head absolute left-[50%] z-[400] -translate-y-[50%]  -translate-x-[50%] top-[50%] text-[#FFFCF1]">
         <h1
-          ref={heRef}
+          ref={heRef && heRef}
           className=" text-[5vw] text-left leading-none w-max font-plainLight headline"
         >
           Book Your Ideal <br />
