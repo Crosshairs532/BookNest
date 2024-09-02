@@ -27,7 +27,7 @@ const Contact = () => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.5 }}
-        className=" text-[1vw] font-plainLight mb-6 text-center text-white"
+        className=" text-[3vw] lg:text-[1vw] font-plainLight mb-6 text-center text-white"
       >
         We would love to hear from you! Please reach out with any questions,
         feedback, or inquiries.
