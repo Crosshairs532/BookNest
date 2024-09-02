@@ -93,6 +93,7 @@ const AllBooking: React.FC = () => {
   return (
     <>
       <Table
+        virtual={true}
         className=" font-plainLight"
         loading={isFetching}
         pagination={false}

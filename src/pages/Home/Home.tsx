@@ -7,11 +7,10 @@ import HowItWorks from "./HowItWorks";
 import Review from "./Review";
 
 const Home = () => {
-  const heroRef = useRef(null);
   return (
     <div>
       <div className=" h-[50vh] border-2 lg:h-[100vh]">
-        <Hero heroRef={heroRef}></Hero>
+        <Hero></Hero>
       </div>
       <div className=" min-h-[100vh] px-[4vw]">
         <Service />

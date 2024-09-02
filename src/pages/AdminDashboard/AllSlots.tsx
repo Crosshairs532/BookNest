@@ -102,7 +102,12 @@ const AllSlots: React.FC = () => {
 
   return (
     <>
-      <Table loading={isFetching} pagination={false} dataSource={datas}>
+      <Table
+        virtual={true}
+        loading={isFetching}
+        pagination={false}
+        dataSource={datas}
+      >
         <Column title="Room Name" dataIndex="RoomName" key="RoomName" />
         <Column title="Room No" dataIndex="RoomNo" key="RoomNo" />
         <Column title="Date" dataIndex="date" key="date" />

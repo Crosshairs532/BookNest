@@ -108,7 +108,7 @@ const FeaturedRoom = () => {
             Our Most Popular choices
           </p>
         </div>
-        <div className=" place-items-center grid mg:grid-cols-3 grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className=" place-items-center grid md:grid-cols-2 grid-cols-1 lg:grid-cols-4 gap-8">
           {rooms?.data?.map((room, idx) => (
             <ProductCard key={idx} room={room}></ProductCard>
           ))}

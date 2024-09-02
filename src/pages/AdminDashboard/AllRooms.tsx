@@ -47,7 +47,12 @@ const AllRooms: React.FC = () => {
 
   return (
     <>
-      <Table loading={isFetching} pagination={false} dataSource={datas}>
+      <Table
+        virtual={true}
+        loading={isFetching}
+        pagination={false}
+        dataSource={datas}
+      >
         <Column title="Room Name" dataIndex="RoomName" key="Room Name" />
         <Column title="Room N0" dataIndex="RoomN0" key="Room N0" />
         <Column title="Floor No" dataIndex="FloorNo" key="Floor No" />

@@ -9,13 +9,14 @@ const { Header, Content, Footer } = Layout;
 const AdminDashboard = () => {
   return (
     <div>
-      <Layout style={{ height: "100%" }}>
+      <Layout style={{ overflowX: "hidden", height: "100%" }}>
         <Siderbar></Siderbar>
         <Layout>
           <Header style={{ padding: 0 }} />
           <Content style={{ margin: "24px 16px 0" }}>
             <div
               style={{
+                width: "100%",
                 padding: 24,
                 minHeight: 360,
               }}
