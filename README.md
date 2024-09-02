@@ -80,16 +80,16 @@ This project provides a comprehensive solution for booking meeting rooms in co-w
 ### Installation Steps
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/your-username/meeting-room-booking-system.git
    ```
 
-````
-
 2. **Navigate to the project directory:**
-```javascript
-  cd meeting-room-booking-system
-````
+
+   ```javascript
+   cd meeting-room-booking-system
+   ```
 
 3. **Install dependencies:**
 
