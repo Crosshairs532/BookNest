@@ -120,7 +120,7 @@ const Navbar = () => {
       ref={navRef}
       className={` ${
         nav
-          ? ` shadow-inner shadow-slate-950 ${"bg-[#FFFFFF]"} `
+          ? ` shadow-inner shadow-slate-950 ${"bg-[#151515]"} `
           : " bg-[transparent] "
       } navBar w-[100%]  transition-all z-[450] justify-between duration-700 fixed top-0 left-0 h-[15vh] `}
     >
@@ -130,9 +130,9 @@ const Navbar = () => {
             <h1
               className={`${
                 location.pathname === "/" ? "text-[#FFFFFF]" : "text-[#0e0e0e]"
-              }  mix-blend-difference relative border-2 `}
+              }   relative border-2 `}
             >
-              <PiXLogoLight className=" mix-blend-difference md:text-[6vw] lg:text-[3.7vw] text-[10vw]" />
+              <PiXLogoLight className=" md:text-[6vw] lg:text-[3.7vw] text-[10vw]" />
             </h1>
           </Link>
         </div>
