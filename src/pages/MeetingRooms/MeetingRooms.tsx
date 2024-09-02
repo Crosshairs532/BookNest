@@ -12,7 +12,11 @@ const MeetingRooms = () => {
     useGetAllMeetingRoomsQuery(selector);
 
   if (isLoading || !data) {
-    return <h1>Loading....</h1>;
+    return (
+      <h1 className=" min-h-screen flex justify-center items-center">
+        Loading....
+      </h1>
+    );
   }
 
   if (isError) {

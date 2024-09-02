@@ -127,7 +127,9 @@ const App = () => {
         <mainContext.Provider value={value}>
           <ScrollToTop />
           <Navbar></Navbar>
-          <Outlet context={[heroRef]} />
+          <div className=" min-h-screen">
+            <Outlet context={[heroRef]} />
+          </div>
           <Footer />
         </mainContext.Provider>
       </div>

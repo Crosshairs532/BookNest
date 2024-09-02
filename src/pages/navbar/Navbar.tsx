@@ -139,7 +139,7 @@ const Navbar = () => {
         <div
           className={` menu ${
             location.pathname === "/" ? "text-[#FFFFFF]" : "text-[#0e0e0e]"
-          }   mix-blend-difference  cursor-pointer z-[200]`}
+          }   cursor-pointer z-[200]`}
         >
           <h1
             ref={menuRef}
@@ -153,7 +153,7 @@ const Navbar = () => {
             ref={closeRef}
             className={`${
               !open ? "hidden" : "block"
-            }  transition-all  text-[1.5vw] z-[201]`}
+            }  transition-all text-[4vw] lg:text-[1.5vw] z-[201]`}
           >
             close
           </h1>
@@ -193,7 +193,7 @@ const Navbar = () => {
                   onClick={() => {
                     navigate("/login", { state: location.pathname });
                   }}
-                  className=" text-[1.4vw] font-plainLight"
+                  className=" text-[4vw] lg:text-[1.5vw] font-plainLight"
                 >
                   LOGIN
                 </h1>
@@ -202,7 +202,7 @@ const Navbar = () => {
                   onClick={() => {
                     navigate("/registration", { state: location.pathname });
                   }}
-                  className="text-[1.4vw]  font-plainLight"
+                  className="text-[4vw] lg:text-[1.5vw] font-plainLight"
                 >
                   CREATE ACCOUNT
                 </h1>

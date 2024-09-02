@@ -52,7 +52,7 @@ const Review = () => {
         >
           {reviews?.map((review, idx) => (
             <SwiperSlide key={idx}>
-              <div className=" relative w-full border-[10px] ">
+              <div className=" relative w-full ">
                 <div className=" transition-all z-[10] bg-gradient-to-t from-[#141414] to-transparent absolute w-full h-full slide_overlay">
                   <span className="text-[#FFFCF1] flex flex-col justify-between relative w-full h-full z-[11] opacity-0">
                     <h1 className=" leading-none m-0 p-0 text-[2vw] font-plainRegular">

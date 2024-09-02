@@ -18,7 +18,10 @@ const HowItWorks = () => {
   );
 
   return (
-    <div className=" relative" ref={HowItWorksRef}>
+    <div
+      className=" border-2 h-[40vh] md:h-[50vh] lg:min-h-[100vh] border-red-500 relative"
+      ref={HowItWorksRef}
+    >
       <span className=" how_cursor border-2 border-[#141414] m-0 w-max lg:inline-block hidden h-max p-[4vw] rounded-full">
         <svg
           className="button__arrow -rotate-[45deg] w-[8vw] h-[8vw] "
@@ -32,40 +35,40 @@ const HowItWorks = () => {
         </svg>
       </span>
 
-      <h2 className="  w-max mt-[5vw] text-[8vw] 2 font-semibold relative left-[23vw] font-plainLight mb-8 text-[#151515] ">
-        <small className=" text-[3vw] absolute top-0 -left-[5vw] italic font-silkSerifRegular ">
+      <h2 className=" pt-[4vw] md:p-0 lg:p-0 w-max mt-[5vw] text-[8vw]  font-semibold relative left-[23vw] font-plainLight mb-8 text-[#151515] ">
+        <small className=" pt-[4vw] md:p-0 lg:p-0 text-[3vw] absolute top-0 -left-[5vw] italic font-silkSerifRegular ">
           04
         </small>
         How It Works.
       </h2>
 
-      <div className=" relative  space-y-2 w-max left-[40vw]">
-        <div className=" work room">
+      <div className=" relative md:space-y-2 space-y-5 lg:space-y-2  w-max md:left-[40vw] left-[20vw] lg:left-[40vw]">
+        <div className=" work  room">
           <div className=" hoverlay transition-all flex justify-center items-center top-0  left-0 absolute bg-[#FFFFFF] w-[6vw] h-[6vw] rounded-full">
             <img className=" w-[3vw] h-[3v2]" src={home1} alt="" />
           </div>
-          <h1 className=" text-[1.7vw]">
+          <h1 className="border-b-[0.6px] border-[#141414]  md:text-[2vw] text-[4vw]  lg:text-[1.7vw]">
             <span>1.</span>
             Select
             <span className=" w-[10vw] rounded-full bg-black h-[6vw]"></span>
             Rooms that suits your preference
           </h1>
         </div>
-        <div className=" work data">
+        <div className=" work  data">
           <div className=" hoverlay transition-all flex justify-center items-center top-0 left-0 absolute w-[6vw] h-[6vw] bg-[black] rounded-full">
             <span className=" text-[#FFFCF1] text-[.7vw] w-[50%]">{date}</span>
           </div>
-          <h1 className=" text-[1.7vw]">
+          <h1 className=" md:text-[2vw]  border-b-[0.6px] border-[#141414] text-[4vw]  lg:text-[1.7vw]">
             <span>2.</span>
             Choose Date <span className="  italic font-silkSerifLight">&</span>
             Time
           </h1>
         </div>
-        <div className=" work confirm">
+        <div className=" work  confirm">
           <div className=" hoverlay transition-all flex justify-center items-center top-0  left-0 absolute bg-[#FFFFFF] w-[6vw] h-[6vw] rounded-full">
             <img className=" w-[3vw] h-[3v2]" src={confirm} alt="" />
           </div>
-          <h1 className=" text-[1.7vw]">
+          <h1 className=" border-b-[0.6px] border-[#141414] md:text-[2vw] text-[4vw] lg:text-[1.7vw]">
             <span>3.</span>
             Confirm Booking
           </h1>
