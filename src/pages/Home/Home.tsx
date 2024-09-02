@@ -9,7 +9,7 @@ import Review from "./Review";
 const Home = () => {
   return (
     <div>
-      <div className=" h-[50vh] border-2 lg:h-[100vh]">
+      <div className=" h-[50vh] lg:min-h-[100vh]">
         <Hero></Hero>
       </div>
       <div className=" min-h-[100vh] px-[4vw]">

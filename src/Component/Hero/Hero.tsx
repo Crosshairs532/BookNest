@@ -16,7 +16,7 @@ const Hero = () => {
         loop
         src={hero2}
       ></video>
-      <div className=" BannerText  text-[#FFFCF1] bottom-0 m-0 p-0 z-[400] absolute mx-[2%] ">
+      <div className=" BannerText  text-[#FFFCF1] bottom-0 m-0 p-0 z-[600] absolute mx-[2%] ">
         <h1 className=" text-[15vw] font-extrabold text-center font-proBook whitespace-nowrap inline-block leading-none">
           B
         </h1>

@@ -13,7 +13,7 @@ export const MySiderbar = () => {
   const items = [
     {
       key: "all-booking",
-      label: <NavLink to={"/my-bookings"}>My Bokings</NavLink>,
+      label: <NavLink to={"/my-bookings"}>My Bookings</NavLink>,
     },
   ];
   return (

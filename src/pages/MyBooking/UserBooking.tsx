@@ -25,7 +25,12 @@ const UserBooking = () => {
 
   return (
     <>
-      <Table loading={isFetching} pagination={false} dataSource={datas}>
+      <Table
+        virtual={true}
+        loading={isFetching}
+        pagination={false}
+        dataSource={datas}
+      >
         <Column title="Room Name" dataIndex="RoomName" key="RoomName" />
         <Column title="Date" dataIndex="date" key="date" />
         <Column title="Start Time" dataIndex="startTime" key="startTime" />
