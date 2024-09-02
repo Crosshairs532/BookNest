@@ -10,7 +10,7 @@ const userRole = {
 };
 export const Siderbar = () => {
   const dispatch = useDispatch();
-  const role = "faculty";
+
   const items = [
     {
       key: "room-management",

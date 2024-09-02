@@ -34,6 +34,9 @@ const Login = () => {
       console.log("before login");
       const res = await login(loginInfo).unwrap();
       console.log(res);
+      if (!res.success) {
+        toast.error(res.message);
+      }
       const verify = verifyToken(res.token);
       if (verify) {
         const userInfo = {

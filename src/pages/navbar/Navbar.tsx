@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { FaCircleUser } from "react-icons/fa6";
 
 import { PiXLogoLight } from "react-icons/pi";
 import gsap from "gsap";
@@ -20,6 +21,7 @@ const Navbar = () => {
   const closeRef = useRef<HTMLDivElement>(null);
   const user = useSelector(loginState);
   const navigate = useNavigate();
+  console.log(location.pathname);
   const dispatch = useAppDispatch();
   let item;
   useGSAP(() => {
@@ -107,7 +109,7 @@ const Navbar = () => {
       break;
     case "user":
       item = (
-        <Link to={`/${user.current_user._id}/my-bookings`}>
+        <Link to={`/my-bookings`}>
           <h1 className=" font-plainLight">My Bookings</h1>;
         </Link>
       );
@@ -118,26 +120,34 @@ const Navbar = () => {
       ref={navRef}
       className={` ${
         nav
-          ? " shadow-inner shadow-slate-950 bg-[#FFFFFF]"
+          ? ` shadow-inner shadow-slate-950 ${"bg-[#FFFFFF]"} `
           : " bg-[transparent] "
       } navBar w-[100%]  transition-all z-[450] justify-between duration-700 fixed top-0 left-0 h-[15vh] `}
     >
       <div className=" nav_bar px-[4vw] items-center py-[2vw] absolute w-full h-full  flex justify-between">
-        <div className="nav_logo">
+        <div className={`nav_logo relative`}>
           <Link to="/">
-            <h1 className=" text-[#FFFFFF] mix-blend-difference">
-              <PiXLogoLight className=" text-[#FFFFFF]" size={60} />
+            <h1
+              className={`${
+                location.pathname === "/" ? "text-[#FFFFFF]" : "text-[#0e0e0e]"
+              }  mix-blend-difference relative`}
+            >
+              <PiXLogoLight className=" mix-blend-difference" size={60} />
             </h1>
           </Link>
         </div>
-        <div className=" menu text-[#FFFFFF] mix-blend-difference  cursor-pointer z-[200]">
+        <div
+          className={` menu ${
+            location.pathname === "/" ? "text-[#FFFFFF]" : "text-[#0e0e0e]"
+          }   mix-blend-difference  cursor-pointer z-[200]`}
+        >
           <h1
             ref={menuRef}
             className={`${
               open ? "hidden" : "block"
-            } transition-all text-[1.5vw] z-[201]`}
+            } transition-all  text-[1.5vw] z-[201]`}
           >
-            Menu
+            {user?.current_user?.email ? <FaCircleUser size={30} /> : "Menu"}
           </h1>
           <h1
             ref={closeRef}

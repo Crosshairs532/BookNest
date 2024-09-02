@@ -1,4 +1,3 @@
-import React from "react";
 import { Form, Input, InputNumber, Button, Select, Typography } from "antd";
 import BNInput from "../../Component/BNInput";
 import BNForm from "../../Component/BNForm";

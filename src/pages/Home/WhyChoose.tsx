@@ -20,7 +20,7 @@ const WhyChoose = () => {
           ></video>
           <div className=" group-hover:bg-black/50 transition-all duration-300 w-full h-full  bg-black/70 blur-2xl absolute left-0 top-0"></div>
           <h1 className=" absolute left-4 bottom-6 text-3xl font-semibold text-[#e5e5e5] ">
-            Smooth Performance with <br /> Clicky Sound
+            Seamless Booking Experience
           </h1>
         </div>
 
@@ -33,7 +33,7 @@ const WhyChoose = () => {
                 alt=""
               />
               <h1 className=" text-[#e5e5e5]  text-3xl font-semibold absolute bottom-5 left-4">
-                Switch Options
+                Secure Transactions
               </h1>
             </div>
             <div className=" relative group overflow-hidden rounded-2xl w-full h-[150px] lg:w-[300px] lg:h-[250px] bg-blue-500">
@@ -43,7 +43,7 @@ const WhyChoose = () => {
                 alt=""
               />
               <h1 className=" text-[#e5e5e5] text-3xl font-semibold absolute bottom-5 left-4">
-                Stylish Design
+                Flexible Scheduling
               </h1>
             </div>
           </div>
@@ -54,7 +54,7 @@ const WhyChoose = () => {
               alt=""
             />
             <h1 className=" text-[#e5e5e5] text-3xl font-semibold absolute bottom-5 left-4">
-              key-caps Swappable
+              24/7 support
             </h1>
           </div>
         </div>

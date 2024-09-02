@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { mainContext } from "../../App";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const { footerRef } = useContext(mainContext);
@@ -26,13 +27,27 @@ const Footer = () => {
                   Socials
                 </li>
                 <li className=" tracking-tighter font-plainRegular text-[4vw] md:text-[1.9vw]  lg:text-[1.9vw] leading-none">
-                  Facebook
+                  <a
+                    target="_blank"
+                    href="https://www.facebook.com/zidan.tanzim"
+                  >
+                    Facebook
+                  </a>
                 </li>
                 <li className=" tracking-tighter font-plainRegular text-[4vw] md:text-[1.9vw]  lg:text-[1.9vw] leading-none">
+                  <a
+                    href="https://github.com/Crosshairs532"
+                    target="_blank"
+                  ></a>
                   Github
                 </li>
                 <li className=" tracking-tighter font-plainRegular text-[4vw] md:text-[1.9vw]  lg:text-[1.9vw] leading-none">
-                  Linkedin
+                  <a
+                    target="_blank"
+                    href="https://www.linkedin.com/in/md-samsul-arefin/"
+                  >
+                    Linkedin
+                  </a>
                 </li>
               </ul>
             </div>
@@ -52,7 +67,7 @@ const Footer = () => {
             <div>
               <ul>
                 <li className=" pb-[2vw] font-semibold font-plainRegular text-[3vw] lg:text-[.9vw]">
-                  Socials
+                  <Link to="/privacy&policy"></Link>
                 </li>
                 <li className=" tracking-tighter font-plainRegular text-[4vw] md:text-[1.9vw]  lg:text-[1.9vw] leading-none">
                   Facebook

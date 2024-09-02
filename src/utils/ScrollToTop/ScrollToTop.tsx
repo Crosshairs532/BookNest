@@ -27,7 +27,7 @@ const ScrollToTop = () => {
   };
   return (
     <div>
-      {/* <div
+      <div
         onClick={scrollToTop}
         className={` ${
           showButton ? ` opacity-100` : " opacity-0"
@@ -50,7 +50,7 @@ const ScrollToTop = () => {
             ></path>
           </svg>
         </span>
-      </div> */}
+      </div>
     </div>
   );
 };

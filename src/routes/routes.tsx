@@ -21,6 +21,7 @@ import AllBooking from "../pages/AdminDashboard/AllBooking";
 import Payment1 from "../pages/Payment/payment1";
 import MyBooking from "../pages/MyBooking/MyBooking";
 import UserBooking from "../pages/MyBooking/UserBooking";
+import PrivacyPolicy from "../pages/PrivacyPolicy/PrivacyPolicy";
 
 const router = createBrowserRouter([
   {
@@ -46,15 +47,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/meeting-rooms/details/:id",
-        element: (
-          <Protected role="user">
-            <RoomDetails />
-          </Protected>
-        ),
+        element: <RoomDetails />,
       },
       {
         path: "/booking/:roomId",
-        element: <BookingForm />,
+        element: (
+          <Protected role="user">
+            <BookingForm />
+          </Protected>
+        ),
       },
       {
         path: "/booking-payment/:id",
@@ -113,6 +114,10 @@ const router = createBrowserRouter([
         element: <AllBooking />,
       },
     ],
+  },
+  {
+    path: "/privacy&policy",
+    element: <PrivacyPolicy />,
   },
 ]);
 

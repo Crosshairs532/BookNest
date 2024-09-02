@@ -48,6 +48,17 @@ export const slotAPI = baseAPi.injectEndpoints({
       },
       invalidatesTags: ["slots"],
     }),
+    createSlot: builder.mutation({
+      query: (data) => {
+        console.log(data);
+        return {
+          url: "/slots",
+          method: "POST",
+          body: data,
+        };
+      },
+      invalidatesTags: ["slots"],
+    }),
   }),
 });
 
@@ -55,4 +66,5 @@ export const {
   useGetAllAvailableSlotsQuery,
   useUpdateSlotMutation,
   useDeleteSlotMutation,
+  useCreateSlotMutation,
 } = slotAPI;

@@ -37,12 +37,19 @@ const BookingForm = () => {
   //   .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
 
   const dateFormated = moment
-    .utc(moment(new Date(disable)).format("YYYY-MM-D") + " 00:00") // Set time to 00:00
-    .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
+    .utc(
+      moment
+        .utc(moment(new Date(disable)).format("YYYY-MM-D") + " 00:00") // Set time to 00:00
+        .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]")
+    )
+    .subtract(6, "hours")
+    .format("YYYY-MM-DDTHH:mm:ss.SSS[+00:00]");
   const { data: slots } = useGetAllAvailableSlotsQuery(
     { roomId: roomId, date: dateFormated },
     { skip: !disable }
   );
+
+  console.log({ dateFormated, roomId });
 
   // console.log({
   //   disable: !disable,

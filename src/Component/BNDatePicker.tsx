@@ -23,15 +23,17 @@ const BNDatePicker = ({ layout, name, label, setDisable }: TDatePicker) => {
 
   return (
     <Controller
+      rules={{ required: "This field is Required" }}
       name={name}
       control={control}
-      render={({ field }) => (
+      render={({ field, fieldState: { error } }) => (
         <Form.Item layout={layout} htmlFor={name} label={label}>
           <DatePicker
             style={{ width: "100%" }}
             {...field}
             onChange={field.onChange}
           />
+          {error && <span className=" text-red-500">{error?.message}</span>}
         </Form.Item>
       )}
     />
