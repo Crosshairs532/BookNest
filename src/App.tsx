@@ -108,7 +108,8 @@ const App = () => {
     },
     {
       scope: mainRef,
-    }
+    },
+    []
   );
 
   const value = { footerRef, heRef, serviceRef };

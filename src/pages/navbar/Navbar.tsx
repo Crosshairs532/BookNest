@@ -130,9 +130,9 @@ const Navbar = () => {
             <h1
               className={`${
                 location.pathname === "/" ? "text-[#FFFFFF]" : "text-[#0e0e0e]"
-              }  mix-blend-difference relative`}
+              }  mix-blend-difference relative border-2 `}
             >
-              <PiXLogoLight className=" mix-blend-difference" size={60} />
+              <PiXLogoLight className=" mix-blend-difference md:text-[6vw] lg:text-[3.7vw] text-[10vw]" />
             </h1>
           </Link>
         </div>
@@ -145,7 +145,7 @@ const Navbar = () => {
             ref={menuRef}
             className={`${
               open ? "hidden" : "block"
-            } transition-all  text-[1.5vw] z-[201]`}
+            } transition-all  md:text-[4vw] lg:text-[1.5vw] text-[6.1vw] leading-none z-[201]`}
           >
             {user?.current_user?.email ? <FaCircleUser size={30} /> : "Menu"}
           </h1>
@@ -159,8 +159,8 @@ const Navbar = () => {
           </h1>
         </div>
       </div>
-      <div className=" hidden menu_overlay bg-[#FFFFFF] z-[199] absolute w-full h-[65vh] top-0 right-0">
-        <div className="  sub_menu flex flex-col relative h-[calc(100%-10vh)] left-[calc(100%-55%)] w-[50%]  pt-[4vw]">
+      <div className=" hidden  menu_overlay bg-[#FFFFFF] z-[199] absolute w-full h-[100vh] lg:h-[65vh] md:h-[35vh] top-0 right-0">
+        <div className=" sub_menu flex flex-col lg:left-[calc(100%-55%)] left-[50%] top-[40%] lg:top-[0%] -translate-x-[50%] -translate-y-[40%] lg:-translate-x-0 lg:-translate-y-[0%] justify-around md:justify-between lg:justify-normal md:mt-[2vw] relative h-[50%] lg:h-[calc(100%-10vh)] w-[80%] md:[50%] lg:w-[50%] md:pt-[6vw] lg:pt-[4vw]">
           <div className=" nav_menu">
             <h1 className=" first text-[4vw]">HOME</h1>
             <h1 className=" second text-[4vw]">HOME</h1>
