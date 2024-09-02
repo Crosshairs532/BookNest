@@ -19,24 +19,20 @@ const AllBooking: React.FC = () => {
   //   const [value, setValue] = useState(1);
 
   //   Room Name, User Name, Date & Time, Status (Confirmed/Unconfirmed).
-  const {
-    data: bookings,
-
-    isFetching,
-  } = useGetAllBookingQuery(undefined);
+  const { data: bookings, isFetching } = useGetAllBookingQuery(undefined);
   const [Delete] = useDeleteBookingMutation();
   const [Update] = useUpdateBookingMutation();
 
   console.log(bookings);
   const datas = bookings?.data
-    ?.filter((book) => !book.isDeleted)
+    ?.filter((book) => !book?.isDeleted)
     ?.map((booking) => {
       console.log(booking.isConfirmed);
 
       return {
         _id: booking._id,
-        RoomName: booking?.room.name,
-        userName: booking?.user.name,
+        RoomName: booking?.room?.name,
+        userName: booking?.user?.name,
         date: booking?.date,
         status: booking?.isConfirmed,
       };
@@ -73,10 +69,10 @@ const AllBooking: React.FC = () => {
       }
 
       if (res.error) {
-        toast.error(res.error?.data?.message);
+        toast.error(res?.error?.data?.message);
       }
     } catch (err) {
-      toast.error(err.message);
+      toast.error(err?.message);
     }
   };
   const handleReject = async (item) => {
@@ -87,10 +83,10 @@ const AllBooking: React.FC = () => {
         toast.info("Booking rejected");
       }
       if (res.error) {
-        toast.error(res.error?.data?.message);
+        toast.error(res?.error?.data?.message);
       }
     } catch (err) {
-      toast.error(err.message);
+      toast.error(err?.message);
     }
   };
 

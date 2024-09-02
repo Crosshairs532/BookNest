@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { mainContext } from "../../App";
 const Hero = () => {
   const [heroRef] = useOutletContext();
-  // const { heRef } = useContext(mainContext);
+  const { heRef } = useContext(mainContext);
   return (
     <div ref={heroRef} className=" relative border-2 w-full h-full">
       <div className=" over"></div>
@@ -42,18 +42,22 @@ const Hero = () => {
           T
         </h1>
       </div>
-      <div className=" space-y-[1.2vw] text-center Head absolute left-[50%] z-[400] -translate-y-[50%]  -translate-x-[50%] top-[50%] text-[#FFFCF1]">
+      <div className=" space-y-[3.5vw] text-center Head absolute left-[50%] z-[400] -translate-y-[50%]  -translate-x-[50%] top-[50%] text-[#FFFCF1]">
         <h1
-          //  ref={heRef}
-          className=" text-[2vw] font-plainLight headline"
+          ref={heRef}
+          className=" text-[5vw] text-left leading-none w-max font-plainLight headline"
         >
-          Book Your Ideal Meeting Room with Ease.
+          Book Your Ideal <br />
+          <span className=" mix-blend-difference font-proBook font-bold text-[] ">
+            Meeting Room
+          </span>{" "}
+          with Ease.
         </h1>
-        <h6 className=" font-silkSerifRegular subHeadline">
+        <h6 className=" lg:text-[2.5vw] pb-[1vw] leading-none text-[3.5vw] font-silkSerifRegular subHeadline">
           Efficient, hassle-free room booking for all your meeting needs
         </h6>
         <Link to="/meeting-rooms">
-          <button className=" bg-[#151515] hover:scale-x-90 transition-all rounded-full px-[1.5vw] py-[1vw] font-plainLight">
+          <button className=" bg-[#151515] lg:text-[1.5vw] md:text-[2vw] text-[2.8vw] hover:scale-x-90 transition-all rounded-full px-[1.5vw] py-[1vw] font-plainLight">
             Book Now
           </button>
         </Link>

@@ -5,7 +5,7 @@ export const authApi = baseAPi.injectEndpoints({
     getAllMeetingRooms: builder.query({
       query: (data) => {
         return {
-          url: "/rooms",
+          url: `/rooms`,
           method: "GET",
           params: data,
         };
@@ -20,6 +20,7 @@ export const authApi = baseAPi.injectEndpoints({
           method: "GET",
         };
       },
+      providesTags: ["room"],
     }),
     createRoom: builder.mutation({
       query: (data) => {

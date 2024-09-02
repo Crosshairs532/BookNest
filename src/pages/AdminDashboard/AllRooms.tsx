@@ -21,12 +21,14 @@ const { Column } = Table;
 //   ]
 
 const AllRooms: React.FC = () => {
-  const [value, setValue] = useState(1);
-  const { data, isLoading, isFetching } = useGetAllMeetingRoomsQuery(undefined);
+  const [value, setValue] = useState({ page: 0, size: 2 });
+  const { data: AllRoom } = useGetAllMeetingRoomsQuery(undefined);
+  const { data, isLoading, isFetching } = useGetAllMeetingRoomsQuery(value);
   const [Delete] = useDeleteRoomMutation();
   if (isLoading) {
     return <h1>loading...</h1>;
   }
+  console.log(AllRoom);
   const datas = data?.data
     ?.filter((item) => !item.isDeleted)
     ?.map((item, idx) => ({
@@ -41,7 +43,7 @@ const AllRooms: React.FC = () => {
       amenities: item.amenities,
     }));
 
-  //   console.log(datas);
+  console.log(datas);
 
   return (
     <>
@@ -82,6 +84,12 @@ const AllRooms: React.FC = () => {
           )}
         />
       </Table>
+      <Pagination
+        onChange={(page, size) => setValue({ page: page - 1, size: size })}
+        defaultCurrent={1}
+        pageSize={2}
+        total={AllRoom?.data.length}
+      ></Pagination>
     </>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Modal, Space, Table } from "antd";
+import { Button, Modal, Pagination, Space, Table } from "antd";
 import {
   useDeleteRoomMutation,
   useGetAllMeetingRoomsQuery,
@@ -33,15 +33,14 @@ const { Column } = Table;
 //   ]
 
 const AllSlots: React.FC = () => {
-  const [value, setValue] = useState(1);
-  const { data, isLoading, isFetching } =
-    useGetAllAvailableSlotsQuery(undefined);
+  const [value, setValue] = useState({ page: 0, size: 2 });
+  const { data: allSlot } = useGetAllAvailableSlotsQuery(undefined);
+  const { data, isLoading, isFetching } = useGetAllAvailableSlotsQuery(value);
   const { data: rooms } = useGetAllMeetingRoomsQuery(undefined, {
     skip: isLoading,
   });
   const [Delete] = useDeleteSlotMutation();
-
-  console.log(data, rooms);
+  console.log(data);
   if (isLoading || !data || !rooms) {
     return <h1>loading...</h1>;
   }
@@ -114,7 +113,7 @@ const AllSlots: React.FC = () => {
           dataIndex="isBooked"
           key="isBooked"
           render={(item) => {
-            console.log(item);
+            // console.log(item);
             return (
               <h1 className={`${item ? " text-[green]" : " text-blue-500"}`}>
                 {item ? "  Booked" : "Pending"}
@@ -134,6 +133,12 @@ const AllSlots: React.FC = () => {
           )}
         />
       </Table>
+      <Pagination
+        onChange={(page, size) => setValue({ page: page - 1, size: size })}
+        defaultCurrent={1}
+        pageSize={2}
+        total={allSlot?.data.length}
+      ></Pagination>
     </>
   );
 };
@@ -142,7 +147,7 @@ const Update = ({ item, roomNames }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [startTime, setStartTime] = useState("");
 
-  console.log(item);
+  // console.log(item);
   const [update] = useUpdateSlotMutation();
   const showModal = () => {
     setIsModalOpen(true);
@@ -151,7 +156,7 @@ const Update = ({ item, roomNames }) => {
     setIsModalOpen(false);
   };
 
-  console.log({ item, roomNames });
+  // console.log({ item, roomNames });
 
   const startT = Number(startTime?.split(":")[0]);
 
@@ -181,7 +186,7 @@ const Update = ({ item, roomNames }) => {
     console.log(udata.date);
     const localDate = moment(udata.date.$d); // Your local date
     const utcDate = localDate.utc().format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
-    console.log(utcDate); // Outputs the UTC date and time
+    // console.log(utcDate); // Outputs the UTC date and time
 
     const updatedSlotData = {
       date: utcDate,
@@ -194,7 +199,7 @@ const Update = ({ item, roomNames }) => {
       isBooked: false,
     };
 
-    console.log({ updatedSlotData, udata });
+    // console.log({ updatedSlotData, udata });
 
     try {
       const res = await update({ id: item._id, data: updatedSlotData });
