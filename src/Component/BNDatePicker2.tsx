@@ -1,8 +1,19 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { DatePicker, Form } from "antd";
-import moment from "moment";
 import { Controller } from "react-hook-form";
 
-const BNDatePicker2 = ({ name, label, defaultValue }) => {
+const BNDatePicker2 = ({
+  name,
+  label,
+  defaultValue,
+  layout,
+}: {
+  name: any;
+  label: any;
+  defaultValue: any;
+  layout?: any;
+}) => {
+  console.log(layout, defaultValue);
   return (
     <div style={{ marginBottom: "20px" }}>
       <Controller

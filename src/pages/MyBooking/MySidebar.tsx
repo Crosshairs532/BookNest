@@ -8,12 +8,14 @@ const userRole = {
   FACULTY: "faculty",
   STUDENT: "student",
 };
+console.log(userRole);
 export const MySiderbar = () => {
   const role = "user";
+  console.log(role);
   const items = [
     {
       key: "all-booking",
-      label: <NavLink to={"/my-bookings"}>My Bookings</NavLink>,
+      label: <NavLink to={"/my-bookings"}>My Bokings</NavLink>,
     },
   ];
   return (

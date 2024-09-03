@@ -12,13 +12,14 @@ import RCinput from "../../Component/RoomComponent/RCinput";
 import { useEffect } from "react";
 import Filter from "../../utils/Filter";
 
-const MRSide = ({ flex }) => {
+const MRSide = ({ flex }: any) => {
   const defaultValue = {
     roomName: "",
     maxPrice: 10000,
     minPrice: 0,
     capacity: 0,
   };
+  console.log(defaultValue);
   const selector = useAppSelector(roomSelector);
   const dispatch = useAppDispatch();
 
@@ -28,7 +29,7 @@ const MRSide = ({ flex }) => {
     return () => {};
   }, [selector]);
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: any) => {
     console.log(data);
     const filter = {
       name: data.name,

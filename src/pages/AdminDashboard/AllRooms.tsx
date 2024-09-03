@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from "react";
 import { Button, Modal, Pagination, Space, Table } from "antd";
 import {
@@ -6,12 +7,13 @@ import {
   useUpdateMutation,
 } from "../../redux/features/room/room.api";
 import BNInput from "../../Component/BNInput";
-import { Form } from "react-router-dom";
+// import { Form } from "react-router-dom";
 import BNForm from "../../Component/BNForm";
 import BNNumber from "../../Component/verifyToken/BNNumber";
 import BNSelect from "../../Component/BNSelect";
 import { toast } from "sonner";
 import BNInputIMG from "../../Component/BNInputIMG";
+import { er } from "./AllBooking";
 
 const { Column } = Table;
 // [
@@ -30,8 +32,8 @@ const AllRooms: React.FC = () => {
   }
   console.log(AllRoom);
   const datas = data?.data
-    ?.filter((item) => !item.isDeleted)
-    ?.map((item, idx) => ({
+    ?.filter((item: any) => !item.isDeleted)
+    ?.map((item: any, idx: number) => ({
       _id: item._id,
       key: idx,
       RoomN0: item.roomNo,
@@ -78,7 +80,7 @@ const AllRooms: React.FC = () => {
                     });
                     console.log(res);
                   } catch (err) {
-                    toast.error(err?.message);
+                    toast.error((err as er)?.message);
                   }
                 }}
                 className=""
@@ -99,7 +101,7 @@ const AllRooms: React.FC = () => {
   );
 };
 
-const Update = ({ item }) => {
+const Update = ({ item }: any) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [update] = useUpdateMutation();
   const showModal = () => {
@@ -121,7 +123,7 @@ const Update = ({ item }) => {
     amenities: item?.amenities,
   };
   console.log(item);
-  let optionsData = newItem1?.amenities?.map((am) => {
+  let optionsData = newItem1?.amenities?.map((am: any) => {
     return {
       label: am,
       value: am,
@@ -129,7 +131,7 @@ const Update = ({ item }) => {
   });
 
   console.log(optionsData);
-  const onSubmit = (udata) => {
+  const onSubmit = (udata: any) => {
     update({ id: item._id, data: udata });
   };
 

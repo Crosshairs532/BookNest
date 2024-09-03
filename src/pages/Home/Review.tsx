@@ -6,9 +6,10 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
 import { FreeMode } from "swiper/modules";
+import { TReview } from "../../Types";
 
 const Review = () => {
-  const [reviews, setReviews] = useState(null);
+  const [reviews, setReviews] = useState<TReview[] | null>(null);
 
   useEffect(() => {
     fetch("/review.json")
@@ -18,7 +19,7 @@ const Review = () => {
 
   return (
     <>
-      <div className=" border-2 border-red-500 overflow-x-hidden lg:min-h-[100vh] my-[50px] lg:my-[100px]">
+      <div className=" overflow-x-hidden lg:min-h-[100vh] my-[50px] lg:my-[100px]">
         <span className=" left-[calc(100%-20%)] relative right-0 how_cursor hidden lg:inline-block border-2 border-[#141414] m-0 w-max  h-max p-[4vw] rounded-full">
           <svg
             className="button__arrow rotate-[30deg] w-[8vw] h-[8vw] "
@@ -50,7 +51,7 @@ const Review = () => {
           modules={[FreeMode]}
           className="mySwiper"
         >
-          {reviews?.map((review, idx) => (
+          {reviews?.map((review: any, idx: number) => (
             <SwiperSlide key={idx}>
               <div className=" relative w-full ">
                 <div className=" transition-all z-[10] bg-gradient-to-t from-[#141414] to-transparent absolute w-full h-full slide_overlay">

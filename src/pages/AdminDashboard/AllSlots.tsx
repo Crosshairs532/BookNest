@@ -1,10 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from "react";
 import { Button, Modal, Pagination, Space, Table } from "antd";
-import {
-  useDeleteRoomMutation,
-  useGetAllMeetingRoomsQuery,
-  useUpdateMutation,
-} from "../../redux/features/room/room.api";
+import { useGetAllMeetingRoomsQuery } from "../../redux/features/room/room.api";
 
 import BNForm from "../../Component/BNForm";
 
@@ -19,11 +16,12 @@ import moment from "moment";
 import BNTimePicker from "../../Component/BNTimePicker";
 import { TRoom } from "../../Types";
 import BNDatePicker2 from "../../Component/BNDatePicker2";
-import BNInput from "../../Component/BNInput";
+// import BNInput from "../../Component/BNInput";
 import BNSelect from "../../Component/BNSelect";
-import BNNumber from "../../Component/verifyToken/BNNumber";
-import { date } from "zod";
+// import BNNumber from "../../Component/verifyToken/BNNumber";
+// import { date } from "zod";
 import BNTimePickerWatch from "../../Component/BNTimePickerWatch";
+import { er, er2 } from "./AllBooking";
 
 const { Column } = Table;
 // [
@@ -58,7 +56,7 @@ const AllSlots: React.FC = () => {
 
   const roomNames = rooms?.data
     ?.filter((room: TRoom) =>
-      data?.data?.filter((slot) => slot.room._id === room._id)
+      data?.data?.filter((slot: any) => slot.room._id === room._id)
     )
     ?.map((room: TRoom) => {
       return {
@@ -71,7 +69,7 @@ const AllSlots: React.FC = () => {
   if (!roomNames) {
     return <p>pew</p>;
   }
-  const datas = data?.data?.map((item, idx: number) => {
+  const datas = data?.data?.map((item: any, idx: number) => {
     return {
       _id: item._id,
       key: idx,
@@ -84,7 +82,7 @@ const AllSlots: React.FC = () => {
     };
   });
 
-  const handleDelete = async (item) => {
+  const handleDelete = async (item: any) => {
     try {
       const res = await Delete({
         id: item?._id,
@@ -93,10 +91,10 @@ const AllSlots: React.FC = () => {
         toast.success("Deleted successfully");
       }
       if (res.error) {
-        toast.error(res.error?.data?.message);
+        toast.error((res.error as er2)?.data?.message);
       }
     } catch (err) {
-      toast.error(err?.message);
+      toast.error((err as er)?.message);
     }
   };
 
@@ -148,7 +146,7 @@ const AllSlots: React.FC = () => {
   );
 };
 
-const Update = ({ item, roomNames }) => {
+const Update = ({ item, roomNames }: { item: any; roomNames: any }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [startTime, setStartTime] = useState("");
 
@@ -175,7 +173,7 @@ const Update = ({ item, roomNames }) => {
     21, 22, 23, 24,
   ].filter((val) => ![startT + 1].includes(val));
 
-  const onSubmit = async (udata) => {
+  const onSubmit = async (udata: any) => {
     console.log(udata);
     // const updatedSlotData = {
     //   date: moment(udata.date).format("YYYY-MM-DD"),
@@ -215,10 +213,10 @@ const Update = ({ item, roomNames }) => {
         setIsModalOpen(false);
       }
       if (res.error) {
-        toast.error(res.error?.data?.message);
+        toast.error((res.error as er2)?.data?.message);
       }
     } catch (err) {
-      toast.error(err?.message);
+      toast.error((err as er)?.message);
     }
   };
 
@@ -236,7 +234,8 @@ const Update = ({ item, roomNames }) => {
         <BNForm onSubmit={onSubmit}>
           <div className=" grid gap-[2vw] grid-cols-2">
             <BNSelect
-              options={roomNames.map((room) => ({
+              mode=""
+              options={roomNames.map((room: any) => ({
                 // value: `${room.roomName} ${room.roomId}`,
                 value: `${room.roomName}`,
                 label: room.roomName,
@@ -245,7 +244,8 @@ const Update = ({ item, roomNames }) => {
               label="Room Names"
             />
             <BNSelect
-              options={roomNames.map((room) => ({
+              mode=""
+              options={roomNames.map((room: any) => ({
                 value: `${room.roomNo}`,
                 label: room.roomNo,
               }))}
@@ -254,7 +254,7 @@ const Update = ({ item, roomNames }) => {
             />
           </div>
           <div className=" grid gap-[2vw] grid-cols-2">
-            <BNDatePicker2 layout="" name="date" label="Date" />
+            <BNDatePicker2 defaultValue="" layout="" name="date" label="Date" />
             <BNTimePickerWatch
               setStartTime={setStartTime}
               layout=""

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { toast } from "sonner";
 import { useCreateSlotMutation } from "../../redux/features/slot/slot.api";
 import { Button, Form, Typography } from "antd";
@@ -10,7 +11,18 @@ import BNTimePickerWatch from "../../Component/BNTimePickerWatch";
 import BNTimePicker from "../../Component/BNTimePicker";
 import { useState } from "react";
 import moment from "moment";
+import { er } from "./AllBooking";
 
+interface ErrorMessage {
+  path: string;
+  message: string;
+}
+
+interface FetchBaseQueryError {
+  data?: {
+    errorMessages: ErrorMessage[];
+  };
+}
 const { Title } = Typography;
 const CreateSlot = () => {
   const [startTime, setStartTime] = useState("");
@@ -19,7 +31,7 @@ const CreateSlot = () => {
   const { data: AllRooms } = useGetAllMeetingRoomsQuery(undefined);
 
   const startT = Number(startTime?.split(":")[0]);
-
+  console.log(startT);
   // const newArr = [
   //   0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
   //   21, 22, 23, 24,
@@ -28,7 +40,7 @@ const CreateSlot = () => {
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
   ];
 
-  const RoomOptions = AllRooms?.data?.map((room) => {
+  const RoomOptions = AllRooms?.data?.map((room: any) => {
     return {
       value: room._id,
       label: room.name,
@@ -54,13 +66,15 @@ const CreateSlot = () => {
         toast.success("Slot Created Successfully", { id });
       }
       console.log(res);
-      if (res?.error?.data?.errorMessages) {
+      if ((res?.error as FetchBaseQueryError)?.data?.errorMessages) {
         toast.error(
           <div>
             <ul>
-              {res?.error?.data?.errorMessages.map((error) => (
-                <li key={error}>{error.message}</li>
-              ))}
+              {(res?.error as FetchBaseQueryError)?.data?.errorMessages.map(
+                (error, idx) => (
+                  <li key={idx}>{error.message}</li>
+                )
+              )}
             </ul>
           </div>,
 
@@ -68,7 +82,7 @@ const CreateSlot = () => {
         );
       }
     } catch (err) {
-      toast.error(err.message, { id });
+      toast.error((err as er).message, { id });
     }
   };
 

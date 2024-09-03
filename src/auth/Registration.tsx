@@ -7,6 +7,7 @@ import BNFromWatch from "../Component/BNFormWatch";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { TRegistration } from "../Types";
+import { er, er2 } from "../pages/AdminDashboard/AllBooking";
 
 const Registration = () => {
   const [check, setOnCheck] = useState(false);
@@ -41,11 +42,11 @@ const Registration = () => {
         });
         navigate("/login");
       }
-      if (res?.error?.data?.message) {
-        toast.error(res.error.data.message, { id });
+      if ((res?.error as er2)?.data?.message) {
+        toast.error((res?.error as er2)?.data.message, { id });
       }
     } catch (err) {
-      toast.error(err?.message, { id });
+      toast.error((err as er)?.message, { id });
     }
   };
   return (

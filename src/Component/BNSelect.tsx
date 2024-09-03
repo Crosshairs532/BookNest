@@ -1,7 +1,7 @@
 import { Form, Select } from "antd";
 import { Controller } from "react-hook-form";
 
-const BNSelect = ({ name, label, options, mode }) => {
+const BNSelect = ({ name, label, options, mode }: any) => {
   return (
     <Controller
       name={name}

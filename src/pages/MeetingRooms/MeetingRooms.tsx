@@ -42,7 +42,9 @@ const MeetingRooms = () => {
           {isFetching ? (
             <>fetching</>
           ) : data?.data?.length > 0 ? (
-            data.data.map((room, idx) => <ProductCard key={idx} room={room} />)
+            data.data.map((room: any, idx: number) => (
+              <ProductCard key={idx} room={room} />
+            ))
           ) : (
             <h1 className="mx-auto text-center text-[4vw] whitespace-nowrap text-black">
               No product to show

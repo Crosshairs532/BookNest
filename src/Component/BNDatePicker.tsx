@@ -1,13 +1,13 @@
-import type { DatePickerProps } from "antd";
 import { DatePicker, Form } from "antd";
+import { FormItemLayout } from "antd/es/form/Form";
 import { useEffect } from "react";
-import { Controller, useForm, useFormContext, useWatch } from "react-hook-form";
+import { Controller, useFormContext, useWatch } from "react-hook-form";
 
 type TDatePicker = {
   name: string;
   label: string;
-  layout?: string;
-  setDisable?: () => void;
+  layout?: FormItemLayout | undefined;
+  setDisable?: (disable: string) => void;
 };
 
 const BNDatePicker = ({ layout, name, label, setDisable }: TDatePicker) => {
@@ -18,7 +18,9 @@ const BNDatePicker = ({ layout, name, label, setDisable }: TDatePicker) => {
   });
 
   useEffect(() => {
-    setDisable(inputval);
+    if (setDisable) {
+      setDisable(inputval);
+    }
   }, [inputval]);
 
   return (

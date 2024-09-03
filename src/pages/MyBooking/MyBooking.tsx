@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Layout } from "antd";
 
-import { Outlet, useParams } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Siderbar from "./MySidebar";
-import { useEffect } from "react";
-import { useGetMyBookingsQuery } from "../../redux/features/myBooking/myBooking.api";
+// import { useEffect } from "react";
+// import { useGetMyBookingsQuery } from "../../redux/features/myBooking/myBooking.api";
 // import { Siderbar } from "./Sidebar";
 const { Header, Content, Footer } = Layout;
 

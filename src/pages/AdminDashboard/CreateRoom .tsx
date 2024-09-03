@@ -1,16 +1,18 @@
-import { Form, Input, InputNumber, Button, Select, Typography } from "antd";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Form, Button, Typography } from "antd";
 import BNInput from "../../Component/BNInput";
 import BNForm from "../../Component/BNForm";
 import BNSelect from "../../Component/BNSelect";
 import BNNumber from "../../Component/verifyToken/BNNumber";
 import { useCreateRoomMutation } from "../../redux/features/room/room.api";
 import { toast } from "sonner";
+import { er, er2 } from "./AllBooking";
 const { Title } = Typography;
-const { Option } = Select;
+// const { Option } = Select;
 
 const CreateRoom = () => {
   const [createRoom] = useCreateRoomMutation();
-  const onSubmit = async ({ img1, img2, ...values }) => {
+  const onSubmit = async ({ img1, img2, ...values }: any) => {
     const roomData = {
       ...values,
       images: [img1, img2],
@@ -25,11 +27,11 @@ const CreateRoom = () => {
         toast.success("Room Created Successfully", { id });
       }
       console.log(res);
-      if (res?.error?.data.message) {
-        toast.error(res?.error?.data.message, { id });
+      if ((res?.error as er2)?.data.message) {
+        toast.error((res?.error as er2)?.data.message, { id });
       }
     } catch (err) {
-      toast.error(err.message, { id });
+      toast.error((err as er)?.message, { id });
     }
   };
 

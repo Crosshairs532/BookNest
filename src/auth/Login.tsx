@@ -12,12 +12,13 @@ import { loginState, setUser } from "../redux/features/auth/authSlice";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import verifyToken from "../Component/verifyToken/verifyToken";
+import { verifyToken } from "../Component/verifyToken/verifyToken";
+import { er2 } from "../pages/AdminDashboard/AllBooking";
 
 const Login = () => {
   const [login] = useLoginMutation();
   const selector = useAppSelector(loginState);
-
+  console.log(selector);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -58,7 +59,7 @@ const Login = () => {
       }
     } catch (err) {
       console.log(err);
-      toast.error(` $ ${err?.data?.message} !`, { id });
+      toast.error(` $ ${(err as er2)?.data?.message} !`, { id });
     }
   };
 

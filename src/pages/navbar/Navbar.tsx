@@ -26,6 +26,7 @@ const Navbar = () => {
   let item;
   useGSAP(() => {
     const nav = navRef?.current as HTMLDivElement;
+    console.log(nav);
     const menu = menuRef?.current as HTMLDivElement;
     const close = closeRef?.current as HTMLDivElement;
     const overlay = document.querySelector(".menu_overlay") as HTMLDivElement;

@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import Hero from "../../Component/Hero/Hero";
 import Service from "./Service";
 import FeaturedRoom from "./FeaturedRoom";

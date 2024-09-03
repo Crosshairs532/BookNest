@@ -4,13 +4,13 @@ import { useEffect } from "react";
 import { Controller, useFormContext, useWatch } from "react-hook-form";
 import { useAppSelector } from "../redux/hook";
 import { roomSelector } from "../redux/features/room/room.slice";
-import { FormItemLayout, FormLayout } from "antd/es/form/Form";
+import { FormItemLayout } from "antd/es/form/Form";
 type TinputProp = {
   layout?: FormItemLayout | undefined;
   name: string;
   label: string | undefined;
   type: string;
-  setOnCheck?: () => boolean;
+  setOnCheck?: (check: boolean) => void;
   onChangeValue?: () => unknown;
   bg?: string;
 };
@@ -19,6 +19,7 @@ const BNInput = ({ layout, type, label, name, setOnCheck, bg }: TinputProp) => {
   const { control } = useFormContext();
   const watch = useWatch({ control });
   const selector = useAppSelector(roomSelector);
+  console.log(selector);
   useEffect(() => {
     if (
       watch.name &&
@@ -27,7 +28,9 @@ const BNInput = ({ layout, type, label, name, setOnCheck, bg }: TinputProp) => {
       watch.phone &&
       watch.email
     ) {
-      setOnCheck(true);
+      if (setOnCheck) {
+        setOnCheck(true);
+      }
       console.log("all fields are filled");
     }
 

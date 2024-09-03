@@ -1,11 +1,17 @@
 // import hero from "../../assets/heroSection.mp4";
 import { Link, useOutletContext } from "react-router-dom";
-import hero2 from "../../assets/heroSection2.mp4";
+import hero2 from "../../assets/herosection2.mp4";
 import { useContext } from "react";
 import { mainContext } from "../../App";
+type OutletContextType = [React.RefObject<HTMLDivElement>?];
+
 const Hero = () => {
-  const [heroRef] = useOutletContext();
-  const { heRef } = useContext(mainContext);
+  const context = useContext(mainContext);
+  const [heroRef] = useOutletContext<OutletContextType>();
+  if (!context) {
+    return;
+  }
+  const { heRef } = context;
   return (
     <div ref={heroRef && heroRef} className=" relative  w-full h-full">
       <div className=" over"></div>
@@ -44,7 +50,7 @@ const Hero = () => {
       </div>
       <div className=" space-y-[3.5vw] text-center Head absolute left-[50%] z-[400] -translate-y-[50%]  -translate-x-[50%] top-[50%] text-[#FFFCF1]">
         <h1
-          ref={heRef && heRef}
+          ref={heRef}
           className=" text-[5vw] text-left leading-none w-max font-plainLight headline"
         >
           Book Your Ideal <br />

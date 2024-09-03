@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useNavigate, useParams } from "react-router-dom";
 import BNForm from "../../Component/BNForm";
 import BNDatePicker from "../../Component/BNDatePicker";
@@ -8,24 +9,28 @@ import { FieldValues, SubmitHandler } from "react-hook-form";
 import { useGetAllAvailableSlotsQuery } from "../../redux/features/slot/slot.api";
 import moment from "moment";
 import BNInput from "../../Component/BNInput";
-import { useAppDispatch, useAppSelector } from "../../redux/hook";
-import { bookingData } from "../../Types";
+import { useAppSelector } from "../../redux/hook";
+import { bookingData, Slot, TCuser } from "../../Types";
 import { useCreateBookingMutation } from "../../redux/features/Booking/booking.api";
-
 import Swal from "sweetalert2";
-import { setBooking } from "../../redux/features/Booking/booking.slice";
+import { RootState } from "../../redux/store";
+
 const BookingForm = () => {
   const [disable, setDisable] = useState("");
   const { roomId } = useParams();
-  const cUser = useAppSelector((state) => state.auth.current_user);
-  const defaultValue = {
-    name: cUser?.name,
-    email: cUser?.email,
-    phone: cUser?.phone,
-    address: cUser?.address,
+  const cUser = useAppSelector(
+    (state: RootState) => state.auth.current_user
+  ) as TCuser | null;
+  console.log(cUser);
+  const defaultValue: TCuser = {
+    name: cUser?.name || "",
+    email: cUser?.email || "",
+    phone: cUser?.phone || "",
+    address: cUser?.address || "",
   };
-  const dispatch = useAppDispatch();
-  const [booking] = useCreateBookingMutation();
+
+  const [createBooking] = useCreateBookingMutation();
+  // const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   // * slots -> roomid, date
@@ -35,7 +40,7 @@ const BookingForm = () => {
   //   .utc(moment(new Date(disable)).format("YYYY-MM-D") + " 18:00")
   //   .utc()
   //   .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]");
-
+  console.log(cUser);
   const dateFormated = moment
     .utc(
       moment
@@ -59,9 +64,10 @@ const BookingForm = () => {
   // });
   // * get logged user details
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    console.log(data);
     const slots = data?.slots
-      .map((slot) => JSON.parse(slot))
-      .map((sl) => sl._id);
+      .map((slot: string) => JSON.parse(slot))
+      .map((sl: any) => sl._id);
 
     const bookingData: bookingData = {
       date: dateFormated,
@@ -78,10 +84,9 @@ const BookingForm = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, Proceed",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        dispatch(setBooking(bookingData));
-
+        await createBooking(bookingData);
         console.log({ roomId });
         navigate(`/booking-payment/${roomId}`);
       }
@@ -106,7 +111,12 @@ const BookingForm = () => {
     //   console.log(err);
     // }
   };
-  const slotOptions = slots?.data?.map((slot) => {
+  type TslotOption = {
+    label: string;
+    value: string;
+  };
+
+  const slotOptions: TslotOption[] = slots?.data?.map((slot: Slot) => {
     return {
       label: `${slot.startTime} - ${slot.endTime}`,
       value: JSON.stringify(slot),

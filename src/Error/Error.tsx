@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import errorVid from "../assets/error.webm"; // Make sure to use the correct path
 
 const YourComponent = () => {

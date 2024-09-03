@@ -1,5 +1,5 @@
 import { Button, Carousel } from "antd";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useGetSingleRoomQuery } from "../../redux/features/room/room.api";
 import { useAppSelector } from "../../redux/hook";
 
@@ -14,7 +14,7 @@ const RoomDetails = () => {
     return <h1>Fetching Data</h1>;
   }
 
-  const handleBookNow = (id) => {
+  const handleBookNow = (id: any) => {
     console.log(id, cUser);
     if (!cUser) {
       console.log("yes");
@@ -36,7 +36,7 @@ const RoomDetails = () => {
       </h2>
 
       <Carousel style={{ borderRadius: "100%" }} autoplay>
-        {singleRoom?.data?.images.map((image, index) => (
+        {singleRoom?.data?.images.map((image: any, index: number) => (
           <div key={index}>
             <img
               src={image}
@@ -112,7 +112,7 @@ const RoomDetails = () => {
             Amenities
           </h3>
           <ul className="  list-disc w-[50vw] list-inside">
-            {singleRoom?.data?.amenities.map((amenity, index) => (
+            {singleRoom?.data?.amenities.map((amenity: any, index: number) => (
               <li key={index} className=" list-item text-[#faf8fc]">
                 {amenity}
               </li>

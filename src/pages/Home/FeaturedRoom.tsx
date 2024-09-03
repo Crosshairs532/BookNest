@@ -89,7 +89,7 @@ import { roomSelector } from "../../redux/features/room/room.slice";
 const FeaturedRoom = () => {
   const selector = useAppSelector(roomSelector);
   const { data: rooms, isLoading } = useGetAllMeetingRoomsQuery(undefined);
-
+  console.log(selector);
   if (isLoading || !rooms) {
     return <h1>Loading....</h1>;
   }
@@ -109,7 +109,7 @@ const FeaturedRoom = () => {
           </p>
         </div>
         <div className=" place-items-center grid md:grid-cols-2 grid-cols-1 lg:grid-cols-4 gap-8">
-          {rooms?.data?.map((room, idx) => (
+          {rooms?.data?.map((room: any, idx: number) => (
             <ProductCard key={idx} room={room}></ProductCard>
           ))}
         </div>

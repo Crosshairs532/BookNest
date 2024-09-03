@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Form, Input } from "antd";
-import { Controller, useFormContext, useWatch } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import { roomSelector, setFilter } from "../../redux/features/room/room.slice";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { useEffect, useState } from "react";
@@ -55,7 +55,6 @@ const RCinput = ({ layout, type, label, name, bg }: TinputProp) => {
               min={0}
               max={10000}
               {...field}
-              type={type}
               placeholder={name}
               style={{
                 backgroundColor: `${bg}`,

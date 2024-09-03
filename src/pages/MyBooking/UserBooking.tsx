@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Table } from "antd";
 import { useGetMyBookingsQuery } from "../../redux/features/myBooking/myBooking.api";
 import moment from "moment";
@@ -10,7 +11,7 @@ const UserBooking = () => {
     return <p>Loading..</p>;
   }
   console.log(data, "kpothay");
-  const datas = data?.data?.map((item, idx: number) => {
+  const datas = data?.data?.map((item: any, idx: number) => {
     return {
       _id: item._id,
       key: idx,

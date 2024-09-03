@@ -1,6 +1,6 @@
 import { Select } from "antd";
-import { Controller, useForm, useFormContext } from "react-hook-form";
-import { MdPriceChange } from "react-icons/md";
+import { Controller, useForm } from "react-hook-form";
+
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { roomSelector, setFilter } from "../../redux/features/room/room.slice";
 
@@ -33,8 +33,9 @@ const Sort = () => {
     <Controller
       control={control}
       name="sort"
-      render={({ field }) => (
+      render={({ field }: any) => (
         <Select
+          {...field}
           defaultValue="Low To High"
           style={{ width: 120 }}
           onChange={handleChange}

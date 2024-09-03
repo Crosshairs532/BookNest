@@ -8,9 +8,9 @@ import {
 import { TiArrowForward } from "react-icons/ti";
 import { Link, useLocation } from "react-router-dom";
 
-const ProductCard = ({ room }) => {
+const ProductCard = ({ room }: any) => {
   const location = useLocation();
-  // console.log(room);
+
   return (
     <div>
       <Card
@@ -19,10 +19,19 @@ const ProductCard = ({ room }) => {
             ? " w-[60vw] md:w-[40vw] h-[30vh] lg:w-[20vw] lg:h-[30vh]"
             : "w-[320px] lg:w-[350px]"
         } `}
+        placeholder={undefined}
+        onPointerEnterCapture={undefined}
+        onPointerLeaveCapture={undefined}
       >
         <CardHeader
           color="blue-gray"
           className=" relative h-[25vh] overflow-hidden"
+          // Provide any required props with default values
+          shadow={false}
+          style={{}}
+          placeholder={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
         >
           <img
             className=" h-full w-full absolute top-0 left-0 object-center object-cover"
@@ -34,34 +43,52 @@ const ProductCard = ({ room }) => {
             src={room?.images[1]}
             alt=""
           />
-
           <Link
             className=" flex items-center gap-1 justify-between"
             to={`/meeting-rooms/details/${room._id}`}
           >
             <button className="card-detail mx-auto flex justify-between items-center">
-              <TiArrowForward></TiArrowForward>
+              <TiArrowForward />
               <p className=" leading-none m-0 p-0 text-[2vw] lg:text-[0.8vw]">
                 see Details
               </p>
             </button>
           </Link>
         </CardHeader>
-        <CardBody className=" px-2 py-4">
+        <CardBody
+          className=" px-2 py-4"
+          style={{}}
+          onClick={() => {}}
+          placeholder={undefined}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+        >
           <div className=" flex items-center justify-between">
             <Typography
               variant="h5"
               color="blue-gray"
               className="mb-1 text-[2.8vw] md:text-[2vw] lg:text-[1.1vw] leading-none font-semibold text-[#1a1a1a]"
+              style={{}}
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
             >
               {room?.name}
             </Typography>
           </div>
           <div className=" flex gap-4 items-center justify-between w-max ">
-            <Typography className=" leading-none tracking-normal text-[#5e5e5e]">
+            <small className="font-plainLight">capacity:</small>
+            <Typography
+              className=" leading-none tracking-normal text-[#5e5e5e]"
+              placeholder={undefined}
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+            >
               {room?.capacity}
             </Typography>
-            <h4 className=" text-[#000000]">{room?.pricePerSlot}</h4>
+            <h4 className=" font-plainLight text-[#000000]">
+              price: {room?.pricePerSlot}
+            </h4>
           </div>
         </CardBody>
       </Card>

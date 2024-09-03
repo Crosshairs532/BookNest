@@ -19,7 +19,7 @@ const HowItWorks = () => {
 
   return (
     <div
-      className=" border-2 h-[40vh] md:h-[50vh] lg:min-h-[100vh] border-red-500 relative"
+      className="  h-[40vh] md:h-[50vh] lg:min-h-[100vh]  relative"
       ref={HowItWorksRef}
     >
       <span className=" how_cursor border-2 border-[#141414] m-0 w-max lg:inline-block hidden h-max p-[4vw] rounded-full">

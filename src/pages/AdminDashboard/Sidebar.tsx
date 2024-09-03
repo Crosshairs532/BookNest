@@ -94,20 +94,20 @@
 // export default Siderbar;
 import { useState } from "react";
 import { Layout, Menu, Button } from "antd";
-import { useDispatch } from "react-redux";
+
 import { NavLink } from "react-router-dom";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 
 const { Sider } = Layout;
 
-const userRole = {
-  ADMIN: "admin",
-  FACULTY: "faculty",
-  STUDENT: "student",
-};
+// const userRole = {
+//   ADMIN: "admin",
+//   FACULTY: "faculty",
+//   STUDENT: "student",
+// };
 
 export const Siderbar = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [collapsed, setCollapsed] = useState(false);
 
   const toggleCollapsed = () => {

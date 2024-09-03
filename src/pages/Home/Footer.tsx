@@ -3,11 +3,10 @@ import { mainContext } from "../../App";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
-  const { footerRef } = useContext(mainContext);
-
+  const context = useContext(mainContext);
   return (
     <div
-      // ref={footerRef}
+      ref={context?.footerRef}
       className="px-[2.4vw] flex-1 text-[#FAF8FC] flex flex-col bg-[#0E0E0E] pt-[5vw] border-2 overflow-hidden min-h-[50vh] lg:h-screen"
     >
       <div className=" h-[60%] flex lg:flex-row  flex-col w-full ">

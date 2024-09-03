@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-type TAuthState = {};
-
 const initialValue = {
   booking: {},
 };
@@ -15,7 +13,7 @@ export const bookingSlice = createSlice({
     },
   },
 });
-export const getBookingData = (state) => state.booking;
+export const getBookingData = (state: any) => state.booking;
 
 export const { setBooking } = bookingSlice.actions;
 // export const roomSelector = (state) => state.room;

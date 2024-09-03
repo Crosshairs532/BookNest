@@ -1,10 +1,28 @@
-import { Controller, useFormContext, useWatch } from "react-hook-form";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Controller, useFormContext } from "react-hook-form";
 import { Form, TimePicker } from "antd";
-import moment from "moment";
+// import moment from "moment";
+import { FormItemLayout } from "antd/es/form/Form";
+import dayjs from "dayjs";
 
-const BNTimePicker = ({ disable, name, label, endArr }) => {
+const BNTimePicker = ({
+  disable,
+  name,
+  label,
+  endArr,
+  layout,
+}: {
+  disable: any;
+  name: any;
+  label: any;
+  endArr: any;
+  layout?: FormItemLayout | undefined | string;
+}) => {
   const { control } = useFormContext();
   console.log(disable);
+
+  console.log(layout);
   return (
     <div style={{ marginBottom: "10px" }}>
       <Controller
@@ -19,9 +37,9 @@ const BNTimePicker = ({ disable, name, label, endArr }) => {
                 format="HH:mm"
                 disabled={disable}
                 style={{ width: "100%" }}
-                minuteStep={60}
+                minuteStep={60 as unknown as 1}
                 hideDisabledOptions={true}
-                value={field.value ? moment(field.value, "HH:mm") : null}
+                value={field.value ? dayjs(field.value, "HH:mm") : null}
                 onChange={(time) => {
                   field.onChange(time ? time.format("HH:mm") : null);
                 }}

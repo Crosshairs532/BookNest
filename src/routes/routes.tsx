@@ -7,7 +7,7 @@ import Home from "../pages/Home/Home";
 import MeetingRooms from "../pages/MeetingRooms/MeetingRooms";
 import About from "../pages/About/About";
 import Contact from "../pages/contact/Contact";
-import MYBookings from "../pages/MYBookings/MYBookings";
+// import MYBookings from "../pages/MYBookings/MYBookings";
 import Protected from "../protected/Protected";
 import AdminDashboard from "../pages/AdminDashboard/AdminDashboard";
 import RoomDetails from "../pages/RoomDetails/RoomDetails";

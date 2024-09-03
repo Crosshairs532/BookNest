@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-type TAuthState = {};
-
 const initialValue = {
   name: "",
   maxPrice: 10000,
@@ -41,5 +39,5 @@ export const roomSlice = createSlice({
 });
 
 export const { setFilter, reset } = roomSlice.actions;
-export const roomSelector = (state) => state.room;
+export const roomSelector = (state: any) => state.room;
 export default roomSlice.reducer;

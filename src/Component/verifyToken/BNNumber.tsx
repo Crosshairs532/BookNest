@@ -15,7 +15,7 @@ type TinputProp = {
 
 const BNNumber = ({ layout, type, label, name }: TinputProp) => {
   const { control } = useFormContext();
-
+  console.log(type);
   return (
     <div style={{ marginBottom: "50px" }}>
       <Controller

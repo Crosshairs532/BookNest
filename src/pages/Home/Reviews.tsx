@@ -6,16 +6,18 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
 import { FreeMode, Pagination } from "swiper/modules";
-import { FaStar } from "react-icons/fa";
+import { TReview } from "../../Types";
 
 export default function App() {
-  const [reviews, setReviews] = useState(null);
+  const [reviews, setReviews] = useState<TReview[] | null>(null);
 
   useEffect(() => {
     fetch("/review.json")
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
+
+  console.log(reviews);
 
   return (
     <>
@@ -38,7 +40,7 @@ export default function App() {
           modules={[FreeMode, Pagination]}
           className="mySwiper"
         >
-          {reviews?.map((review, idx) => (
+          {reviews?.map((review: TReview, idx: number) => (
             <SwiperSlide key={idx}>
               <div className=" cursor-pointer group w-full h-[300px] bg-[#1c2d5f]">
                 <div className="flex flex-col w-full justify-center items-center h-full">
@@ -49,11 +51,11 @@ export default function App() {
                       src={review.img}
                       alt=""
                     />
-                    <div className=" absolute bottom-2 right-3 z-20 rating">
+                    {/* <div className=" absolute bottom-2 right-3 z-20 rating">
                       {Array.from({ length: review.number }, (_, i) => (
                         <FaStar key={i} size={15} className="text-yellow-400" />
                       ))}
-                    </div>
+                    </div> */}
                   </div>
                   <div className=" relative overflow-hidden  h-[50%] flex-1 w-full bg-[#1c2d5f] review_info">
                     <h1 className="  group-hover:top-[-50%] transition-all duration-700  absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-base lg:text-2xl font-bold text-[#f0f0f0]">

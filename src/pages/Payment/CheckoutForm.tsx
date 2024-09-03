@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from "react";
 import { useAppSelector } from "../../redux/hook";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
@@ -10,7 +11,7 @@ import Swal from "sweetalert2";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
 
-const CheckoutForm = ({ totalAmount }) => {
+const CheckoutForm = ({ totalAmount }: any) => {
   const navigate = useNavigate();
   const bookData = useAppSelector(getBookingData);
   const stripe = useStripe();
@@ -85,7 +86,7 @@ const CheckoutForm = ({ totalAmount }) => {
   //     }
   //   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
     // Ensure stripe and elements are loaded
     if (!stripe || !elements) {
@@ -100,11 +101,10 @@ const CheckoutForm = ({ totalAmount }) => {
     }
 
     // Create the payment method
-    const { error: paymentMethodError, paymentMethod } =
-      await stripe.createPaymentMethod({
-        type: "card",
-        card,
-      });
+    const { error: paymentMethodError } = await stripe.createPaymentMethod({
+      type: "card",
+      card,
+    });
 
     if (paymentMethodError) {
       console.log("Payment Method Error:", paymentMethodError);
@@ -159,7 +159,7 @@ const CheckoutForm = ({ totalAmount }) => {
     <h1>Slots:</h1>
     <ul>
       ${bookingRes.data.data.slots
-        .map((slot) => `<li>${slot.startTime} - ${slot.endTime}</li>`)
+        .map((slot: any) => `<li>${slot.startTime} - ${slot.endTime}</li>`)
         .join("")}
     </ul>
     <h1>Room Name: ${bookingRes.data.data.room.name}</h1>

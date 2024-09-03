@@ -1,4 +1,5 @@
-import { Button, Modal, Space, Table } from "antd";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Space, Table } from "antd";
 
 import { toast } from "sonner";
 
@@ -14,7 +15,14 @@ const { Column } = Table;
 //     { name: "page", value: value },
 //     { name: "sort", value: "id" },
 //   ]
-
+export type er = {
+  message: string;
+};
+export type er2 = {
+  data: {
+    message: string;
+  };
+};
 const AllBooking: React.FC = () => {
   //   const [value, setValue] = useState(1);
 
@@ -25,8 +33,8 @@ const AllBooking: React.FC = () => {
 
   console.log(bookings);
   const datas = bookings?.data
-    ?.filter((book) => !book?.isDeleted)
-    ?.map((booking) => {
+    ?.filter((book: any) => !book?.isDeleted)
+    ?.map((booking: any) => {
       console.log(booking.isConfirmed);
 
       return {
@@ -40,7 +48,7 @@ const AllBooking: React.FC = () => {
 
   console.log(datas);
 
-  const handleDelete = async (item) => {
+  const handleDelete = async (item: any) => {
     console.log(item._id);
     try {
       const res = await Delete({
@@ -51,13 +59,13 @@ const AllBooking: React.FC = () => {
         toast.warning("Deleted successfully");
       }
       if (res.error) {
-        toast.error(res.error?.data?.message);
+        toast.error((res.error as er2)?.data?.message);
       }
     } catch (err) {
-      toast.error(err?.message);
+      toast.error((err as er)?.message);
     }
   };
-  const handleAprrove = async (item) => {
+  const handleAprrove = async (item: any) => {
     console.log(item);
     const confirm = { id: item._id, isConfirmed: "confirmed" };
 
@@ -69,13 +77,13 @@ const AllBooking: React.FC = () => {
       }
 
       if (res.error) {
-        toast.error(res?.error?.data?.message);
+        toast.error((res?.error as er2)?.data?.message);
       }
     } catch (err) {
-      toast.error(err?.message);
+      toast.error((err as er)?.message);
     }
   };
-  const handleReject = async (item) => {
+  const handleReject = async (item: any) => {
     const confirm = { id: item._id, isConfirmed: "unconfirmed" };
     try {
       const res = await Update(confirm);
@@ -83,10 +91,13 @@ const AllBooking: React.FC = () => {
         toast.info("Booking rejected");
       }
       if (res.error) {
-        toast.error(res?.error?.data?.message);
+        const error = res.error as er2;
+        toast.error(error?.data?.message);
       }
     } catch (err) {
-      toast.error(err?.message);
+      console.log(err);
+      const error = err as er;
+      toast.error(error?.message);
     }
   };
 

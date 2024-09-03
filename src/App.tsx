@@ -6,23 +6,29 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Footer from "./pages/Home/Footer";
 import ScrollToTop from "./utils/ScrollToTop/ScrollToTop";
+import { MainContextType } from "./Types";
+// import { ConfigProvider } from "antd";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
-export const mainContext = createContext(null);
+
+export const mainContext = createContext<MainContextType | null>(null);
 const App = () => {
-  const mainRef = useRef(null);
-  const heroRef = useRef(null);
-  const footerRef = useRef(null);
-  const heRef = useRef(null);
-  const serviceRef = useRef(null);
+  const mainRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLDivElement>(null);
+  const heRef = useRef<null>(null);
+  const serviceRef = useRef<null>(null);
   const main = document.querySelector(".main");
 
   useGSAP(
     () => {
+      // if (allRefsActive) {
       const hero = heroRef?.current;
       const footer = footerRef?.current;
       const service = serviceRef?.current;
+
       const loadingTL = gsap.timeline({});
+      console.log(service);
       loadingTL.from(
         ".loadingText",
         {
@@ -57,9 +63,11 @@ const App = () => {
         "b"
       );
 
+      const heroHeadings = hero && hero?.querySelectorAll("h1");
+
       loadingTL
         .from(
-          hero?.querySelectorAll("h1"),
+          heroHeadings,
           {
             opacity: 0,
             delay: 0.4,
@@ -106,13 +114,13 @@ const App = () => {
         "a+=1"
       );
     },
+    // },
     {
       scope: mainRef,
-    },
-    []
+    }
   );
 
-  const value = { footerRef, heRef, serviceRef };
+  const value: MainContextType = { footerRef, heRef, serviceRef };
 
   return (
     <div ref={mainRef} className="main">
@@ -128,7 +136,7 @@ const App = () => {
           <ScrollToTop />
           <Navbar></Navbar>
           <div className=" min-h-screen">
-            <Outlet context={[heroRef]} />
+            <Outlet context={[heroRef, footerRef, heRef, serviceRef]} />
           </div>
           <Footer />
         </mainContext.Provider>

@@ -8,7 +8,7 @@ import {
 import { mainContext } from "../../App";
 
 const Service = () => {
-  const { serviceRef } = useContext(mainContext);
+  const context = useContext(mainContext);
   const services = [
     {
       icon: <FaClock size={50} />,
@@ -31,7 +31,10 @@ const Service = () => {
       description: "Our support team is here for you, anytime.",
     },
   ];
-
+  if (!context) {
+    return;
+  }
+  const { serviceRef } = context;
   return (
     <div className="bg-gray-100 mt-[1vw] rounded-xl py-16">
       <div className="container mx-auto ">

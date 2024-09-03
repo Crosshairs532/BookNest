@@ -1,6 +1,6 @@
 import { Button } from "antd";
 
-const BNButtonLogin = ({ textS, text, children }) => {
+const BNButtonLogin = ({ textS, text, children }: any) => {
   return (
     <Button
       id="loginButton"
