@@ -65,10 +65,10 @@ This project provides a comprehensive solution for booking meeting rooms in co-w
 ## Technology Stack
 
 - **Frontend:** React, Tailwind CSS, Ant Design, GSAP
-- **Backend:** [Backend technology of choice, e.g., Node.js, Express]
-- **Database:** [Database technology of choice, e.g., MongoDB, PostgreSQL]
-- **Authentication:** [Authentication technology, e.g., JWT]
-- **Payment Integration:** [Payment gateway, e.g., Stripe]
+- **Backend:** Node.js, Express
+- **Database:** MongoDB, PostgreSQL
+- **Authentication:** JWT 
+- **Payment Integration:** Stripe
 
 ## Installation Guideline
 
